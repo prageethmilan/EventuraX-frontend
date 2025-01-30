@@ -8,7 +8,7 @@ function FooterLeftWidget({footerleftcnts}) {
             <div className="col-lg-3 column-td-6">
                 <div className="footer-item">
                     <div className="logo">
-                        <Logo url={footerleftcnts.footerlogo} className="foot-logo" />
+                        {/*<Logo url={footerleftcnts.footerlogo} className="foot-logo" />*/}
                         <p className="footer__desc">
                             {footerleftcnts.footerdesc}
                         </p>

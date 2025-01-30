@@ -1,11 +1,17 @@
 import React from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
 import { FaRegEnvelope } from 'react-icons/fa';
-import { FiLock } from 'react-icons/fi';
+import {FiEye, FiEyeOff, FiLock} from 'react-icons/fi';
 import { Link } from "react-router-dom";
 import SignInOptions from "./SignInOptions";
 
 function SignUpBox({title, subtitle}) {
+
+    const [showPassword, setShowPassword] = React.useState(false);
+
+    const handleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
     return (
         <>
             <div className="billing-form-item mb-0">
@@ -66,33 +72,37 @@ function SignUpBox({title, subtitle}) {
                                     <div className="input-box">
                                         <label className="label-text">Password</label>
                                         <div className="form-group">
-                                                <span className="form-icon">
-                                                    <FiLock />
-                                                </span>
-                                            <input className="form-control" type="text" name="text" placeholder="Password" />
+                                            <span className="form-icon">
+                                                <FiLock/>
+                                            </span>
+                                            <input className="form-control" type={showPassword ? "text" : "password"} name="text"
+                                                   placeholder="Password"/>
+                                            <span
+                                                className="eye-icon"
+                                                onClick={handleShowPassword}
+                                                style={{cursor: 'pointer'}}
+                                            >
+                                                {showPassword ? <FiEyeOff/> : <FiEye/>}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-12">
                                     <div className="input-box">
-                                        <label className="label-text">Confirm Password</label>
+                                    <label className="label-text">Confirm Password</label>
                                         <div className="form-group">
-                                                <span className="form-icon">
-                                                    <FiLock />
-                                                </span>
-                                            <input className="form-control" type="text" name="text" placeholder="Confirm password" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-12">
-                                    <div className="form-group">
-                                        <div className="custom-checkbox d-block me-0">
-                                            <input type="checkbox" className = "form-check-input" id="chb13" />
-                                            <label htmlFor="chb13">I Agree to Dirto's <Link to="#" className="color-text">Privacy Policy</Link></label>
-                                        </div>
-                                        <div className="custom-checkbox d-block me-0">
-                                            <input type="checkbox" className = "form-check-input"  id="chb14" />
-                                            <label htmlFor="chb14">I Agree to Dirto's <Link to="#" className="color-text">Terms of Services</Link></label>
+                                            <span className="form-icon">
+                                                <FiLock/>
+                                            </span>
+                                            <input className="form-control" type={showPassword ? "text" : "password"}
+                                                   name="text" placeholder="Confirm password"/>
+                                            <span
+                                                className="eye-icon"
+                                                onClick={handleShowPassword}
+                                                style={{cursor: 'pointer'}}
+                                            >
+                                                {showPassword ? <FiEyeOff/> : <FiEye/>}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

@@ -53,17 +53,6 @@ function SignUpBox({title, subtitle}) {
                                 </div>
                                 <div className="col-lg-12">
                                     <div className="input-box">
-                                        <label className="label-text">Username</label>
-                                        <div className="form-group">
-                                                <span className="form-icon">
-                                                    <AiOutlineUser />
-                                                </span>
-                                            <input className="form-control" type="text" name="text" placeholder="Username" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-12">
-                                    <div className="input-box">
                                         <label className="label-text">Email</label>
                                         <div className="form-group">
                                                 <span className="form-icon">

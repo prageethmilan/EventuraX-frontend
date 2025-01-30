@@ -1,10 +1,17 @@
 import React from 'react';
 import { AiOutlineUser } from 'react-icons/ai';
-import { FiLock } from 'react-icons/fi';
+import {FiEye, FiEyeOff, FiLock} from 'react-icons/fi';
 import { Link } from "react-router-dom";
 import SignInOptions from "./SignInOptions";
 
 function LoginBox({title, subtitle}) {
+
+    const [showPassword, setShowPassword] = React.useState(false);
+
+    const handleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
+
     return (
         <>
             <div className="billing-form-item mb-0">
@@ -30,7 +37,7 @@ function LoginBox({title, subtitle}) {
                                 </div>
                                 <div className="col-lg-12">
                                     <div className="input-box">
-                                        <label className="label-text">Username, or email</label>
+                                        <label className="label-text">Email</label>
                                         <div className="form-group">
                                                 <span className="form-icon">
                                                     <AiOutlineUser />
@@ -43,18 +50,27 @@ function LoginBox({title, subtitle}) {
                                     <div className="input-box">
                                         <label className="label-text">Password</label>
                                         <div className="form-group">
-                                                <span className="form-icon">
-                                                    <FiLock />
-                                                </span>
-                                            <input className="form-control" type="text" name="text" placeholder="Password" />
+                                            <span className="form-icon">
+                                                <FiLock/>
+                                            </span>
+                                            <input className="form-control" type={showPassword ? "text" : "password"} name="text"
+                                                   placeholder="Password"/>
+                                            <span
+                                                className="eye-icon"
+                                                onClick={handleShowPassword}
+                                                style={{cursor: 'pointer'}}
+                                            >
+                                                {showPassword ? <FiEyeOff/> : <FiEye/>}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-12">
                                     <div className="form-group">
-                                        <div className="custom-checkbox me-0 d-flex align-items-center justify-content-between">
+                                        <div
+                                            className="custom-checkbox me-0 d-flex align-items-center justify-content-between">
                                             <div>
-                                                <input type="checkbox" className = "form-check-input"
+                                            <input type="checkbox" className = "form-check-input"
                                                 id="chb1" />
                                                 <label htmlFor="chb1">Remember Me</label>
                                             </div>

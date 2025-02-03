@@ -1,6 +1,7 @@
 import React from 'react';
-import { FaGoogle, FaFacebookF, FaTwitter } from 'react-icons/fa'
-import {auth, googleProvider, facebookProvider, signInWithPopup} from '../../../configs/firebaseConfig'
+import { FaGoogle, FaFacebookF  } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
+import {auth, googleProvider, facebookProvider, twitterProvider, signInWithPopup} from '../../../configs/firebaseConfig'
 import axios from 'axios';
 
 function SignInOptions() {
@@ -43,6 +44,26 @@ function SignInOptions() {
         }
     };
 
+    const handleTwitterLogin = async (provider) => {
+        try {
+            const result = await signInWithPopup(auth, provider)
+            const user = result.user;
+            console.log(user)
+            const res = await axios.post('http://localhost:5000/api/v1/auth/social-login', {
+                email: user.email,
+                firstName: user.displayName.split(' ')[0],
+                lastName: user.displayName.split(' ')[1] || '',
+                twitterId: provider.providerId,
+                socialId: user.uid
+            });
+
+            localStorage.setItem('token', res.data.access_token);
+            console.log('Login Successful:', res.data);
+        } catch (error) {
+            console.error('Social Login Failed:', error);
+        }
+    };
+
 
     return (
         <>
@@ -57,8 +78,8 @@ function SignInOptions() {
                     </button>
             </div>
             <div className="col-lg-4">
-                    <button className="theme-btn bg-6 border-0 w-100">
-                        <i><FaTwitter /></i> twitter
+                    <button className="theme-btn bg-black border-0 w-100" onClick={() => handleTwitterLogin(twitterProvider)}>
+                        <i><FaXTwitter   /></i> X
                     </button>
             </div>
         </>

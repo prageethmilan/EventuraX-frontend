@@ -25,7 +25,6 @@ function SignUpBox({title, subtitle}) {
                 </div>
                 <div className="billing-content">
                     <div className="contact-form-action">
-                        <form method="post">
                             <div className="row">
 
                                 <SignInOptions />
@@ -108,7 +107,7 @@ function SignUpBox({title, subtitle}) {
                                 </div>
                                 <div className="col-lg-12">
                                     <div className="btn-box margin-top-20px margin-bottom-20px">
-                                        <button className="theme-btn border-0" type="submit">
+                                        <button className="theme-btn border-0">
                                             Register account
                                         </button>
                                     </div>
@@ -119,7 +118,6 @@ function SignUpBox({title, subtitle}) {
                                     </p>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>

@@ -14,6 +14,26 @@ function SignInOptions() {
                 firstName: user.displayName.split(' ')[0],
                 lastName: user.displayName.split(' ')[1] || '',
                 googleId: provider.providerId,
+                socialId: user.uid
+            });
+
+            localStorage.setItem('token', res.data.access_token);
+            console.log('Login Successful:', res.data);
+        } catch (error) {
+            console.error('Social Login Failed:', error);
+        }
+    };
+
+    const handleFacebookLogin = async (provider) => {
+        try {
+            const result = await signInWithPopup(auth, provider)
+            const user = result.user;
+            const res = await axios.post('http://localhost:5000/api/v1/auth/social-login', {
+                email: user.email,
+                firstName: user.displayName.split(' ')[0],
+                lastName: user.displayName.split(' ')[1] || '',
+                facebookId: provider.providerId,
+                socialId: user.uid
             });
 
             localStorage.setItem('token', res.data.access_token);
@@ -32,7 +52,7 @@ function SignInOptions() {
                     </button>
             </div>
             <div className="col-lg-4">
-                    <button className="theme-btn bg-5 border-0 w-100">
+                    <button className="theme-btn bg-5 border-0 w-100" onClick={() => handleFacebookLogin(facebookProvider)}>
                         <i><FaFacebookF /></i> facebook
                     </button>
             </div>

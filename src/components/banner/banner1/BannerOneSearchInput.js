@@ -1,59 +1,9 @@
 import React from 'react'
 import  { FiSearch } from 'react-icons/fi'
-import SelectCountry from "../../common/SelectCountry";
 import Select from "react-select";
+import {categories, locations} from "../../../const/dropdownData";
 
-
-const state = {
-    selectedCatOp: null,
-    categories: [
-        {
-            value: 0,
-            label: 'Select a category'
-        },
-        {
-            value: 1,
-            label: 'All Category'
-        },
-        {
-            value: 2,
-            label: 'Shops'
-        },
-        {
-            value: 3,
-            label: 'Hotels'
-        },
-        {
-            value: 4,
-            label: 'Foods & Restaurants'
-        },
-        {
-            value: 5,
-            label: 'Fitness'
-        },
-        {
-            value: 6,
-            label: 'Travel'
-        },
-        {
-            value: 7,
-            label: 'Salons'
-        },
-        {
-            value: 8,
-            label: 'Event'
-        },
-        {
-            value: 9,
-            label: 'Business'
-        },
-        {
-            value: 10,
-            label: 'Jobs'
-        }
-    ]
-}
-export default function BannerOneSearchInput() {
+function BannerOneSearchInput() {
     return (
         <>
             <div className="main-search-input">
@@ -73,13 +23,16 @@ export default function BannerOneSearchInput() {
                 </div>
 
                 <div className="main-search-input-item location">
-                    <SelectCountry />
+                    <Select
+                        placeholder="Select a Location"
+                        options={locations}
+                    />
                 </div>
 
                 <div className="main-search-input-item category">
                     <Select
                         placeholder="Select a Category"
-                        options={state.categories}
+                        options={categories}
                     />
                 </div>
 
@@ -91,3 +44,5 @@ export default function BannerOneSearchInput() {
         </>
     )
 }
+
+export default BannerOneSearchInput

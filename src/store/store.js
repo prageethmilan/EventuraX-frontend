@@ -64,7 +64,7 @@ import flag20 from "../assets/images/flag20.png";
 import flag6 from "../assets/images/flag3.jpg";
 import flag8 from "../assets/images/flag5.png";
 import flag7 from "../assets/images/flag7.jpg";
-import bannerbg1 from '../assets/images/hero-bg.jpg';
+import bannerbg1 from '../assets/images/hero-bg.jpeg';
 import img1 from "../assets/images/img1.jpg"; // 263*175
 import imgboximg from "../assets/images/img10.jpg"; // 570*345
 import about2img from "../assets/images/img2.jpg"; //389*259
@@ -97,47 +97,7 @@ const sectiondata = {
     headermenu: [
         {
             title: 'Home',
-            path: '/',
-            dropdown: [
-                {
-                    title: 'Home One',
-                    path: '/'
-                },
-                {
-                    title: 'Home Two',
-                    path: '/index2'
-                },
-                {
-                    title: 'Home Three',
-                    path: '/index3'
-                },
-                {
-                    title: 'Home Four',
-                    path: '/index4'
-                },
-                {
-                    title: 'Home Five',
-                    path: '/index5'
-                }
-            ]
-        },
-        {
-            title: 'categories',
-            path: '/all-categories',
-            dropdown: [
-                {
-                    title: 'all categories',
-                    path: '/all-categories'
-                },
-                {
-                    title: 'all locations',
-                    path: '/all-locations'
-                },
-                {
-                    title: 'top places',
-                    path: '/top-place'
-                }
-            ]
+            path: '/'
         },
         {
             title: 'listings',

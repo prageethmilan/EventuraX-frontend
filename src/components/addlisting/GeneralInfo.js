@@ -3,55 +3,14 @@ import { AiOutlineTags } from 'react-icons/ai';
 import { BsPencil, BsPencilSquare, BsQuestion } from 'react-icons/bs';
 import Select from "react-select";
 import Tooltips from '../other/tooltips/Tooltips';
+import {categories} from "../../const/dropdownData";
 
-const state = {
-    title: 'General Information',
-    selectedCatOp: null,
-    categories: [
-        {
-            value: 0,
-            label: 'Select a category'
-        },
-        {
-            value: 2,
-            label: 'Shops'
-        },
-        {
-            value: 3,
-            label: 'Hotels'
-        },
-        {
-            value: 4,
-            label: 'Restaurants'
-        },
-        {
-            value: 5,
-            label: 'Fitness'
-        },
-        {
-            value: 6,
-            label: 'Travel'
-        },
-        {
-            value: 7,
-            label: 'Salons'
-        },
-        {
-            value: 8,
-            label: 'Event'
-        },
-        {
-            value: 9,
-            label: 'Business'
-        },
-    ]
-}
 function GeneralInfo() {
     return (
         <>
             <div className="billing-form-item">
                 <div className="billing-title-wrap">
-                    <h3 className="widget-title pb-0">{state.title}</h3>
+                    <h3 className="widget-title pb-0">General Information</h3>
                     <div className="title-shape margin-top-10px"></div>
                 </div>
                 <div className="billing-content">
@@ -103,7 +62,7 @@ function GeneralInfo() {
                                         <div className="form-group mb-0">
                                             <Select
                                                 placeholder="Select a Category"
-                                                options={state.categories}
+                                                options={categories}
                                             />
                                         </div>
                                     </div>

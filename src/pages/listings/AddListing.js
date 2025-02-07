@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import breadcrumbimg from '../../assets/images/bread-bg.jpg';
-import AddFullDetails from "../../components/addlisting/AddFullDetails";
 import AddLocation from "../../components/addlisting/AddLocation";
 import AddPrice from "../../components/addlisting/AddPrice";
-import Amenities from "../../components/addlisting/Amenities";
 import GeneralInfo from "../../components/addlisting/GeneralInfo";
-import OpeningHours from "../../components/addlisting/OpeningHours";
 import PhotoUploader from "../../components/addlisting/PhotoUploader";
 import Breadcrumb from "../../components/common/Breadcrumb";
 import GeneralHeader from "../../components/common/GeneralHeader";
@@ -34,29 +31,12 @@ function AddListing() {
                         <div className="col-lg-9 mx-auto">
                             <GeneralInfo />
 
-                            <AddLocation />
-
-                            <AddFullDetails />
-
                             <PhotoUploader />
-
-                            <Amenities />
-
-                            <OpeningHours />
 
                             <AddPrice />
 
                             <div className="billing-form-item p-0 border-0 mb-0 shadow-none">
                                 <div className="billing-content p-0">
-                                    <div className="custom-checkbox d-block me-0">
-                                        <input type="checkbox" className='form-check-input' id="privacy" />
-                                        <label htmlFor="privacy">I Agree to Dirto's <Link to="#" className="color-text">Privacy Policy</Link></label>
-                                    </div>
-                                    <div className="custom-checkbox d-block me-0">
-                                        <input type="checkbox" className='form-check-input' id="terms" />
-                                        <label htmlFor="terms">I Agree to Dirto's <Link to="#" className="color-text">Terms of Services</Link>
-                                        </label>
-                                    </div>
                                     <div className="btn-box mt-4">
                                         <button type="submit" className="theme-btn border-0">submit listing</button>
                                     </div>

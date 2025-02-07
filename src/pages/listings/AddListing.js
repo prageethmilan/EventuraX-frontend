@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import breadcrumbimg from '../../assets/images/bread-bg.jpg';
-import AddLocation from "../../components/addlisting/AddLocation";
 import AddPrice from "../../components/addlisting/AddPrice";
 import GeneralInfo from "../../components/addlisting/GeneralInfo";
 import PhotoUploader from "../../components/addlisting/PhotoUploader";

@@ -5,11 +5,12 @@ import Select from "react-select";
 import Tooltips from '../other/tooltips/Tooltips';
 import {categories} from "../../const/dropdownData";
 import Flatpickr from 'react-flatpickr'
+import {Editor} from "primereact/editor";
 
 function GeneralInfo() {
     const [dateRange, setDateRange] = useState([])
     const [isLimitedTimeOffer, setIsLimitedTimeOffer] = useState(false)
-
+    const [description, setDescription] = useState('')
     return (
         <>
             <div className="billing-form-item">
@@ -56,11 +57,13 @@ function GeneralInfo() {
                                     <div className="input-box">
                                         <label className="label-text">Description</label>
                                         <div className="form-group">
-                                            <span className="la form-icon">
-                                                <BsPencil/>
-                                            </span>
-                                            <textarea className="message-control form-control" name="message"
-                                                      placeholder="Write your listing description"></textarea>
+                                            {/*<span className="la form-icon">*/}
+                                            {/*    <BsPencil/>*/}
+                                            {/*</span>*/}
+                                            {/*<textarea className="message-control form-control" name="message"*/}
+                                            {/*          placeholder="Write your listing description"></textarea>*/}
+                                            <Editor value={description} onTextChange={(e) => setDescription(e.htmlValue)} style={{height: '320px'}}  />
+
                                         </div>
                                     </div>
                                 </div>

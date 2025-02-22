@@ -1,0 +1,1 @@
+export const passwordWarningMsg = 'Password should contain at least one upper case, lower case, special character and 8 total characters';

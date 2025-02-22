@@ -1,8 +1,8 @@
 import React from 'react';
-import { FaGoogle, FaFacebookF  } from 'react-icons/fa'
-import { FaXTwitter } from 'react-icons/fa6'
-import {auth, googleProvider, facebookProvider, twitterProvider, signInWithPopup} from '../../../configs/firebaseConfig'
-import axios from 'axios';
+import {FaFacebookF, FaGoogle} from 'react-icons/fa'
+import {FaXTwitter} from 'react-icons/fa6'
+import {auth, facebookProvider, googleProvider, signInWithPopup, twitterProvider} from '../../../configs/firebaseConfig'
+import * as loginApi from '../../../utils/api/login'
 
 function SignInOptions() {
 
@@ -10,7 +10,7 @@ function SignInOptions() {
         try {
             const result = await signInWithPopup(auth, provider)
             const user = result.user;
-            const res = await axios.post('http://localhost:5000/api/v1/auth/social-login', {
+            const res = await loginApi.socialLogin({
                 email: user.email,
                 firstName: user.displayName.split(' ')[0],
                 lastName: user.displayName.split(' ')[1] || '',
@@ -18,8 +18,9 @@ function SignInOptions() {
                 socialId: user.uid
             });
 
-            localStorage.setItem('token', res.data.access_token);
-            console.log('Login Successful:', res.data);
+            if (res && res?.status) {
+                window.open('/', '_self')
+            }
         } catch (error) {
             console.error('Social Login Failed:', error);
         }
@@ -29,7 +30,7 @@ function SignInOptions() {
         try {
             const result = await signInWithPopup(auth, provider)
             const user = result.user;
-            const res = await axios.post('http://localhost:5000/api/v1/auth/social-login', {
+            const res = await loginApi.socialLogin({
                 email: user.email,
                 firstName: user.displayName.split(' ')[0],
                 lastName: user.displayName.split(' ')[1] || '',
@@ -37,8 +38,9 @@ function SignInOptions() {
                 socialId: user.uid
             });
 
-            localStorage.setItem('token', res.data.access_token);
-            console.log('Login Successful:', res.data);
+            if (res && res?.status) {
+                window.open('/', '_self')
+            }
         } catch (error) {
             console.error('Social Login Failed:', error);
         }
@@ -48,8 +50,7 @@ function SignInOptions() {
         try {
             const result = await signInWithPopup(auth, provider)
             const user = result.user;
-            console.log(user)
-            const res = await axios.post('http://localhost:5000/api/v1/auth/social-login', {
+            const res = await loginApi.socialLogin({
                 email: user.email,
                 firstName: user.displayName.split(' ')[0],
                 lastName: user.displayName.split(' ')[1] || '',
@@ -57,8 +58,9 @@ function SignInOptions() {
                 socialId: user.uid
             });
 
-            localStorage.setItem('token', res.data.access_token);
-            console.log('Login Successful:', res.data);
+            if (res && res?.status) {
+                window.open('/', '_self')
+            }
         } catch (error) {
             console.error('Social Login Failed:', error);
         }
@@ -68,19 +70,20 @@ function SignInOptions() {
     return (
         <>
             <div className="col-lg-4">
-                    <button className="theme-btn border-0 w-100" onClick={() => handleGoogleLogin(googleProvider)}>
-                        <i><FaGoogle /></i> Google
-                    </button>
+                <button className="theme-btn border-0 w-100" onClick={() => handleGoogleLogin(googleProvider)}>
+                    <i><FaGoogle/></i> Google
+                </button>
             </div>
             <div className="col-lg-4">
-                    <button className="theme-btn bg-5 border-0 w-100" onClick={() => handleFacebookLogin(facebookProvider)}>
-                        <i><FaFacebookF /></i> facebook
-                    </button>
+                <button className="theme-btn bg-5 border-0 w-100" onClick={() => handleFacebookLogin(facebookProvider)}>
+                    <i><FaFacebookF/></i> facebook
+                </button>
             </div>
             <div className="col-lg-4">
-                    <button className="theme-btn bg-black border-0 w-100" onClick={() => handleTwitterLogin(twitterProvider)}>
-                        <i><FaXTwitter   /></i> X
-                    </button>
+                <button className="theme-btn bg-black border-0 w-100"
+                        onClick={() => handleTwitterLogin(twitterProvider)}>
+                    <i><FaXTwitter/></i> X
+                </button>
             </div>
         </>
     );

@@ -2,7 +2,7 @@ import axios from "./axios";
 
 export const loginUser = async (data) => {
     const promise = new Promise((resolve, reject) => {
-        axios.post('/login', data)
+        axios.post('/auth/login', data)
             .then(res => {
                 return resolve(res)
             })
@@ -15,7 +15,7 @@ export const loginUser = async (data) => {
 
 export const socialLogin = async (data) => {
     const promise = new Promise((resolve, reject) => {
-        axios.post('/social-login', data)
+        axios.post('/auth/social-login', data)
             .then(res => {
                 return resolve(res)
             })

@@ -32,7 +32,7 @@ function SignUp() {
 
 
         {/* Newsletter */}
-        <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} />
+        {/*<NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} />*/}
 
         {/* Footer */}
         <Footer />

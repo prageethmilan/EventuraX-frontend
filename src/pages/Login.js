@@ -31,7 +31,7 @@ function Login() {
             </section>
 
             {/* Newsletter */}
-            <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} />
+            {/*<NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} />*/}
 
             {/* Footer */}
             <Footer />

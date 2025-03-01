@@ -13,5 +13,8 @@ export const signupVendor = async (data) => {
                 toast.error(res.message, {icon: true, hideProgressBar: true})
             }
         })
+        .catch(error => {
+            toast.error(error.message, {icon: true, hideProgressBar: true})
+        })
     return result
 }

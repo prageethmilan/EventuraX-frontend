@@ -7,6 +7,7 @@ export const loginUser = async (data) => {
     let result = null
     await authService.loginUser(data)
         .then(async res => {
+            console.log(res)
             if (res.success) {
                 if (res.access_token) {
                     result = await setCookies(res.access_token, res.vendor)
@@ -15,6 +16,9 @@ export const loginUser = async (data) => {
             } else {
                 toast.error(res.message, {icon: true, hideProgressBar: true})
             }
+        })
+        .catch(error => {
+            toast.error(error.message, {icon: true, hideProgressBar: true})
         })
     return result
 }
@@ -29,6 +33,9 @@ export const socialLogin = async (data) => {
             } else {
                 toast.error(res.message, {icon: true, hideProgressBar: true})
             }
+        })
+        .catch(error => {
+            toast.error(error.message, {icon: true, hideProgressBar: true})
         })
     return result
 }

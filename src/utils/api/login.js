@@ -7,13 +7,13 @@ export const loginUser = async (data) => {
     let result = null
     await authService.loginUser(data)
         .then(async res => {
-            if (res.status === 200) {
-                if (res.data) {
-                    result = await setCookies(res.data)
-                    toast.success(res.data.message, {icon: true, hideProgressBar: true})
+            if (res.success) {
+                if (res.access_token) {
+                    result = await setCookies(res.access_token, res.vendor)
+                    toast.success(res.message, {icon: true, hideProgressBar: true})
                 }
-            } else if (res.status === 400) {
-                toast.error(res.response.data.message, {icon: true, hideProgressBar: true})
+            } else {
+                toast.error(res.message, {icon: true, hideProgressBar: true})
             }
         })
     return result
@@ -23,22 +23,22 @@ export const socialLogin = async (data) => {
     let result = null
     await authService.socialLogin(data)
         .then(async res => {
-            if (res.status === 200) {
-                result = await setCookies(res.data)
-                toast.success(res.data.message, {icon: true, hideProgressBar: true})
-            } else if (res.status === 400) {
-                toast.error(res.response.data.message, {icon: true, hideProgressBar: true})
+            if (res.success) {
+                result = await setCookies(res.access_token, res.vendor)
+                toast.success(res.message, {icon: true, hideProgressBar: true})
+            } else {
+                toast.error(res.message, {icon: true, hideProgressBar: true})
             }
         })
     return result
 }
 
-const setCookies = (res) => {
+const setCookies = (access_token, vendor) => {
     let result = null
-    if (res) {
-        Cookies.set(ACCESS_TOKEN, res.access_token)
-        Cookies.set(VENDOR, JSON.stringify(res.vendor))
+    if (access_token) {
+        Cookies.set(ACCESS_TOKEN, access_token)
+        Cookies.set(VENDOR, JSON.stringify(vendor))
     }
-    result = {...res, status: true}
+    result = {status: true}
     return result
 }

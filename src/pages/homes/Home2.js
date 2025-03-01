@@ -43,7 +43,7 @@ function Home2() {
                 </div>
             </section>
 
-            <NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} />
+            {/*<NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} />*/}
 
             <Footer />
 

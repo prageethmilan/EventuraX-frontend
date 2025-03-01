@@ -27,11 +27,7 @@ import Booking from "./pages/dashboard/Booking";
 import BookingConfirmation from "./pages/dashboard/BookingConfirmation";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Invoice from "./pages/dashboard/Invoice";
-import Home from "./pages/homes/Home";
-import Home2 from './pages/homes/Home2';
-import Home3 from './pages/homes/Home3';
-import Home4 from './pages/homes/Home4';
-import Home5 from './pages/homes/Home5';
+import Home2 from './pages/homes/Home2'
 import AddListing from "./pages/listings/AddListing";
 import ListLeftSidebar from "./pages/listings/ListLeftSidebar";
 import ListMapView from "./pages/listings/ListMapView";
@@ -57,11 +53,7 @@ const App = () => {
         ref={childRef}
         children={() => (
           <Routes>
-            <Route  path="/" element={<Home/>} />
-              <Route path="/index2" element={<Home2/>} />
-              <Route path="/index3" element={<Home3/>} />
-              <Route path="/index4" element={<Home4/>} />
-              <Route path="/index5" element={<Home5/>} />
+              <Route path="/" element={<Home2/>} />
               <Route path="/all-categories" element={<AllCategories/>} />
               <Route path="/all-locations" element={<AllLocations/>} />
               <Route path="/top-place" element={<TopPlaces/>} />

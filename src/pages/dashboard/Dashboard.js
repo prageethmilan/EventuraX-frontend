@@ -14,7 +14,7 @@ import Footer from "../../components/common/footer/Footer";
 import sectiondata from "../../store/store";
 import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
 import Cookies from "js-cookie";
-import {ACCESS_TOKEN, allowedLogoTypes, baseUrl, VENDOR} from "../../const/const";
+import {ACCESS_TOKEN, allowedLogoTypes, VENDOR} from "../../const/const";
 import {
     EMAIL_REGEX,
     PASSWORD_REGEX,
@@ -341,7 +341,7 @@ function Dashboard() {
                                                 <div className="user-profile-action">
                                                     <div className="user-pro-img mb-4">
                                                         <img
-                                                            src={displayVendorData.logo ? `${baseUrl}${displayVendorData.logo}` : sectiondata.dashboard.userImg}
+                                                            src={displayVendorData.logo ? displayVendorData.logo : sectiondata.dashboard.userImg}
                                                             alt="user"/>
                                                         <div className="dropdown edit-btn">
                                                             <button onClick={() => setIsOpenLogoForm(!isOpenLogoForm)}

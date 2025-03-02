@@ -36,3 +36,37 @@ export const updatePassword = async (data) => {
         })
     return result
 }
+
+export const getVendorDetails = async (vendorId) => {
+    let result = null
+    await vendorService.getVendorDetails(vendorId)
+        .then(async res => {
+            if (res.success) {
+                result = res.data
+            } else {
+                toast.error(res.message, {icon: true, hideProgressBar: true})
+            }
+        })
+        .catch(error => {
+            toast.error(error.message, {icon: true, hideProgressBar: true})
+        })
+    return result
+}
+
+export const updateVendor = async (vendorId, data) => {
+    let result = null
+    await vendorService.updateVendor(vendorId, data)
+        .then(async res => {
+            if (res.success) {
+                result = res.data
+                toast.success(res.message, {icon: true, hideProgressBar: true})
+            } else {
+                result = res.success
+                toast.error(res.message, {icon: true, hideProgressBar: true})
+            }
+        })
+        .catch(error => {
+            toast.error(error.message, {icon: true, hideProgressBar: true})
+        })
+    return result
+}

@@ -1,11 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-    AiOutlineExclamationCircle,
-    AiOutlinePlusCircle,
-    AiOutlinePoweroff,
-    AiOutlineUser,
-    AiOutlineYoutube
-} from 'react-icons/ai';
+import {AiOutlinePlusCircle, AiOutlinePoweroff, AiOutlineUser} from 'react-icons/ai';
 import {BsListCheck, BsPencil} from 'react-icons/bs';
 import {FaGlobeAmericas, FaRegEnvelope} from 'react-icons/fa';
 import {FiEdit, FiEye, FiEyeOff, FiPhone} from 'react-icons/fi';
@@ -18,26 +12,53 @@ import GeneralHeader from "../../components/common/GeneralHeader";
 import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import Footer from "../../components/common/footer/Footer";
 import sectiondata from "../../store/store";
-import {Button, Input} from "reactstrap";
+import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
 import Cookies from "js-cookie";
 import {ACCESS_TOKEN, VENDOR} from "../../const/const";
-import {PASSWORD_REGEX, updatePasswordValidation} from "../../utils/validations/validation";
+import {
+    EMAIL_REGEX,
+    PASSWORD_REGEX,
+    updatePasswordValidation,
+    updateVendorFormValidation
+} from "../../utils/validations/validation";
 import {toast} from "react-toastify";
-import {passwordMisMatchWarningMsg, passwordWarningMsg} from "../../const/storageStrings";
-import {updatePasswordErrors} from "../../utils/validations/error";
-import {showError} from "../../utils/util";
+import {emailWarningMsg, passwordMisMatchWarningMsg, passwordWarningMsg} from "../../const/storageStrings";
+import {updatePasswordErrors, updateVendorFormErrors} from "../../utils/validations/error";
+import {findObject, showError} from "../../utils/util";
 import * as vendorApi from '../../utils/api/vendor'
+import Select from "react-select";
+import {locations} from "../../const/dropdownData";
+import Required from "../../components/required/Required";
 
 
 function Dashboard() {
     const [isOpenForm, setIsOpenForm] = useState(false)
+    const [isOpenLogoForm, setIsOpenLogoForm] = useState(false)
     const [showPassword, setShowPassword] = React.useState(false);
     const [error, setError] = useState(updatePasswordErrors);
+    const [vendorError, setVendorError] = useState(updateVendorFormErrors)
     const [changePasswordFormData, setChangePasswordFormData] = useState({
-        vendorId: JSON.parse(Cookies.get(VENDOR)).id,
+        vendorId: Cookies.get(VENDOR) !== undefined ? JSON.parse(Cookies.get(VENDOR)).id : 0,
         currentPassword: '',
         newPassword: '',
         confirmPassword: ''
+    })
+    const [vendorFormData, setVendorFormData] = useState({
+        name: undefined,
+        email: undefined,
+        mobileNumber: undefined,
+        website: null,
+        location: undefined,
+        address: undefined,
+        description: undefined
+    })
+    const [displayVendorData, setDisplayVendorData] = useState({
+        logo: null,
+        name: null,
+        description: null,
+        mobileNumber: null,
+        website: null,
+        address: null
     })
 
     const handleShowPassword = () => {
@@ -47,45 +68,45 @@ function Dashboard() {
     useEffect(() => {
         const body = document.querySelector('body')
 
-        function showDeleteAcntModal(e) {
-            body.classList.add('modal-open')
-            body.style.paddingRight = '17px'
-            e.preventDefault()
-        }
+        // function showDeleteAcntModal(e) {
+        //     body.classList.add('modal-open')
+        //     body.style.paddingRight = '17px'
+        //     e.preventDefault()
+        // }
 
-        document.addEventListener('click', function (e) {
-                for (
-                    let target = e.target;
-                    target && target !== this;
-                    target = target.parentNode
-                ) {
-                    if (target.matches('.delete-account-info .delete-account, .card-item .card-content-wrap .delete-btn')) {
-                        showDeleteAcntModal.call(target, e)
-                        break
-                    }
-                }
-            }, false
-        )
+        // document.addEventListener('click', function (e) {
+        //         for (
+        //             let target = e.target;
+        //             target && target !== this;
+        //             target = target.parentNode
+        //         ) {
+        //             if (target.matches('.delete-account-info .delete-account, .card-item .card-content-wrap .delete-btn')) {
+        //                 showDeleteAcntModal.call(target, e)
+        //                 break
+        //             }
+        //         }
+        //     }, false
+        // )
 
-        function hideDeleteAcntModal(e) {
-            body.classList.remove('modal-open')
-            body.style.paddingRight = '0'
-            e.preventDefault()
-        }
-
-        document.addEventListener('click', function (e) {
-                for (
-                    let target = e.target;
-                    target && target !== this;
-                    target = target.parentNode
-                ) {
-                    if (target.matches('.account-delete-modal .modal-bg, .account-delete-modal .modal-dialog .btn-box .theme-btn')) {
-                        hideDeleteAcntModal.call(target, e)
-                        break
-                    }
-                }
-            }, false
-        )
+        // function hideDeleteAcntModal(e) {
+        //     body.classList.remove('modal-open')
+        //     body.style.paddingRight = '0'
+        //     e.preventDefault()
+        // }
+        //
+        // document.addEventListener('click', function (e) {
+        //         for (
+        //             let target = e.target;
+        //             target && target !== this;
+        //             target = target.parentNode
+        //         ) {
+        //             if (target.matches('.account-delete-modal .modal-bg, .account-delete-modal .modal-dialog .btn-box .theme-btn')) {
+        //                 hideDeleteAcntModal.call(target, e)
+        //                 break
+        //             }
+        //         }
+        //     }, false
+        // )
     })
 
     const handleUpdatePassword = async () => {
@@ -134,6 +155,89 @@ function Dashboard() {
         window.location.href = "/login";
     }
 
+    const getVendorDetailsHandler = async () => {
+        const res = await vendorApi.getVendorDetails(JSON.parse(Cookies.get(VENDOR)).id);
+        if (res) {
+            setVendorFormData({
+                ...vendorFormData,
+                name: res.name,
+                email: res.email,
+                mobileNumber: res.mobileNumber,
+                website: res.website,
+                location: findObject(locations, res.location),
+                address: res.address,
+                description: res.description
+            })
+            setDisplayVendorData({
+                ...displayVendorData,
+                name: res.name,
+                description: res.description,
+                mobileNumber: res.mobileNumber,
+                website: res.website,
+                address: res.address
+            })
+        }
+    }
+
+    const updateVendorHandler = async () => {
+        const res = updateVendorFormValidation(vendorFormData)
+        setVendorError(res)
+        for (const key in res) {
+            if (res[key]) {
+                showError()
+                return
+            }
+        }
+
+        if (!EMAIL_REGEX.test(vendorFormData.email)) toast.warning(emailWarningMsg, {icon: true, hideProgressBar: true})
+
+        await updateVendorDetails()
+    }
+
+    const updateVendorDetails = async () => {
+
+        const data = {
+            name: vendorFormData.name,
+            email: vendorFormData.email,
+            mobileNumber: vendorFormData.mobileNumber,
+            website: vendorFormData.website,
+            location: vendorFormData.location.value,
+            description: vendorFormData.description,
+            address: vendorFormData.address
+        }
+
+        const res = await vendorApi.updateVendor(JSON.parse(Cookies.get(VENDOR)).id, data)
+        if (res) {
+            setIsOpenForm(false)
+            const vendor = {
+                id: res._id,
+                email: res.email,
+                name: res.name,
+                socialId: res.socialId,
+                isVerified: res.verified
+            }
+            Cookies.set(VENDOR, JSON.stringify(vendor))
+            setVendorFormData({
+                ...vendorFormData,
+                name: res.name,
+                email: res.email,
+                mobileNumber: res.mobileNumber,
+                website: res.website,
+                location: findObject(locations, res.location),
+                address: res.address,
+                description: res.description
+            })
+            setDisplayVendorData({
+                ...displayVendorData,
+                name: res.name,
+                description: res.description,
+                mobileNumber: res.mobileNumber,
+                website: res.website,
+                address: res.address
+            })
+        }
+    }
+
     return (
         <main className="dashboard-page">
             {/* Header */}
@@ -156,7 +260,7 @@ function Dashboard() {
                                                 <span className="la"><BsListCheck/></span> Listings
                                             </div>
                                         </Tab>
-                                        <Tab>
+                                        <Tab onClick={getVendorDetailsHandler}>
                                             <div className="nav-item nav-link theme-btn pt-0 pb-0 me-1">
                                                 <span className="la"><AiOutlineUser/></span> Profile
                                             </div>
@@ -224,54 +328,55 @@ function Dashboard() {
                                                     <div className="user-pro-img mb-4">
                                                         <img src={sectiondata.dashboard.userImg} alt="user"/>
                                                         <div className="dropdown edit-btn">
-                                                            <button
-                                                                className="theme-btn edit-btn dropdown-toggle border-0 after-none"
-                                                                type="button" id="editImageMenu"
-                                                                data-toggle="dropdown" aria-haspopup="true">
+                                                            <button onClick={() => setIsOpenLogoForm(!isOpenLogoForm)}
+                                                                    className="theme-btn edit-btn dropdown-toggle border-0 after-none"
+                                                                    type="button" id="editImageMenu"
+                                                                    data-toggle="dropdown" aria-haspopup="true">
                                                                 <i className="la la-photo"></i> Edit
                                                             </button>
-                                                            <div className="dropdown-menu"
-                                                                 aria-labelledby="editImageMenu">
+                                                            {isOpenLogoForm && <div className="dropdown-menu d-block"
+                                                                                    aria-labelledby="editImageMenu">
                                                                 <div className="upload-btn-box">
-                                                                    <form>
-                                                                        <input type="file" name="files[]"
-                                                                               id="filer_input" multiple="multiple"/>
-                                                                        <button
-                                                                            className="theme-btn border-0 w-100 button-success"
-                                                                            type="submit" value="submit">
-                                                                            Save changes
-                                                                        </button>
-                                                                    </form>
+                                                                    <Input className={'mb-4'} type="file" name="files"
+                                                                           value={logo}
+                                                                           id="filer_input"/>
+                                                                    <button
+                                                                        className="theme-btn border-0 w-100 button-success">
+                                                                        Save changes
+                                                                    </button>
                                                                 </div>
                                                                 <div className="btn-box mt-3">
                                                                     <button className="theme-btn border-0 w-100">Remove
                                                                         Photo
                                                                     </button>
                                                                 </div>
-                                                            </div>
+                                                            </div>}
                                                         </div>
                                                     </div>
                                                     <div className="user-details">
                                                         <h2 className="user__name widget-title pb-2">
-                                                            {sectiondata.dashboard.userName}
+                                                            {displayVendorData.name}
                                                         </h2>
-                                                        <div className="section-heading">
-                                                            <p className="sec__desc font-size-15 line-height-24">
-                                                                {sectiondata.dashboard.userbio}
-                                                            </p>
-                                                        </div>
+                                                        {displayVendorData.description &&
+                                                            <div className="section-heading">
+                                                                <p className="sec__desc font-size-15 line-height-24">
+                                                                    {displayVendorData.description}
+                                                                </p>
+                                                            </div>}
                                                         <ul className="list-items mt-3">
-                                                            <li>
-                                                                <span className="la d-inline-block"><GiPositionMarker/></span> {sectiondata.dashboard.address}
-                                                            </li>
-                                                            <li className="text-lowercase">
+                                                            {displayVendorData.address && <li>
+                                                                <span className="la d-inline-block"><GiPositionMarker/></span> {displayVendorData.address}
+                                                            </li>}
+                                                            {displayVendorData.mobileNumber &&
+                                                                <li className="text-lowercase">
                                                                 <span
-                                                                    className="la d-inline-block"><FiPhone/></span> {sectiondata.dashboard.phoneNum}
-                                                            </li>
-                                                            <li className="text-lowercase">
+                                                                    className="la d-inline-block"><FiPhone/></span> {displayVendorData.mobileNumber}
+                                                                </li>}
+                                                            {displayVendorData.website &&
+                                                                <li className="text-lowercase">
                                                                 <span
-                                                                    className="la d-inline-block"><FaGlobeAmericas/></span> {sectiondata.dashboard.website}
-                                                            </li>
+                                                                    className="la d-inline-block"><FaGlobeAmericas/></span> {displayVendorData.website}
+                                                                </li>}
                                                         </ul>
                                                         <div className="user-edit-form mt-4">
                                                             <div className={isOpenForm ? 'dropdown show' : 'dropdown'}>
@@ -281,88 +386,6 @@ function Dashboard() {
                                                                     onClick={() => setIsOpenForm(!isOpenForm)}>
                                                                     <i className="la"><FiEdit/></i> Edit
                                                                 </button>
-                                                                <div
-                                                                    className={isOpenForm ? 'dropdown-menu show' : 'dropdown-menu'}>
-                                                                    <div className="contact-form-action">
-                                                                        <div className="input-box">
-                                                                            <label className="label-text">Name</label>
-                                                                            <div className="form-group">
-                                                                                <span
-                                                                                    className="la form-icon"><AiOutlineUser/></span>
-                                                                                <input className="form-control"
-                                                                                       type="text" name="name"
-                                                                                       placeholder="Enter your name"/>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="input-box">
-                                                                            <label className="label-text">Bio
-                                                                                Data</label>
-                                                                            <div className="form-group">
-                                                                                <span
-                                                                                    className="la form-icon"><BsPencil/></span>
-                                                                                <textarea
-                                                                                    className="message-control form-control"
-                                                                                    name="message"
-                                                                                    placeholder="Add a bio"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="input-box">
-                                                                            <div className="form-group">
-                                                                                <span
-                                                                                    className="la form-icon"><GiPositionMarker/></span>
-                                                                                <input className="form-control"
-                                                                                       type="text" name="location"
-                                                                                       placeholder="Location"/>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="input-box">
-                                                                            <div className="form-group">
-                                                                                <span
-                                                                                    className="la form-icon"><FiPhone/></span>
-                                                                                <input className="form-control"
-                                                                                       type="text" name="number"
-                                                                                       placeholder="Number"/>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="input-box">
-                                                                            <div className="form-group">
-                                                                                <span
-                                                                                    className="la form-icon"><FaRegEnvelope/></span>
-                                                                                <input className="form-control"
-                                                                                       type="email" name="email"
-                                                                                       placeholder="Email Address"/>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="input-box">
-                                                                            <div className="form-group">
-                                                                                <span
-                                                                                    className="la form-icon"><AiOutlineYoutube/></span>
-                                                                                <input className="form-control"
-                                                                                       type="text" name="youtube"
-                                                                                       placeholder="Youtube URL"/>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="input-box">
-                                                                            <div className="form-group">
-                                                                                <span
-                                                                                    className="la form-icon"><FaGlobeAmericas/></span>
-                                                                                <input className="form-control"
-                                                                                       type="text" name="website"
-                                                                                       placeholder="Website"/>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="btn-box">
-                                                                            <button type="button"
-                                                                                    className="theme-btn border-0 button-success me-1">
-                                                                                save changes
-                                                                            </button>
-                                                                            <button type="button"
-                                                                                    className="theme-btn border-0">
-                                                                                Cancel
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -379,7 +402,7 @@ function Dashboard() {
                                                             <div className="contact-form-action">
                                                                 <div className="input-box">
                                                                     <label className="label-text">Current
-                                                                        Password</label>
+                                                                        Password<Required/></label>
                                                                     <div className="form-group">
                                                                         <span
                                                                             className="la form-icon"><BsPencil/></span>
@@ -403,7 +426,8 @@ function Dashboard() {
                                                                     </div>
                                                                 </div>
                                                                 <div className="input-box">
-                                                                    <label className="label-text">New Password</label>
+                                                                    <label className="label-text">New
+                                                                        Password<Required/></label>
                                                                     <div className="form-group">
                                                                         <span
                                                                             className="la form-icon"><BsPencil/></span>
@@ -427,7 +451,7 @@ function Dashboard() {
                                                                 </div>
                                                                 <div className="input-box">
                                                                     <label className="label-text">Confirm New
-                                                                        Password</label>
+                                                                        Password<Required/></label>
                                                                     <div className="form-group">
                                                                         <span
                                                                             className="la form-icon"><BsPencil/></span>
@@ -479,34 +503,140 @@ function Dashboard() {
 
             <ScrollTopBtn/>
 
-
-            {/* Modal */}
-            <div className="modal-form text-center">
-                <div className="modal fade account-delete-modal" tabIndex="-1" role="dialog"
-                     aria-labelledby="mySmallModalLabel">
-                    <div className="modal-bg"></div>
-                    <div className="modal-dialog modal-sm" role="document">
-                        <div className="modal-content p-4">
-                            <div className="modal-top border-0 mb-4 p-0">
-                                <div className="alert-content">
-                                    <span className="la warning-icon"><AiOutlineExclamationCircle/></span>
-                                    <h4 className="modal-title mt-2 mb-1">Your account will be deleted permanently!</h4>
-                                    <p className="modal-sub">Are you sure to proceed.</p>
-                                </div>
+            <Modal isOpen={isOpenForm}>
+                <ModalHeader toggle={() => setIsOpenForm(!isOpenForm)}>Update Profile</ModalHeader>
+                <ModalBody>
+                    <div className="contact-form-action">
+                        <div className="input-box">
+                            <label className="label-text">Name<Required/></label>
+                            <div className="form-group">
+                                        <span
+                                            className="la form-icon"><AiOutlineUser/></span>
+                                <Input className="form-control"
+                                       type="text" name="name"
+                                       invalid={vendorError.name}
+                                       value={vendorFormData.name}
+                                       onChange={(e) => setVendorFormData({...vendorFormData, name: e.target.value})}
+                                       placeholder="Enter your name"/>
                             </div>
-                            <div className="btn-box">
-                                <button type="button" className="theme-btn border-0 button-success me-1"
-                                        data-dismiss="modal">
-                                    Cancel
-                                </button>
-                                <button type="button" className="theme-btn border-0 button-danger">
-                                    delete!
-                                </button>
+                        </div>
+                        <div className="input-box">
+                            <label className="label-text">Bio
+                                Data<Required/></label>
+                            <div className="form-group">
+                                            <span
+                                                className="la form-icon"><BsPencil/></span>
+                                <Input
+                                    className="message-control form-control"
+                                    name="message"
+                                    type={'textarea'}
+                                    invalid={vendorError.description}
+                                    value={vendorFormData.description}
+                                    onChange={(e) => setVendorFormData({
+                                        ...vendorFormData,
+                                        description: e.target.value
+                                    })}
+                                    placeholder="Add a bio"/>
+                            </div>
+                        </div>
+                        <div className="input-box">
+                            <label
+                                className="label-text">Location<Required/></label>
+                            <div className="form-group">
+                                            <span
+                                                className="la form-icon"><GiPositionMarker/></span>
+                                <Select
+                                    placeholder="Select a Location"
+                                    value={vendorFormData.location}
+                                    className={vendorError.location ? 'is-invalid' : ''}
+                                    options={locations}
+                                    onChange={(e) => setVendorFormData({...vendorFormData, location: e})}
+                                />
+                            </div>
+                        </div>
+                        <div className="input-box">
+                            <label
+                                className="label-text">Address<Required/></label>
+                            <div className="form-group">
+                                            <span
+                                                className="la form-icon"><GiPositionMarker/></span>
+                                <Input className="form-control"
+                                       type="text" name="address"
+                                       placeholder="Address"
+                                       invalid={vendorError.address}
+                                       value={vendorFormData.address}
+                                       onChange={(e) => setVendorFormData({
+                                           ...vendorFormData,
+                                           address: e.target.value
+                                       })}
+                                />
+                            </div>
+                        </div>
+                        <div className="input-box">
+                            <label
+                                className="label-text">Mobile Number<Required/></label>
+                            <div className="form-group">
+                                            <span
+                                                className="la form-icon"><FiPhone/></span>
+                                <Input className="form-control"
+                                       type="text" name="mobileNumber"
+                                       placeholder="Mobile Number"
+                                       invalid={vendorError.mobileNumber}
+                                       value={vendorFormData.mobileNumber}
+                                       maxLength={10}
+                                       onKeyDown={(e) => {
+                                           if (!/^[0-9]$/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
+                                               e.preventDefault();
+                                           }
+                                       }}
+                                       onChange={(e) => {
+                                           console.log(e.target.value)
+                                           setVendorFormData({
+                                               ...vendorFormData,
+                                               mobileNumber: e.target.value
+                                           })
+                                       }}
+                                />
+                            </div>
+                        </div>
+                        <div className="input-box">
+                            <label
+                                className="label-text">Email<Required/></label>
+                            <div className="form-group">
+                                            <span
+                                                className="la form-icon"><FaRegEnvelope/></span>
+                                <Input className="form-control"
+                                       type="email" name="email"
+                                       value={vendorFormData.email}
+                                       invalid={vendorError.email}
+                                       onChange={(e) => setVendorFormData({...vendorFormData, email: e.target.value})}
+                                       placeholder="Email Address"/>
+                            </div>
+                        </div>
+                        <div className="input-box">
+                            <div className="form-group">
+                                            <span
+                                                className="la form-icon"><FaGlobeAmericas/></span>
+                                <Input className="form-control"
+                                       type="text" name="website"
+                                       value={vendorFormData.website}
+                                       onChange={(e) => setVendorFormData({...vendorFormData, website: e.target.value})}
+                                       placeholder="Website"/>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </ModalBody>
+                <ModalFooter>
+                    <Button
+                        className="border-0 button-success me-1" onClick={updateVendorHandler}>
+                        Save Changes
+                    </Button>
+                    <Button
+                        className="border-0" onClick={() => setIsOpenForm(!isOpenForm)}>
+                        Cancel
+                    </Button>
+                </ModalFooter>
+            </Modal>
         </main>
     );
 }

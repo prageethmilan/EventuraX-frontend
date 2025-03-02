@@ -12,8 +12,7 @@ function SignInOptions() {
             const user = result.user;
             const res = await loginApi.socialLogin({
                 email: user.email,
-                firstName: user.displayName.split(' ')[0],
-                lastName: user.displayName.split(' ')[1] || '',
+                name: user.displayName,
                 googleId: provider.providerId,
                 socialId: user.uid
             });
@@ -32,8 +31,7 @@ function SignInOptions() {
             const user = result.user;
             const res = await loginApi.socialLogin({
                 email: user.email,
-                firstName: user.displayName.split(' ')[0],
-                lastName: user.displayName.split(' ')[1] || '',
+                name: user.displayName,
                 facebookId: provider.providerId,
                 socialId: user.uid
             });
@@ -52,8 +50,7 @@ function SignInOptions() {
             const user = result.user;
             const res = await loginApi.socialLogin({
                 email: user.email,
-                firstName: user.displayName.split(' ')[0],
-                lastName: user.displayName.split(' ')[1] || '',
+                name: user.displayName,
                 twitterId: provider.providerId,
                 socialId: user.uid
             });

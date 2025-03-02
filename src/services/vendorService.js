@@ -7,3 +7,11 @@ export const signupVendor = async (data) => {
 export const updatePassword = async (data) => {
     return await apiRequest('POST', "/vendor/update-password", data);
 }
+
+export const getVendorDetails = async (vendorId) => {
+    return await apiRequest('GET', `/vendor/${vendorId}`)
+}
+
+export const updateVendor = async (vendorId, data) => {
+    return await apiRequest('PUT', `/vendor/${vendorId}`, data)
+}

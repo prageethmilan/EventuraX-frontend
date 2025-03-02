@@ -11,13 +11,13 @@ import {showError} from "../../../utils/util";
 import * as vendorApi from '../../../utils/api/vendor';
 import {toast} from "react-toastify";
 import {emailWarningMsg, passwordMisMatchWarningMsg, passwordWarningMsg} from "../../../const/storageStrings";
+import Required from "../../required/Required";
 
 function SignUpBox({title, subtitle}) {
     const navigate = useNavigate()
     const [error, setError] = useState(normalVendorSignUpErrors)
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
+        name: '',
         email: '',
         password: '',
         confirmPassword: ''
@@ -58,8 +58,7 @@ function SignUpBox({title, subtitle}) {
     const signUpHandler = async () => {
 
         const data = {
-            firstName: formData.firstName,
-            lastName: formData.lastName,
+            name: formData.name,
             email: formData.email,
             password: formData.password
         }
@@ -95,35 +94,21 @@ function SignUpBox({title, subtitle}) {
                             </div>
                             <div className="col-lg-12">
                                 <div className="input-box">
-                                    <label className="label-text">First name</label>
+                                    <label className="label-text">Name<Required/></label>
                                     <div className="form-group">
                                                 <span className="form-icon">
                                                     <AiOutlineUser/>
                                                 </span>
                                         <Input className="form-control" type="text" name="text"
-                                               placeholder="First name" value={formData.firstName}
-                                               onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                                               invalid={error.firstName}/>
+                                               placeholder="Name" value={formData.name}
+                                               onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                               invalid={error.name}/>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-12">
                                 <div className="input-box">
-                                    <label className="label-text">Last name</label>
-                                    <div className="form-group">
-                                                <span className="form-icon">
-                                                    <AiOutlineUser/>
-                                                </span>
-                                        <Input className="form-control" type="text" name="text"
-                                               placeholder="Last name" value={formData.lastName}
-                                               onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                                               invalid={error.lastName}/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-12">
-                                <div className="input-box">
-                                    <label className="label-text">Email</label>
+                                    <label className="label-text">Email<Required/></label>
                                     <div className="form-group">
                                                 <span className="form-icon">
                                                     <FaRegEnvelope/>
@@ -137,7 +122,7 @@ function SignUpBox({title, subtitle}) {
                             </div>
                             <div className="col-lg-12">
                                 <div className="input-box">
-                                    <label className="label-text">Password</label>
+                                    <label className="label-text">Password<Required/></label>
                                     <div className="form-group">
                                             <span className="form-icon">
                                                 <FiLock/>
@@ -159,7 +144,7 @@ function SignUpBox({title, subtitle}) {
                             </div>
                             <div className="col-lg-12">
                                 <div className="input-box">
-                                    <label className="label-text">Confirm Password</label>
+                                    <label className="label-text">Confirm Password<Required/></label>
                                     <div className="form-group">
                                             <span className="form-icon">
                                                 <FiLock/>

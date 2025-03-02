@@ -4,8 +4,7 @@ export const normalVendorLoginErrors = {
 }
 
 export const normalVendorSignUpErrors = {
-    firstName: false,
-    lastName: false,
+    name: false,
     email: false,
     password: false,
     confirmPassword: false
@@ -15,4 +14,14 @@ export const updatePasswordErrors = {
     currentPassword: false,
     newPassword: false,
     confirmPassword: false
+}
+
+export const updateVendorFormErrors = {
+    name: false,
+    email: false,
+    mobileNumber: false,
+    location: false,
+    description: false,
+    website: false,
+    address: false
 }

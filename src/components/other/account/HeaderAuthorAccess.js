@@ -7,8 +7,10 @@ import userimg from '../../../assets/images/team1.jpg';
 // import Button from "../../common/Button";
 import Tooltips from '../tooltips/Tooltips';
 import Cookies from "js-cookie";
-import {ACCESS_TOKEN} from "../../../const/const";
+import {ACCESS_TOKEN, VENDOR} from "../../../const/const";
 import {Button} from "reactstrap";
+import {toast} from "react-toastify";
+import {accountNotVerifiedWarningMsg} from "../../../const/storageStrings";
 
 export default function HeaderAuthorAccess() {
     const navigate = useNavigate();
@@ -16,7 +18,11 @@ export default function HeaderAuthorAccess() {
 
     const handleAddListing = () => {
         if (Cookies.get(ACCESS_TOKEN) !== undefined) {
-            navigate('/add-listing/new')
+            if (JSON.parse(Cookies.get(VENDOR)).isVerified) {
+                navigate('/add-listing/new')
+            } else {
+                toast.warning(accountNotVerifiedWarningMsg, {icon: true, hideProgressBar: true})
+            }
         } else {
             navigate('/login')
         }

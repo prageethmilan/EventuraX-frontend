@@ -14,7 +14,7 @@ import Footer from "../../components/common/footer/Footer";
 import sectiondata from "../../store/store";
 import {Button, Input, Modal, ModalBody, ModalFooter, ModalHeader} from "reactstrap";
 import Cookies from "js-cookie";
-import {ACCESS_TOKEN, VENDOR} from "../../const/const";
+import {ACCESS_TOKEN, allowedLogoTypes, baseUrl, VENDOR} from "../../const/const";
 import {
     EMAIL_REGEX,
     PASSWORD_REGEX,
@@ -35,6 +35,7 @@ function Dashboard() {
     const [isOpenForm, setIsOpenForm] = useState(false)
     const [isOpenLogoForm, setIsOpenLogoForm] = useState(false)
     const [showPassword, setShowPassword] = React.useState(false);
+    const [logo, setLogo] = useState(null)
     const [error, setError] = useState(updatePasswordErrors);
     const [vendorError, setVendorError] = useState(updateVendorFormErrors)
     const [changePasswordFormData, setChangePasswordFormData] = useState({
@@ -170,6 +171,7 @@ function Dashboard() {
             })
             setDisplayVendorData({
                 ...displayVendorData,
+                logo: res.logo,
                 name: res.name,
                 description: res.description,
                 mobileNumber: res.mobileNumber,
@@ -235,6 +237,18 @@ function Dashboard() {
                 website: res.website,
                 address: res.address
             })
+        }
+    }
+    const handleLogoUpdate = async () => {
+        if (!logo) return toast.error("Please select a image", {icon: true, hideProgressBar: true})
+        if (!allowedLogoTypes.includes(logo.type)) {
+            return toast.error("Only JPG, PNG, GIF, and WebP images are allowed!", {icon: true, hideProgressBar: true})
+        }
+
+        const response = await vendorApi.updateVendorLogo(JSON.parse(Cookies.get(VENDOR)).id, logo)
+        if (response) {
+            setIsOpenLogoForm(false)
+            setDisplayVendorData({...displayVendorData, logo: response.logo})
         }
     }
 
@@ -326,7 +340,9 @@ function Dashboard() {
                                             <div className="col-lg-4">
                                                 <div className="user-profile-action">
                                                     <div className="user-pro-img mb-4">
-                                                        <img src={sectiondata.dashboard.userImg} alt="user"/>
+                                                        <img
+                                                            src={displayVendorData.logo ? `${baseUrl}${displayVendorData.logo}` : sectiondata.dashboard.userImg}
+                                                            alt="user"/>
                                                         <div className="dropdown edit-btn">
                                                             <button onClick={() => setIsOpenLogoForm(!isOpenLogoForm)}
                                                                     className="theme-btn edit-btn dropdown-toggle border-0 after-none"
@@ -338,10 +354,13 @@ function Dashboard() {
                                                                                     aria-labelledby="editImageMenu">
                                                                 <div className="upload-btn-box">
                                                                     <Input className={'mb-4'} type="file" name="files"
-                                                                           value={logo}
+                                                                        // value={logo}
+                                                                           accept={"image/"}
+                                                                           onChange={(e) => setLogo(e.target.files[0])}
                                                                            id="filer_input"/>
                                                                     <button
-                                                                        className="theme-btn border-0 w-100 button-success">
+                                                                        className="theme-btn border-0 w-100 button-success"
+                                                                        onClick={handleLogoUpdate}>
                                                                         Save changes
                                                                     </button>
                                                                 </div>

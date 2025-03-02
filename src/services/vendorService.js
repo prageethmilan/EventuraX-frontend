@@ -15,3 +15,13 @@ export const getVendorDetails = async (vendorId) => {
 export const updateVendor = async (vendorId, data) => {
     return await apiRequest('PUT', `/vendor/${vendorId}`, data)
 }
+
+export const updateVendorLogo = async (vendorId, logo) => {
+    const formData = new FormData();
+    formData.append('logo', logo);
+    try {
+        return await apiRequest('PUT', `/vendor/${vendorId}/upload-logo`, formData)
+    } catch (error) {
+        throw error;
+    }
+}

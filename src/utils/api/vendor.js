@@ -18,3 +18,21 @@ export const signupVendor = async (data) => {
         })
     return result
 }
+
+export const updatePassword = async (data) => {
+    let result = null
+    await vendorService.updatePassword(data)
+        .then(async res => {
+            if (res.success) {
+                result = res.success
+                toast.success(res.message, {icon: true, hideProgressBar: true})
+            } else {
+                result = res.success
+                toast.error(res.message, {icon: true, hideProgressBar: true})
+            }
+        })
+        .catch(error => {
+            toast.error(error.message, {icon: true, hideProgressBar: true})
+        })
+    return result
+}

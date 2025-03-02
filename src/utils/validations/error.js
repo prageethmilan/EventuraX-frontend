@@ -10,3 +10,9 @@ export const normalVendorSignUpErrors = {
     password: false,
     confirmPassword: false
 }
+
+export const updatePasswordErrors = {
+    currentPassword: false,
+    newPassword: false,
+    confirmPassword: false
+}

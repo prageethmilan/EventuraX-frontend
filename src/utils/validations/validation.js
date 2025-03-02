@@ -1,6 +1,6 @@
-import {normalVendorLoginErrors, normalVendorSignUpErrors} from "./error";
+import {normalVendorLoginErrors, normalVendorSignUpErrors, updatePasswordErrors} from "./error";
 import {toast} from "react-toastify";
-import {emailWarningMsg, passwordMisMatchWarningMsg, passwordWarningMsg} from "../../const/storageStrings";
+import {emailWarningMsg, passwordWarningMsg} from "../../const/storageStrings";
 
 export const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 export const PASSWORD_REGEX = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=*])(?=\S+$).{8,}/
@@ -33,6 +33,16 @@ export const normalSignupVendorValidation = (formData) => {
     if (formData.lastName.trim() === "") error.lastName = true
     if (formData.email.trim() === "") error.email = true
     if (formData.password.trim() === "") error.password = true
+    if (formData.confirmPassword.trim() === "") error.confirmPassword = true
+
+    return error
+}
+
+export const updatePasswordValidation = (formData) => {
+    const error = {...updatePasswordErrors}
+
+    if (formData.currentPassword.trim() === "") error.currentPassword = true
+    if (formData.newPassword.trim() === "") error.newPassword = true
     if (formData.confirmPassword.trim() === "") error.confirmPassword = true
 
     return error

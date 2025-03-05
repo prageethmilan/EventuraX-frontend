@@ -40,7 +40,7 @@ export default function HeaderAuthorAccess() {
                     <li>
                         <Button color={'danger'} className={'d-flex align-items-center p-2'} onClick={handleAddListing}>
                             <FiPlusCircle className={'me-1'}/>
-                            <span className="btn-text">Add Listing</span>
+                            <span className="btn-text">Post Your Ad</span>
                         </Button>
                     </li>
                 </ul>

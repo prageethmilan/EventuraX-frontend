@@ -25,3 +25,12 @@ export const updateVendorFormErrors = {
     website: false,
     address: false
 }
+
+export const postAdvertisementFormErrors = {
+    title: false,
+    description: false,
+    category: false,
+    dateRange: false,
+    photos: false,
+    price: false
+}

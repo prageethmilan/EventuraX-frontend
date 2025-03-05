@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDropzone} from 'react-dropzone'
-import { BsCloudUpload } from 'react-icons/bs'
+import {BsCloudUpload} from 'react-icons/bs'
 import {Link} from "react-router-dom";
 
 
@@ -13,6 +13,7 @@ const thumbsContainer = {
 
 const thumb = {
     display: 'inline-flex',
+    justifyContent: 'center',
     borderRadius: 2,
     border: '1px solid #eaeaea',
     marginBottom: 0,
@@ -33,7 +34,7 @@ const thumbInner = {
 const img = {
     display: 'block',
     width: 'auto',
-    maxWidth: '808px',
+    maxWidth: '404px',
     height: 'auto'
 };
 
@@ -42,13 +43,14 @@ function PhotoUploader(props) {
     const {getRootProps, getInputProps} = useDropzone({
         accept: 'image/*',
         onDrop: acceptedFiles => {
-            setFiles(acceptedFiles.map(file => Object.assign(file, {
+            const images = acceptedFiles.map(file => Object.assign(file, {
                 preview: URL.createObjectURL(file)
-            })));
+            }));
+            props.onSetDataHandler('images', images)
         }
     });
 
-    const thumbs = files.map(file => (
+    const thumbs = props.data.images.map(file => (
         <div style={thumb} key={file.name}>
             <div style={thumbInner}>
                 <img
@@ -62,8 +64,8 @@ function PhotoUploader(props) {
 
     useEffect(() => () => {
         // Make sure to revoke the data uris to avoid memory leaks
-        files.forEach(file => URL.revokeObjectURL(file.preview));
-    }, [files]);
+        props.data.images.forEach(file => URL.revokeObjectURL(file.preview));
+    }, [props.data.images]);
 
     return (
         <>
@@ -75,12 +77,12 @@ function PhotoUploader(props) {
                 <div className="billing-content">
                     <div className="row">
                         <div className="col-lg-12">
-                            <div className="drag-and-drop-wrap text-center">
+                            <div className={`drag-and-drop-wrap text-center ${props.error.photos ? 'is-invalid' : ''}`}>
                                 <div className="drag-and-drop-file">
                                     <div {...getRootProps({className: 'dropzone'})}>
                                         <input {...getInputProps()} />
                                         <span className="drag-drop-icon">
-                                            <BsCloudUpload />
+                                            <BsCloudUpload/>
                                         </span>
                                         <h3>Drag & Drop Files Here to Upload</h3>
                                         <Link to="#" className="drag-drop-btn">Browse Files</Link>

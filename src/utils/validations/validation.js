@@ -1,4 +1,10 @@
-import {normalVendorLoginErrors, normalVendorSignUpErrors, updatePasswordErrors, updateVendorFormErrors} from "./error";
+import {
+    normalVendorLoginErrors,
+    normalVendorSignUpErrors,
+    postAdvertisementFormErrors,
+    updatePasswordErrors,
+    updateVendorFormErrors
+} from "./error";
 import {toast} from "react-toastify";
 import {emailWarningMsg, passwordWarningMsg} from "../../const/storageStrings";
 
@@ -56,5 +62,16 @@ export const updateVendorFormValidation = (formData) => {
     if (!formData.mobileNumber || formData.mobileNumber.trim() === "") error.mobileNumber = true
     if (!formData.email || formData.email.trim() === "") error.email = true
 
+    return error
+}
+
+export const postAdvertisementValidation = (formData) => {
+    const error = {...postAdvertisementFormErrors}
+    if (!formData.title || formData.title.trim() === "") error.title = true
+    if (!formData.description || formData.description.trim() === "") error.description = true
+    if (!formData.category) error.category = true
+    if (formData.images.length === 0) error.photos = true
+    if (!formData.price || formData.price.trim() === "") error.price = true
+    if (formData.isLimitedTimeOffer && formData.dateRange === null) error.dateRange = true
     return error
 }

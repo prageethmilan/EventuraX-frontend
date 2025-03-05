@@ -1,16 +1,23 @@
 import React, {useState} from 'react';
-import { AiOutlineTags } from 'react-icons/ai';
-import { BsPencil, BsPencilSquare, BsQuestion } from 'react-icons/bs';
+import {BsPencilSquare} from 'react-icons/bs';
 import Select from "react-select";
-import Tooltips from '../other/tooltips/Tooltips';
 import {categories} from "../../const/dropdownData";
 import Flatpickr from 'react-flatpickr'
 import {Editor} from "primereact/editor";
+import Required from "../required/Required";
+import {Input} from "reactstrap";
 
-function GeneralInfo() {
+function GeneralInfo(props) {
     const [dateRange, setDateRange] = useState([])
     const [isLimitedTimeOffer, setIsLimitedTimeOffer] = useState(false)
     const [description, setDescription] = useState('')
+    const [title, setTitle] = useState('')
+
+
+    const onChangeDataHandler = (key, value) => {
+        props.onSetDataHandler(key, value)
+    }
+
     return (
         <>
             <div className="billing-form-item">
@@ -22,34 +29,18 @@ function GeneralInfo() {
                     <div className="contact-form-action">
                         <form method="post">
                             <div className="row">
-                                <div className="col-lg-6">
+                                <div className="col-lg-12">
                                     <div className="input-box">
-                                        <label className="label-text">Listing Title</label>
+                                        <label className="label-text">Listing Title<Required/></label>
                                         <div className="form-group">
                                             <span className="la form-icon">
                                                 <BsPencilSquare/>
                                             </span>
-                                            <input className="form-control" type="text" name="name"
-                                                   placeholder="Enter your listing title"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="input-box">
-                                        <label className="label-text d-flex align-items-center ">Keywords
-                                            <Tooltips id="t-2"
-                                                      title="Maximum of 15 keywords related with your business">
-                                                <i className="la tip ms-1">
-                                                    <BsQuestion/>
-                                                </i>
-                                            </Tooltips>
-                                        </label>
-                                        <div className="form-group">
-                                            <span className="la form-icon">
-                                                <AiOutlineTags/>
-                                            </span>
-                                            <input className="form-control" type="text" name="name"
-                                                   placeholder="Keywords should be separated by commas"/>
+                                            <Input className="form-control" type="text" name="name"
+                                                   value={props.data.title}
+                                                   invalid={props.error.title}
+                                                   placeholder="Enter your listing title"
+                                                   onChange={(e) => onChangeDataHandler('title', e.target.value)}/>
                                         </div>
                                     </div>
                                 </div>
@@ -62,17 +53,24 @@ function GeneralInfo() {
                                             {/*</span>*/}
                                             {/*<textarea className="message-control form-control" name="message"*/}
                                             {/*          placeholder="Write your listing description"></textarea>*/}
-                                            <Editor value={description} onTextChange={(e) => setDescription(e.htmlValue)} style={{height: '320px'}}  />
+                                            <Editor value={props.data.description}
+                                                    onTextChange={(e) => onChangeDataHandler("description", e.htmlValue)}
+                                                    style={{height: '300px'}}
+                                                    className={props.error.description ? 'is-invalid' : ''}
+                                                    placeholder="Write your listing description"/>
 
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-12">
                                     <div className="input-box">
-                                        <label className="label-text">Category</label>
+                                        <label className="label-text">Category<Required/></label>
                                         <div className="form-group mb-0">
                                             <Select
                                                 placeholder="Select a Category"
+                                                value={props.data.category}
+                                                onChange={(value) => onChangeDataHandler('category', value)}
+                                                className={props.error.category ? 'is-invalid' : ''}
                                                 options={categories}
                                             />
                                         </div>
@@ -81,23 +79,27 @@ function GeneralInfo() {
                                 <div className="col-lg-12 mt-2">
                                     <div className="input-box">
                                         <div className="form-group mb-0">
-                                            <input type="checkbox" className='form-check-input' value={isLimitedTimeOffer}
-                                                   id={'limited-time-offer'} onChange={() => setIsLimitedTimeOffer(!isLimitedTimeOffer)}/>
+                                            <input type="checkbox" className='form-check-input'
+                                                   value={props.data.isLimitedTimeOffer}
+                                                   id={'limited-time-offer'}
+                                                   onChange={(e) => onChangeDataHandler('isLimitedTimeOffer', e.target.checked)}
+                                            />
                                             <label htmlFor={'limited-time-offer'} className="label-text ms-1"> Limited
                                                 time offer</label>
                                         </div>
                                     </div>
                                 </div>
-                                {isLimitedTimeOffer && <div className="col-lg-6">
+                                {props.data.isLimitedTimeOffer && <div className="col-lg-6">
                                     <div className="input-box">
                                         <label className="label-text">Date Range</label>
                                     </div>
                                     <Flatpickr
-                                        value={dateRange}
+                                        value={props.data.dateRange}
                                         id="multi-dates-picker"
-                                        className="form-control"
+                                        className={`form-control ${props.error.dateRange ? 'is-invalid' : ''}`}
                                         options={{mode: "range"}}
-                                        onChange={date => setDateRange(date)}
+                                        placeholder="Select Date Range"
+                                        onChange={(date) => onChangeDataHandler('dateRange', date)}
                                     />
                                 </div>}
                             </div>
@@ -106,7 +108,7 @@ function GeneralInfo() {
                 </div>
             </div>
         </>
-);
+    );
 }
 
 export default GeneralInfo;

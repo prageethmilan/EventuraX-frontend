@@ -53,7 +53,7 @@ function AddListing() {
             title: advertisementData.title,
             description: advertisementData.description,
             category: advertisementData.category.value,
-            isLimitedTimeOffer: advertisementData.isLimitedTimeOffer,
+            isLimitedTimeOffer: advertisementData.isLimitedTimeOffer ? 1 : 0,
             offerStartDate: advertisementData.isLimitedTimeOffer ? advertisementData.dateRange[0] : null,
             offerEndDate: advertisementData.isLimitedTimeOffer ? advertisementData.dateRange[1] : null,
             images: advertisementData.images,

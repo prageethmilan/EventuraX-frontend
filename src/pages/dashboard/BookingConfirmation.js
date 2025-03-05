@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import GeneralHeader from "../../components/common/GeneralHeader";
 import {FiCheckCircle} from 'react-icons/fi'
-import Button from "../../components/common/Button";
 import Footer from "../../components/common/footer/Footer";
 import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import {useSearchParams} from "react-router-dom";
@@ -19,6 +18,11 @@ function BookingConfirmation() {
         const res = await paymentApi.verifyPayment(sessionId)
         console.log(res)
     }
+
+    const navigateToHomePage = () => {
+        window.open('/', '_self');
+    }
+
     return (
         <main className="booking-confirmation-page">
             {/* Header */}
@@ -35,7 +39,8 @@ function BookingConfirmation() {
                                         advertisement!</h2>
                                 </div>
                                 <div className="btn-box padding-top-30px">
-                                    <Button text="Go to Home" url="/"/>
+                                    <button className="button theme-btn" onClick={navigateToHomePage}>Go to Home
+                                    </button>
                                 </div>
                             </div>
                         </div>

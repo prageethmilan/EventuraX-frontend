@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { FiHeart } from 'react-icons/fi';
-import sectiondata from "../../../store/store";
-import CopyrightMenu from "./CopyrightMenu";
 
 function Copyright() {
   const [year, setYear] = useState();

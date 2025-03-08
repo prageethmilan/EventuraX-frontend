@@ -88,3 +88,19 @@ export const updateVendorLogo = async (vendorId, logo) => {
         })
     return result
 }
+
+export const getVendorDetailsForUserProfile = async (vendorId) => {
+    let result = null
+    await vendorService.getVendorDetailsForUserProfile(vendorId)
+        .then(async res => {
+            if (res.success) {
+                result = res.data
+            } else {
+                toast.error(res.message, {icon: true, hideProgressBar: true})
+            }
+        })
+        .catch(error => {
+            toast.error(error.message, {icon: true, hideProgressBar: true})
+        })
+    return result
+}

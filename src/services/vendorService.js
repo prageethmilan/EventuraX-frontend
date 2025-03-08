@@ -25,3 +25,7 @@ export const updateVendorLogo = async (vendorId, logo) => {
         throw error;
     }
 }
+
+export const getVendorDetailsForUserProfile = async (vendorId) => {
+    return await apiRequest('GET', `/vendor/user-profile/${vendorId}`)
+}

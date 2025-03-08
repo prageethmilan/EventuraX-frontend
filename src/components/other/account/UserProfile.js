@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {FiRefreshCw} from 'react-icons/fi'
 import sectiondata from "../../../store/store";
 import Breadcrumb from "../../common/Breadcrumb";
@@ -22,6 +22,7 @@ import {VENDOR} from "../../../const/const";
 import {reviewFormDataValidation} from "../../../utils/validations/validation";
 import {showError} from "../../../utils/util";
 import * as reviewApi from '../../../utils/api/review'
+import * as vendorApi from '../../../utils/api/vendor'
 import {reviewFormDataErrors} from "../../../utils/validations/error";
 
 const states = {
@@ -32,6 +33,7 @@ function UserProfile() {
     const [reviewFormErrors, setReviewFormErrors] = useState(reviewFormDataErrors)
     const [isOpenReviewForm, setIsOpenReviewForm] = useState(false)
     const [reviewList, setReviewList] = useState([])
+    const [userData, setUserData] = useState(null);
     const [reviewFormData, setReviewFormData] = useState({
         vendorId: JSON.parse(Cookies.get(VENDOR))?.id,
         username: null,
@@ -39,6 +41,16 @@ function UserProfile() {
         reviewText: null,
         rating: 0
     })
+
+    useEffect(() => {
+        loadVendorDetails()
+    }, []);
+
+    const loadVendorDetails = async () => {
+        setUserData(null)
+        const res = await vendorApi.getVendorDetailsForUserProfile(JSON.parse(Cookies.get(VENDOR))?.id)
+        setUserData(res)
+    }
 
     const loadAllReviewsForVendor = async () => {
         const res = await reviewApi.getAllReviewsForVendor(JSON.parse(Cookies.get(VENDOR))?.id)
@@ -70,6 +82,7 @@ function UserProfile() {
 
         const res = await reviewApi.addReview(data)
         if (res) {
+            setReviewList([])
             setReviewFormData({
                 ...reviewFormData,
                 username: null,
@@ -79,6 +92,7 @@ function UserProfile() {
             });
             setIsOpenReviewForm(false);
             await loadAllReviewsForVendor();
+            await loadVendorDetails();
         }
     }
 
@@ -95,7 +109,7 @@ function UserProfile() {
                     <div className="row">
                         <div className="col-lg-4">
                             <div className="user-content">
-                                <UserSidebar usercontent={sectiondata.userprofile.sidebar}/>
+                                <UserSidebar usercontent={userData}/>
                             </div>
                         </div>
                         <div className="col-lg-8">

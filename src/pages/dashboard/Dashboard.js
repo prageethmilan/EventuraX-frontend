@@ -30,18 +30,22 @@ import Select from "react-select";
 import {categories, locations} from "../../const/dropdownData";
 import Required from "../../components/required/Required";
 import * as advertisementApi from '../../utils/api/advertisement'
+import ConfirmBox from "../../components/confirm-box";
+import {HelpCircle} from "react-feather";
 
 
 function Dashboard() {
     const navigate = useNavigate();
     const [isOpenForm, setIsOpenForm] = useState(false)
     const [isOpenLogoForm, setIsOpenLogoForm] = useState(false)
+    const [isOpenConfirmBox, setIsOpenConfirmBox] = useState(false)
     const [showPassword, setShowPassword] = React.useState(false);
     const [logo, setLogo] = useState(null)
     const [error, setError] = useState(updatePasswordErrors);
     const [vendorError, setVendorError] = useState(updateVendorFormErrors)
     const [advertisementList, setAdvertisementList] = useState([])
     const [vendorObj, setVendorObj] = useState(null)
+    const [advertisementId, setAdvertisementId] = useState('')
     const [changePasswordFormData, setChangePasswordFormData] = useState({
         vendorId: Cookies.get(VENDOR) !== undefined ? JSON.parse(Cookies.get(VENDOR)).id : 0,
         currentPassword: '',
@@ -248,6 +252,22 @@ function Dashboard() {
         })
     }
 
+    const handleDeleteAdvertisement = (item) => {
+        console.log(item)
+        setIsOpenConfirmBox(true)
+        setAdvertisementId(item._id)
+    }
+
+    const onDeleteAdvertisement = async () => {
+        console.log(advertisementId)
+        const res = await advertisementApi.deleteAdvertisement(advertisementId)
+        if (res) {
+            setIsOpenConfirmBox(false)
+            setAdvertisementId('')
+            loadAllAdvertisements()
+        }
+    }
+
     return (
         <main className="dashboard-page">
             {/* Header */}
@@ -328,7 +348,8 @@ function Dashboard() {
                                                                         <button type="button"
                                                                                 className="theme-btn delete-btn border-0"
                                                                                 data-toggle="modal"
-                                                                                data-target=".product-delete-modal">
+                                                                                data-target=".product-delete-modal"
+                                                                                onClick={() => handleDeleteAdvertisement(item)}>
                                                                             <span
                                                                                 className="la"><FaRegTrashAlt/></span> Delete
                                                                         </button>
@@ -663,6 +684,23 @@ function Dashboard() {
                     </Button>
                 </ModalFooter>
             </Modal>
+            {isOpenConfirmBox && <ConfirmBox
+                isOpen={isOpenConfirmBox}
+                toggleModal={() => {
+                    setIsOpenConfirmBox(false)
+                    setAdvertisementId('')
+                }}
+                yesBtnClick={onDeleteAdvertisement}
+                noBtnClick={() => {
+                    setIsOpenConfirmBox(false)
+                    setAdvertisementId('')
+                }}
+                title={'Warning'}
+                message={'Are you sure you want to delete this advertisement?'}
+                yesBtn="Delete"
+                noBtn="Cancel"
+                icon={<HelpCircle size={60} color="#EA5455"/>}
+            />}
         </main>
     );
 }

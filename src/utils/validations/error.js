@@ -34,3 +34,8 @@ export const postAdvertisementFormErrors = {
     photos: false,
     price: false
 }
+
+export const reviewFormDataErrors = {
+    username: false,
+    reviewText: false
+}

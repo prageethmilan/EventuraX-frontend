@@ -2,6 +2,7 @@ import {
     normalVendorLoginErrors,
     normalVendorSignUpErrors,
     postAdvertisementFormErrors,
+    reviewFormDataErrors,
     updatePasswordErrors,
     updateVendorFormErrors
 } from "./error";
@@ -49,7 +50,6 @@ export const updatePasswordValidation = (formData) => {
     if (formData.currentPassword.trim() === "") error.currentPassword = true
     if (formData.newPassword.trim() === "") error.newPassword = true
     if (formData.confirmPassword.trim() === "") error.confirmPassword = true
-
     return error
 }
 
@@ -61,7 +61,6 @@ export const updateVendorFormValidation = (formData) => {
     if (!formData.address || formData.address.trim() === "") error.address = true
     if (!formData.mobileNumber || formData.mobileNumber.trim() === "") error.mobileNumber = true
     if (!formData.email || formData.email.trim() === "") error.email = true
-
     return error
 }
 
@@ -73,5 +72,12 @@ export const postAdvertisementValidation = (formData) => {
     if (formData.images.length === 0) error.photos = true
     if (!formData.price || formData.price.trim() === "") error.price = true
     if (formData.isLimitedTimeOffer && formData.dateRange === null) error.dateRange = true
+    return error
+}
+
+export const reviewFormDataValidation = (formData) => {
+    const error = {...reviewFormDataErrors}
+    if (!formData.username || formData.username.trim() === "") error.username = true
+    if (!formData.reviewText || formData.reviewText.trim() === "") error.reviewText = true
     return error
 }

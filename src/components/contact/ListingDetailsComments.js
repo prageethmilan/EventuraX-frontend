@@ -1,57 +1,39 @@
 import React from 'react';
 import userProfileImg from '../../assets/images/userProfileImg.png'
-import {MdStar} from "react-icons/md";
+import moment from "moment";
+import ReactStars from "react-rating-stars-component/dist/react-stars";
 
-function ListingDetailsComments({commentlists}) {
+function ListingDetailsComments({reviewLists}) {
     return (
         <>
             <ul className="comments-list padding-top-40px">
                 <li>
 
-                    {commentlists.map((item, i) => {
+                    {reviewLists.map((item, i) => {
                         return (
                             <div key={i}>
                                 <div className="comment">
                                     <img className="avatar__img" alt="Comment" src={userProfileImg}/>
-                                    <div className="comment-body">
+                                    <div className="comment-body flex-grow-1">
                                         <div className="meta-data">
                                             <span className="comment__author">
-                                                {item.name}
+                                                {item.userName}
                                             </span>
                                             <span className="comment__date">
-                                                {item.date}
+                                                {moment(item.createdDate).format('YYYY-MM-DD')}
                                             </span>
                                             <div className="rating-rating">
-                                                {
-                                                    item.rating === 5 ?
-                                                        <>
-                                                            <span className="la la-star"><MdStar/></span>
-                                                            <span className="la la-star"><MdStar/></span>
-                                                            <span className="la la-star"><MdStar/></span>
-                                                            <span className="la la-star"><MdStar/></span>
-                                                            <span className="la la-star"><MdStar/></span>
-                                                        </> : item.rating === 4 ?
-                                                            <>
-                                                                <span className="la la-star"><MdStar/></span>
-                                                                <span className="la la-star"><MdStar/></span>
-                                                                <span className="la la-star"><MdStar/></span>
-                                                                <span className="la la-star"><MdStar/></span>
-                                                            </> : item.rating === 3 ?
-                                                                <>
-                                                                    <span className="la la-star"><MdStar/></span>
-                                                                    <span className="la la-star"><MdStar/></span>
-                                                                    <span className="la la-star"><MdStar/></span>
-                                                                </> : item.rating === 2 ?
-                                                                    <>
-                                                                        <span className="la la-star"><MdStar/></span>
-                                                                        <span className="la la-star"><MdStar/></span>
-                                                                    </> :
-                                                                    <><span className="la la-star"><MdStar/></span></>
-                                                }
+                                                <ReactStars
+                                                    count={5}
+                                                    size={24}
+                                                    value={item.rating}
+                                                    activeColor={'#ffd700'}
+                                                    edit={false}
+                                                />
                                             </div>
                                         </div>
                                         <p className="comment-content">
-                                            {item.content}
+                                            {item.reviewText}
                                         </p>
                                     </div>
                                 </div>

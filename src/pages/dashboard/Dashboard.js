@@ -235,6 +235,19 @@ function Dashboard() {
         });
     }
 
+    const handlePaymentProcess = (item) => {
+        navigate('/listing-confirmation', {
+            state: {
+                vendor: {
+                    name: vendorObj?.name,
+                    email: vendorObj?.email,
+                    mobileNumber: vendorObj?.mobileNumber
+                },
+                advertisement: item
+            }
+        })
+    }
+
     return (
         <main className="dashboard-page">
             {/* Header */}
@@ -306,7 +319,8 @@ function Dashboard() {
                                                                         {
                                                                             item?.paymentStatus === "PENDING" &&
                                                                             <button type="button"
-                                                                                    className="theme-btn button-success border-0 me-1">
+                                                                                    className="theme-btn button-success border-0 me-1"
+                                                                                    onClick={() => handlePaymentProcess(item)}>
                                                                             <span
                                                                                 className="la"><FaDollarSign/></span> Payment
                                                                             </button>

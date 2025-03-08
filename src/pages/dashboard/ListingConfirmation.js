@@ -15,7 +15,7 @@ function ListingConfirmation() {
     const {state} = location
 
     useEffect(() => {
-
+        console.log(state)
     }, []);
     return (
         <main className="booking-page">

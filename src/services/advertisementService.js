@@ -7,3 +7,7 @@ export const postAdvertisement = async (formData) => {
         throw error
     }
 }
+
+export const getAllAds = async (vendorId, paymentStatus, page, size) => {
+    return await apiRequest('GET', `/advertisement/getAllAds/${vendorId}${page ? `?page=${page}` : ''}${size ? `&limit=${size}` : ''}${paymentStatus ? `&paymentStatus=${paymentStatus}` : ''}`)
+}

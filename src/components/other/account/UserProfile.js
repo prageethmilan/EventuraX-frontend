@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {FiRefreshCw} from 'react-icons/fi'
-import sectiondata from "../../../store/store";
 import Breadcrumb from "../../common/Breadcrumb";
-import Button from "../../common/Button";
 import GeneralHeader from "../../common/GeneralHeader";
 import ScrollTopBtn from "../../common/ScrollTopBtn";
 import Footer from "../../common/footer/Footer";
@@ -18,11 +16,12 @@ import {FaRegEnvelope} from "react-icons/fa";
 import Required from "../../required/Required";
 import ReactStars from "react-rating-stars-component/dist/react-stars";
 import Cookies from "js-cookie";
-import {VENDOR} from "../../../const/const";
+import {paymentStatus, VENDOR} from "../../../const/const";
 import {reviewFormDataValidation} from "../../../utils/validations/validation";
 import {showError} from "../../../utils/util";
 import * as reviewApi from '../../../utils/api/review'
 import * as vendorApi from '../../../utils/api/vendor'
+import * as advertisementApi from '../../../utils/api/advertisement'
 import {reviewFormDataErrors} from "../../../utils/validations/error";
 
 const states = {
@@ -34,6 +33,12 @@ function UserProfile() {
     const [isOpenReviewForm, setIsOpenReviewForm] = useState(false)
     const [reviewList, setReviewList] = useState([])
     const [userData, setUserData] = useState(null);
+    const [page, setPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(1);
+    const [advertisementsData, setAdvertisementsData] = useState({
+        vendor: null,
+        advertisementList: []
+    })
     const [reviewFormData, setReviewFormData] = useState({
         vendorId: JSON.parse(Cookies.get(VENDOR))?.id,
         username: null,
@@ -44,12 +49,24 @@ function UserProfile() {
 
     useEffect(() => {
         loadVendorDetails()
+        loadAllVerifiedAds(1);
     }, []);
 
     const loadVendorDetails = async () => {
         setUserData(null)
         const res = await vendorApi.getVendorDetailsForUserProfile(JSON.parse(Cookies.get(VENDOR))?.id)
         setUserData(res)
+    }
+
+    const loadAllVerifiedAds = async (pageNumber) => {
+        const res = await advertisementApi.getAllAds(JSON.parse(Cookies.get(VENDOR))?.id, paymentStatus[0], pageNumber, 2);
+        if (res) {
+            setAdvertisementsData(prevData => ({
+                advertisementList: [...prevData.advertisementList, ...res.advertisements]
+            }));
+            setTotalPages(res.totalPages);
+            setPage(res.currentPage)
+        }
     }
 
     const loadAllReviewsForVendor = async () => {
@@ -96,6 +113,12 @@ function UserProfile() {
         }
     }
 
+    const handleLoadMore = () => {
+        if (page < totalPages) {
+            loadAllVerifiedAds(page + 1);
+        }
+    }
+
     return (
         <main className="user-profile">
             {/* Header */}
@@ -130,19 +153,21 @@ function UserProfile() {
                                 </div>
                                 <div className="tab-content" id="nav-tabContent">
                                     <TabPanel>
-                                        <h3 className="widget-title">{sectiondata.userprofile.sidebar.name}'s
+                                        <h3 className="widget-title">{userData?.vendorName}'s
                                             Listings</h3>
                                         <div className="title-shape"></div>
                                         <div className="row two-clmn margin-top-35px">
-                                            <PlaceGrid griditems={sectiondata.placesgrid}/>
+                                            <PlaceGrid advertisementsData={advertisementsData}/>
                                         </div>
 
                                         <div className="row">
                                             <div className="col-lg-12">
                                                 <div className="button-shared text-center">
-                                                    <Button text="load more listing" url="#" className="border-0">
-                                                        <span><FiRefreshCw/></span>
-                                                    </Button>
+                                                    <ReactStrapBtn className="theme-btn border-0 p-2 line-height-26"
+                                                                   onClick={handleLoadMore}>
+                                                        <span className={'me-1'}><FiRefreshCw/></span>
+                                                        Load More Ads
+                                                    </ReactStrapBtn>
                                                 </div>
                                             </div>
                                         </div>

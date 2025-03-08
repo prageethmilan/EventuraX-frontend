@@ -55,10 +55,9 @@ function UserSidebar({usercontent}) {
                 {/*<SocialProfile socials={usercontent.socials}/>*/}
             </div>
             <div className="modal-wrapper">
-                <button type="button" className="theme-btn border-0" data-bs-toggle="modal"
-                        data-target=".bs-example-modal-lg">
+                <a className="theme-btn border-0" href={`tel:+94${usercontent?.mobileNumber.slice(1)}`}>
                     <i className="la"><FiPhoneCall/></i> Call To Action
-                </button>
+                </a>
             </div>
         </>
     );

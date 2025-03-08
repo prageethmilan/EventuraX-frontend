@@ -33,3 +33,19 @@ export const postAdvertisement = async (data) => {
         })
     return result
 }
+
+export const getAllAds = async (vendorId, paymentStatus, pageNumber, size) => {
+    let result = null;
+    await advertisementService.getAllAds(vendorId, paymentStatus, pageNumber, size)
+        .then(async res => {
+            if (res.success) {
+                result = res.data
+            } else {
+                toast.error(res.message, {icon: true, hideProgressBar: true})
+            }
+        })
+        .catch(error => {
+            toast.error(error.message, {icon: true, hideProgressBar: true})
+        })
+    return result
+}

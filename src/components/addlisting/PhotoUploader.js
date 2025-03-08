@@ -50,7 +50,26 @@ function PhotoUploader(props) {
         }
     });
 
-    const thumbs = props.data.images.map(file => (
+    useEffect(() => {
+        if (props.data.images && props.data.images.length > 0) {
+            const fileList = []
+            props.data.images.map((image, i) => {
+                let mockFile = null
+                if (typeof image === 'string') {
+                    mockFile = {
+                        name: new URL(image).pathname.split('/').pop(),
+                        preview: image,
+                    };
+                } else {
+                    mockFile = image
+                }
+                fileList.push(mockFile)
+            })
+            setFiles(fileList);
+        }
+    }, [props.data.images]);
+
+    const thumbs = files.map(file => (
         <div style={thumb} key={file.name}>
             <div style={thumbInner}>
                 <img
@@ -64,8 +83,8 @@ function PhotoUploader(props) {
 
     useEffect(() => () => {
         // Make sure to revoke the data uris to avoid memory leaks
-        props.data.images.forEach(file => URL.revokeObjectURL(file.preview));
-    }, [props.data.images]);
+        files.forEach(file => URL.revokeObjectURL(file.preview));
+    }, [files]);
 
     return (
         <>

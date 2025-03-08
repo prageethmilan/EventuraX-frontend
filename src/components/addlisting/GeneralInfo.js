@@ -79,10 +79,13 @@ function GeneralInfo(props) {
                                 <div className="col-lg-12 mt-2">
                                     <div className="input-box">
                                         <div className="form-group mb-0">
-                                            <input type="checkbox" className='form-check-input'
-                                                   value={props.data.isLimitedTimeOffer}
+                                            <Input type="checkbox" className='form-check-input'
+                                                   checked={props.data.isLimitedTimeOffer}
                                                    id={'limited-time-offer'}
-                                                   onChange={(e) => onChangeDataHandler('isLimitedTimeOffer', e.target.checked)}
+                                                   onChange={(e) => {
+                                                       onChangeDataHandler('isLimitedTimeOffer', e.target.checked)
+                                                       if (!e.target.checked) onChangeDataHandler('dateRange', null)
+                                                   }}
                                             />
                                             <label htmlFor={'limited-time-offer'} className="label-text ms-1"> Limited
                                                 time offer</label>

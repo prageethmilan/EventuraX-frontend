@@ -70,7 +70,7 @@ export const postAdvertisementValidation = (formData) => {
     if (!formData.description || formData.description.trim() === "") error.description = true
     if (!formData.category) error.category = true
     if (formData.images.length === 0) error.photos = true
-    if (!formData.price || formData.price.trim() === "") error.price = true
+    if (!formData.price || formData.price === "") error.price = true
     if (formData.isLimitedTimeOffer && formData.dateRange === null) error.dateRange = true
     return error
 }

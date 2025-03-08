@@ -35,6 +35,7 @@ import ListingDetails from "./pages/listings/ListingDetails";
 import ListingGrid from "./pages/listings/ListingGrid";
 import ListingList from "./pages/listings/ListingList";
 import ScrollToTop from "./components/scrollToTop/ScrollToTop";
+import UpdateListing from "./pages/listings/UpdateListing";
 
 const App = () => {
 
@@ -66,6 +67,7 @@ const App = () => {
                 <Route path="/list-right-sidebar" element={<ListRightSidebar/>}/>
                 <Route path="/listing-details" element={<ListingDetails/>}/>
                 <Route path="/add-listing/new" element={<AddListing/>}/>
+                <Route path="/edit-listing" element={<UpdateListing/>}/>
                 <Route path="/user-profile" element={<UserProfile/>}/>
                 <Route path="/top-author" element={<TopAuthors/>}/>
                 <Route path="/dashboard" element={<Dashboard/>}/>

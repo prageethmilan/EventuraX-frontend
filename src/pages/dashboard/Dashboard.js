@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {AiOutlinePlusCircle, AiOutlinePoweroff, AiOutlineUser} from 'react-icons/ai';
 import {BsListCheck, BsPencil} from 'react-icons/bs';
-import {FaGlobeAmericas, FaRegEnvelope} from 'react-icons/fa';
+import {FaDollarSign, FaGlobeAmericas, FaRegEdit, FaRegEnvelope, FaRegTrashAlt} from 'react-icons/fa';
 import {FiEdit, FiEye, FiEyeOff, FiPhone} from 'react-icons/fi';
 import {GiPositionMarker} from 'react-icons/gi';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import Breadcrumb from "../../components/common/Breadcrumb";
 // import Button from "../../components/common/Button";
@@ -27,17 +27,21 @@ import {updatePasswordErrors, updateVendorFormErrors} from "../../utils/validati
 import {findObject, showError} from "../../utils/util";
 import * as vendorApi from '../../utils/api/vendor'
 import Select from "react-select";
-import {locations} from "../../const/dropdownData";
+import {categories, locations} from "../../const/dropdownData";
 import Required from "../../components/required/Required";
+import * as advertisementApi from '../../utils/api/advertisement'
 
 
 function Dashboard() {
+    const navigate = useNavigate();
     const [isOpenForm, setIsOpenForm] = useState(false)
     const [isOpenLogoForm, setIsOpenLogoForm] = useState(false)
     const [showPassword, setShowPassword] = React.useState(false);
     const [logo, setLogo] = useState(null)
     const [error, setError] = useState(updatePasswordErrors);
     const [vendorError, setVendorError] = useState(updateVendorFormErrors)
+    const [advertisementList, setAdvertisementList] = useState([])
+    const [vendorObj, setVendorObj] = useState(null)
     const [changePasswordFormData, setChangePasswordFormData] = useState({
         vendorId: Cookies.get(VENDOR) !== undefined ? JSON.parse(Cookies.get(VENDOR)).id : 0,
         currentPassword: '',
@@ -67,48 +71,16 @@ function Dashboard() {
     };
 
     useEffect(() => {
-        const body = document.querySelector('body')
+        loadAllAdvertisements()
+    }, [])
 
-        // function showDeleteAcntModal(e) {
-        //     body.classList.add('modal-open')
-        //     body.style.paddingRight = '17px'
-        //     e.preventDefault()
-        // }
-
-        // document.addEventListener('click', function (e) {
-        //         for (
-        //             let target = e.target;
-        //             target && target !== this;
-        //             target = target.parentNode
-        //         ) {
-        //             if (target.matches('.delete-account-info .delete-account, .card-item .card-content-wrap .delete-btn')) {
-        //                 showDeleteAcntModal.call(target, e)
-        //                 break
-        //             }
-        //         }
-        //     }, false
-        // )
-
-        // function hideDeleteAcntModal(e) {
-        //     body.classList.remove('modal-open')
-        //     body.style.paddingRight = '0'
-        //     e.preventDefault()
-        // }
-        //
-        // document.addEventListener('click', function (e) {
-        //         for (
-        //             let target = e.target;
-        //             target && target !== this;
-        //             target = target.parentNode
-        //         ) {
-        //             if (target.matches('.account-delete-modal .modal-bg, .account-delete-modal .modal-dialog .btn-box .theme-btn')) {
-        //                 hideDeleteAcntModal.call(target, e)
-        //                 break
-        //             }
-        //         }
-        //     }, false
-        // )
-    })
+    const loadAllAdvertisements = async () => {
+        const res = await advertisementApi.getAllAdsForDashboard(JSON.parse(Cookies.get(VENDOR))?.id)
+        if (res && res.length !== 0) {
+            setAdvertisementList(res.advertisements)
+            setVendorObj(res.vendor)
+        }
+    }
 
     const handleUpdatePassword = async () => {
         const res = updatePasswordValidation(changePasswordFormData)
@@ -252,6 +224,17 @@ function Dashboard() {
         }
     }
 
+    const handleEditAdvertisement = (item) => {
+        navigate('/edit-listing', {
+            state: {
+                ...item,
+                vendorName: vendorObj?.name,
+                vendorEmail: vendorObj?.email,
+                vendorMobileNumber: vendorObj?.mobileNumber
+            }
+        });
+    }
+
     return (
         <main className="dashboard-page">
             {/* Header */}
@@ -294,36 +277,46 @@ function Dashboard() {
                                     <TabPanel>
                                         <div className="row">
 
-                                            {sectiondata.dashboard.cards.map((item, i) => {
+                                            {advertisementList.map((item, i) => {
                                                 return (
                                                     <div key={i} className="col-lg-4 column-td-6">
                                                         <div className="card-item">
-                                                            <Link to={item.cardLink} className="card-image-wrap">
+                                                            <Link to={`#`}
+                                                                  className="card-image-wrap">
                                                                 <div className="card-image">
-                                                                    <img src={item.img} className="card__img"
+                                                                    <img src={item.images[0]} className="card__img"
                                                                          alt="Card"/>
                                                                 </div>
                                                             </Link>
                                                             <div className="card-content-wrap">
                                                                 <div className="card-content">
-                                                                    <Link to={item.cardLink}>
+                                                                    <Link to={'#'}>
                                                                         <h4 className="card-title mt-0">{item.title}</h4>
-                                                                        <p className="card-sub">{item.subtitle}</p>
+                                                                        <p className="card-sub">{findObject(categories, item?.category)?.label}</p>
                                                                     </Link>
                                                                 </div>
                                                                 <div className="rating-row">
                                                                     <div className="edit-info-box">
                                                                         <button type="button"
-                                                                                className="theme-btn button-success border-0 me-1">
+                                                                                className="theme-btn button-success border-0 me-1"
+                                                                                onClick={() => handleEditAdvertisement(item)}>
                                                                             <span
-                                                                                className="la">{item.editIcon}</span> {item.editTxt}
+                                                                                className="la"><FaRegEdit/></span> Edit
                                                                         </button>
+                                                                        {
+                                                                            item?.paymentStatus === "PENDING" &&
+                                                                            <button type="button"
+                                                                                    className="theme-btn button-success border-0 me-1">
+                                                                            <span
+                                                                                className="la"><FaDollarSign/></span> Payment
+                                                                            </button>
+                                                                        }
                                                                         <button type="button"
                                                                                 className="theme-btn delete-btn border-0"
                                                                                 data-toggle="modal"
                                                                                 data-target=".product-delete-modal">
                                                                             <span
-                                                                                className="la">{item.deleteIcon}</span> {item.deleteTxt}
+                                                                                className="la"><FaRegTrashAlt/></span> Delete
                                                                         </button>
                                                                     </div>
                                                                 </div>

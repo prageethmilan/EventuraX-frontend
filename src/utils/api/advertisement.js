@@ -112,3 +112,19 @@ export const deleteAdvertisement = async (advertisementId) => {
         })
     return result
 }
+
+export const getFilteredAdvertisements = async(page, size, keyword, location, category, minPrice, maxPrice, maxRating, sortByPrice) => {
+    let result = null;
+    await advertisementService.getFilteredAdvertisements(page, size, keyword, location, category, minPrice, maxPrice, maxRating, sortByPrice)
+        .then(async res => {
+            if (res.success) {
+                result = res.data
+            } else {
+                toast.error(res.message, {icon: true, hideProgressBar: true})
+            }
+        })
+        .catch(error => {
+            toast.error(error.message, {icon: true, hideProgressBar: true})
+        })
+    return result;
+}

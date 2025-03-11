@@ -63,7 +63,7 @@ const App = () => {
                 <Route path="/listing-list" element={<ListingList/>}/>
                 <Route path="/list-map-view" element={<ListMapView/>}/>
                 <Route path="/list-map-view2" element={<ListMapView2/>}/>
-                <Route path="/list-left-sidebar" element={<ListLeftSidebar/>}/>
+                <Route path="/listings" element={<ListLeftSidebar/>}/>
                 <Route path="/list-right-sidebar" element={<ListRightSidebar/>}/>
                 <Route path="/listing-details" element={<ListingDetails/>}/>
                 <Route path="/add-listing/new" element={<AddListing/>}/>

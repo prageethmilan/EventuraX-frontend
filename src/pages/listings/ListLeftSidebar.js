@@ -53,8 +53,9 @@ function ListLeftSidebar() {
         }
     }, []);
 
-    const loadAllAdvertisements = async (pageNumber) => {
-        const res = await advertisementApi.getFilteredAdvertisements(pageNumber, 5, searchData.keyword, searchData.location, searchData.category, searchData.minPrice, searchData.maxPrice, searchData.maxRating, searchData.sortByPrice)
+    const loadAllAdvertisements = async (pageNumber, sortByPrice) => {
+        setAdvertisementsData({advertisementList: []})
+        const res = await advertisementApi.getFilteredAdvertisements(pageNumber, 5, searchData.keyword, searchData.location, searchData.category, searchData.minPrice, searchData.maxPrice, searchData.maxRating, sortByPrice !== undefined ? sortByPrice : searchData.sortByPrice)
         if (res && res.advertisements.length !== 0) {
             setAdvertisementsData(prevData => ({
                 advertisementList: [...prevData.advertisementList, ...res.advertisements]
@@ -70,7 +71,7 @@ function ListLeftSidebar() {
             ...prevState,
             [name]: data
         }))
-        if (name === "sortByPrice") await loadAllAdvertisements(1)
+        if (name === "sortByPrice") await loadAllAdvertisements(1, data)
     }
 
     const handleLoadMore = () => {
@@ -93,7 +94,9 @@ function ListLeftSidebar() {
                 <div className="container">
                     <div className="row align-items-start">
                         <div className="col-lg-12">
-                            <GenericHeader onChangeHandler={filterChangeHandler} data={searchData} advertisements={advertisementsData.advertisementList} totalElements={totalElements}/>
+                            <GenericHeader onChangeHandler={filterChangeHandler} data={searchData}
+                                           advertisements={advertisementsData.advertisementList}
+                                           totalElements={totalElements}/>
                         </div>
 
                         <div className="col-lg-4">

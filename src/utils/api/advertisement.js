@@ -128,3 +128,19 @@ export const getFilteredAdvertisements = async(page, size, keyword, location, ca
         })
     return result;
 }
+
+export const getAdvertisementDetails = async (advertisementId) => {
+    let result = null;
+    await advertisementService.getAdvertisementDetails(advertisementId)
+        .then(async res => {
+            if (res.success) {
+                result = res.data
+            } else {
+                toast.error(res.message, {icon: true, hideProgressBar: true})
+            }
+        })
+        .catch(error => {
+            toast.error(error.message, {icon: true, hideProgressBar: true})
+        })
+    return result;
+}

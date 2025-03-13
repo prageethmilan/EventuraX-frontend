@@ -31,7 +31,7 @@ function PlaceGrid({advertisementsData}) {
                                         <span
                                             className={item.isLimitedTimeOffer ? 'badge bg-success' : ''}>{item.isLimitedTimeOffer ? `${moment(item.offerStartDate).format('YYYY-MM-DD')} to ${moment(item.offerEndDate).format('YYYY-MM-DD')}` : ''}</span>
                                     </Link>
-                                    <a href={`/user-profile?vendorId=${item?.vendorId}`}
+                                    <a href={`/vendor-profile?vendorId=${item?.vendorId}`}
                                        className="author-img">
                                         <img src={item?.logo} alt="author-img"/>
                                     </a>

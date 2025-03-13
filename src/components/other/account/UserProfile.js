@@ -23,12 +23,15 @@ import * as reviewApi from '../../../utils/api/review'
 import * as vendorApi from '../../../utils/api/vendor'
 import * as advertisementApi from '../../../utils/api/advertisement'
 import {reviewFormDataErrors} from "../../../utils/validations/error";
+import {useLocation} from "react-router-dom";
 
 const states = {
     BreadcrumbImg: require('../../../assets/images/bread-bg.jpg')
 }
 
 function UserProfile() {
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search)
     const [reviewFormErrors, setReviewFormErrors] = useState(reviewFormDataErrors)
     const [isOpenReviewForm, setIsOpenReviewForm] = useState(false)
     const [reviewList, setReviewList] = useState([])
@@ -40,7 +43,7 @@ function UserProfile() {
         advertisementList: []
     })
     const [reviewFormData, setReviewFormData] = useState({
-        vendorId: JSON.parse(Cookies.get(VENDOR))?.id,
+        vendorId: '',
         username: null,
         userEmail: null,
         reviewText: null,
@@ -53,8 +56,9 @@ function UserProfile() {
     }, []);
 
     const loadVendorDetails = async () => {
+        const vendorId = queryParams.get('vendorId')
         setUserData(null)
-        const res = await vendorApi.getVendorDetailsForUserProfile(JSON.parse(Cookies.get(VENDOR))?.id)
+        const res = await vendorApi.getVendorDetailsForUserProfile(vendorId)
         setUserData(res)
     }
 
@@ -70,7 +74,8 @@ function UserProfile() {
     }
 
     const loadAllReviewsForVendor = async () => {
-        const res = await reviewApi.getAllReviewsForVendor(JSON.parse(Cookies.get(VENDOR))?.id)
+        const vendorId = queryParams.get('vendorId')
+        const res = await reviewApi.getAllReviewsForVendor(vendorId)
         setReviewList(res)
     }
 
@@ -125,7 +130,7 @@ function UserProfile() {
             <GeneralHeader/>
 
             {/* Breadcrumb */}
-            <Breadcrumb CurrentPgTitle="User Profile" MenuPgTitle="Pages" img={states.BreadcrumbImg}/>
+            <Breadcrumb CurrentPgTitle="Vendor Profile" MenuPgTitle="Pages" img={states.BreadcrumbImg}/>
 
             <section className="user-profile-area padding-top-40px padding-bottom-100px">
                 <div className="container">

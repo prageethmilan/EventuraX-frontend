@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {AiOutlineUser} from 'react-icons/ai';
-import {BsGear, BsListCheck, BsPower, BsQuestion} from 'react-icons/bs';
-import {FiBookmark, FiPlus, FiPlusCircle, FiSearch} from 'react-icons/fi';
+import {BsListCheck, BsPower} from 'react-icons/bs';
+import {FiPlus, FiPlusCircle} from 'react-icons/fi';
 import {Link, useNavigate} from "react-router-dom";
-import userimg from '../../../assets/images/team1.jpg';
+import userimg from '../../../assets/images/userProfileImg.png';
 // import Button from "../../common/Button";
 import Tooltips from '../tooltips/Tooltips';
 import Cookies from "js-cookie";
@@ -15,6 +15,20 @@ import {accountNotVerifiedWarningMsg} from "../../../const/storageStrings";
 export default function HeaderAuthorAccess() {
     const navigate = useNavigate();
     const [AuthorAccessOpen, setAuthorAccessOpen] = useState(false)
+    let vendor;
+
+    try {
+        const vendorCookie = Cookies.get(VENDOR);
+        if (vendorCookie !== undefined) {
+            vendor = JSON.parse(vendorCookie);
+        } else {
+            console.warn('VENDOR cookie is undefined or missing.');
+            vendor = null;
+        }
+    } catch (error) {
+        console.error('Failed to parse VENDOR cookie:', error);
+        vendor = null;
+    }
 
     const handleAddListing = () => {
         if (Cookies.get(ACCESS_TOKEN) !== undefined) {
@@ -26,6 +40,12 @@ export default function HeaderAuthorAccess() {
         } else {
             navigate('/login')
         }
+    }
+
+    const signOutHandler = () => {
+        Cookies.remove(ACCESS_TOKEN)
+        Cookies.remove(VENDOR)
+        navigate('/login')
     }
 
     return (
@@ -59,9 +79,8 @@ export default function HeaderAuthorAccess() {
                 <div className="side-menu-wrap side-user-menu-wrap">
 
                     <div className="side-user-img">
-                        <img src={userimg} alt="User"/>
-                        <h4 className="su__name">Mark Williamson</h4>
-                        <span className="su__meta">Joined 3 years ago</span>
+                        <img src={vendor?.logo ? vendor?.logo : userimg} alt="User"/>
+                        <h4 className="su__name">{vendor?.name}</h4>
                         <div className="avatar-icon">
                             <Tooltips id="t-3" title="Change Avatar">
                                 <Link to="/dashboard"> <FiPlus/></Link>
@@ -73,27 +92,13 @@ export default function HeaderAuthorAccess() {
                     <ul className="side-menu-ul">
                         <li><Link to="/dashboard"><AiOutlineUser className="user-icon"/> My Profile</Link></li>
                         <li><Link to="/dashboard"><BsListCheck className="user-icon"/> My Listings</Link></li>
-                        <li><Link to="/dashboard"><FiBookmark className="user-icon"/> My Bookmarks</Link></li>
-                        <li><Link to="/dashboard"><FiPlusCircle className="user-icon"/> add listing</Link></li>
+                        <li><a href={''} onClick={handleAddListing}><FiPlusCircle className="user-icon"/> add
+                            listing</a></li>
                         <li>
                             <div className="dropdown-divider"></div>
                         </li>
-                        <li><Link to="#"><BsQuestion className="user-icon"/> help</Link></li>
-                        <li><Link to="#"><BsGear className="user-icon"/> Settings</Link></li>
-                        <li><Link to="#"><BsPower className="user-icon"/> Sign Out</Link></li>
+                        <li><a href={''} onClick={signOutHandler}><BsPower className="user-icon"/> Sign Out</a></li>
                     </ul>
-                    <div className="side-user-search contact-form-action">
-                        <form method="post">
-                            <div className="form-group mb-0">
-                                <FiSearch className="form-icon"/>
-                                <input className="form-control" type="search" name="search-field"
-                                       placeholder="Search by keywords"/>
-                            </div>
-                            <button type="button" className="theme-btn border-0">
-                                Search
-                            </button>
-                        </form>
-                    </div>
                 </div>
             </div>
         </>

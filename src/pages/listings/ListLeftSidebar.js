@@ -6,7 +6,7 @@ import ListingListSidebar from "../../components/sidebars/ListingListSidebar";
 import Footer from "../../components/common/footer/Footer";
 import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import GenericHeader from "../../components/common/GenericHeader";
-import breadcrumbimg from '../../assets/images/bread-bg.jpg'
+import breadcrumbimg from '../../assets/images/advertisements_bg.png'
 import PlaceGrid from "../../components/places/PlaceGrid";
 import {useLocation} from "react-router-dom";
 import * as advertisementApi from "../../utils/api/advertisement";

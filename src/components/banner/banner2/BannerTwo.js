@@ -1,7 +1,6 @@
 import React from 'react';
 import SectionsHeading from "../../common/SectionsHeading";
 import BannerOneSearchInput from "../banner1/BannerOneSearchInput";
-import HighlightedCategory from "../../other/categories/HighlightedCategory";
 import sectiondata from "../../../store/store";
 
 export default function BannerTwo({bgImg}) {
@@ -15,8 +14,6 @@ export default function BannerTwo({bgImg}) {
                             <SectionsHeading title={sectiondata.herobanners.banner2.title} desc={sectiondata.herobanners.banner2.content} />
 
                             <BannerOneSearchInput />
-
-                            <HighlightedCategory categories={sectiondata.herobanners.banner2.categories} />
                         </div>
                     </div>
                 </div>

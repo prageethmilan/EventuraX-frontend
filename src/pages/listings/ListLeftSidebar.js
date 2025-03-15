@@ -10,6 +10,7 @@ import breadcrumbimg from '../../assets/images/bread-bg.jpg'
 import PlaceGrid from "../../components/places/PlaceGrid";
 import {useLocation} from "react-router-dom";
 import * as advertisementApi from "../../utils/api/advertisement";
+import {Col, Row} from 'reactstrap';
 
 const states = {
     breadcrumbimg: breadcrumbimg,
@@ -33,8 +34,11 @@ function ListLeftSidebar() {
     const [advertisementsData, setAdvertisementsData] = useState({
         advertisementList: []
     })
+    const [recommendedAdvertisementsData, setRecommendedAdvertisementData] = useState({
+        advertisementList: []
+    })
 
-    useEffect(() => {
+    useEffect(async () => {
         if (state?.keyword || state?.location || state?.category || state?.page || state?.totalPages) {
             setSearchData(prevState => ({
                 ...prevState,
@@ -49,9 +53,20 @@ function ListLeftSidebar() {
             setTotalPages(state?.totalPages)
             setTotalElements(state?.totalElements)
         } else {
-            loadAllAdvertisements(1)
+            await loadRecommendedAdvertisements()
+            await loadAllAdvertisements(1)
         }
     }, []);
+
+    const loadRecommendedAdvertisements = async () => {
+        setRecommendedAdvertisementData({advertisementList: []})
+        const res = await advertisementApi.getRecommendedAdvertisements(searchData.location, searchData.category)
+        if (res && res.advertisements.length !== 0) {
+            setRecommendedAdvertisementData(prevData => ({
+                advertisementList: [...prevData.advertisementList, ...res.advertisements]
+            }));
+        }
+    }
 
     const loadAllAdvertisements = async (pageNumber, sortByPrice) => {
         setAdvertisementsData({advertisementList: []})
@@ -71,12 +86,14 @@ function ListLeftSidebar() {
             ...prevState,
             [name]: data
         }))
-        if (name === "sortByPrice") await loadAllAdvertisements(1, data)
+        if (name === "sortByPrice") {
+            await loadAllAdvertisements(1, data)
+        }
     }
 
-    const handleLoadMore = () => {
+    const handleLoadMore = async () => {
         if (page < totalPages) {
-            loadAllAdvertisements(page + 1);
+            await loadAllAdvertisements(page + 1);
         }
     }
 
@@ -87,7 +104,7 @@ function ListLeftSidebar() {
             <GeneralHeader/>
 
             {/* Breadcrumb */}
-            <Breadcrumb CurrentPgTitle="List Left Sidebar" MenuPgTitle="Listings" img={states.breadcrumbimg}/>
+            <Breadcrumb CurrentPgTitle="Advertisements" img={states.breadcrumbimg}/>
 
             {/* Place List */}
             <section className="card-area padding-top-40px padding-bottom-100px">
@@ -101,11 +118,32 @@ function ListLeftSidebar() {
 
                         <div className="col-lg-4">
                             <ListingListSidebar onFilterChangeHandler={filterChangeHandler}
-                                                onApplyFilters={() => loadAllAdvertisements(1)} data={searchData}/>
+                                                onApplyFilters={async () => {
+                                                    await loadAllAdvertisements(1)
+                                                    await loadRecommendedAdvertisements()
+                                                }} data={searchData}/>
                         </div>
 
                         <div className="col-lg-8 row align-items-start">
-                            <PlaceGrid advertisementsData={advertisementsData}/>
+                            {((state === null || state === undefined) && recommendedAdvertisementsData.advertisementList.length > 0) &&
+                                <Row>
+                                    <Col lg={12} md={12} xs={12} className={'mb-2'}>
+                                        <h2 className="widget-title">
+                                            Recommended Advertisements
+                                        </h2>
+                                        <div className="title-shape"></div>
+                                    </Col>
+                                    <PlaceGrid advertisementsData={recommendedAdvertisementsData}/>
+                                </Row>}
+                            <Row>
+                                <Col lg={12} md={12} xs={12} className={'mb-2'}>
+                                    <h2 className="widget-title">
+                                        Advertisements
+                                    </h2>
+                                    <div className="title-shape"></div>
+                                </Col>
+                                <PlaceGrid advertisementsData={advertisementsData}/>
+                            </Row>
                         </div>
                     </div>
                     {(page < totalPages) && <div className="row">

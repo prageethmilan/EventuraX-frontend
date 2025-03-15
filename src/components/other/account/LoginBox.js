@@ -103,18 +103,6 @@ function LoginBox({title, subtitle}) {
                                 </div>
                             </div>
                             <div className="col-lg-12">
-                                <div className="form-group">
-                                    <div
-                                        className="custom-checkbox me-0 d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <Link to="/recover" className="color-text fw-medium">
-                                                Forgot password?
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-12">
                                 <div className="btn-box margin-top-20px margin-bottom-20px">
                                     <button className="theme-btn border-0" type="button" onClick={loginUserHandler}>
                                         Login now

@@ -15,8 +15,7 @@ import {AiOutlineUser} from "react-icons/ai";
 import {FaRegEnvelope} from "react-icons/fa";
 import Required from "../../required/Required";
 import ReactStars from "react-rating-stars-component/dist/react-stars";
-import Cookies from "js-cookie";
-import {paymentStatus, VENDOR} from "../../../const/const";
+import {paymentStatus} from "../../../const/const";
 import {reviewFormDataValidation} from "../../../utils/validations/validation";
 import {showError} from "../../../utils/util";
 import * as reviewApi from '../../../utils/api/review'
@@ -63,7 +62,8 @@ function UserProfile() {
     }
 
     const loadAllVerifiedAds = async (pageNumber) => {
-        const res = await advertisementApi.getAllAds(JSON.parse(Cookies.get(VENDOR))?.id, paymentStatus[0], pageNumber, 2);
+        const vendorId = queryParams.get('vendorId')
+        const res = await advertisementApi.getAllAds(vendorId, paymentStatus[0], pageNumber, 2);
         if (res) {
             setAdvertisementsData(prevData => ({
                 advertisementList: [...prevData.advertisementList, ...res.advertisements]
@@ -144,7 +144,7 @@ function UserProfile() {
                             <Tabs>
                                 <div className="dashboard-nav d-flex justify-content-between align-items-center mb-4">
                                     <TabList className="nav nav-tabs border-0" id="nav-tab">
-                                        <Tab>
+                                        <Tab onClick={() => loadAllVerifiedAds(1)}>
                                             <div className="nav-item nav-link theme-btn pt-0 pb-0 me-1">
                                                 <span className="la"><BsListCheck/></span> Listings
                                             </div>

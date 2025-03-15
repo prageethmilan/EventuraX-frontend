@@ -113,7 +113,7 @@ export const deleteAdvertisement = async (advertisementId) => {
     return result
 }
 
-export const getFilteredAdvertisements = async(page, size, keyword, location, category, minPrice, maxPrice, maxRating, sortByPrice) => {
+export const getFilteredAdvertisements = async (page, size, keyword, location, category, minPrice, maxPrice, maxRating, sortByPrice) => {
     let result = null;
     await advertisementService.getFilteredAdvertisements(page, size, keyword, location, category, minPrice, maxPrice, maxRating, sortByPrice)
         .then(async res => {
@@ -132,6 +132,22 @@ export const getFilteredAdvertisements = async(page, size, keyword, location, ca
 export const getAdvertisementDetails = async (advertisementId) => {
     let result = null;
     await advertisementService.getAdvertisementDetails(advertisementId)
+        .then(async res => {
+            if (res.success) {
+                result = res.data
+            } else {
+                toast.error(res.message, {icon: true, hideProgressBar: true})
+            }
+        })
+        .catch(error => {
+            toast.error(error.message, {icon: true, hideProgressBar: true})
+        })
+    return result;
+}
+
+export const getRecommendedAdvertisements = async (location, category) => {
+    let result = null;
+    await advertisementService.getRecommendedAdvertisements(location, category)
         .then(async res => {
             if (res.success) {
                 result = res.data

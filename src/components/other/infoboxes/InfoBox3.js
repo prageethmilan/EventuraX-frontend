@@ -7,7 +7,8 @@ function InfoBox3({infoitems, isbtnshow}) {
             {infoitems.map((item, index) => {
                 return (
                     <div className="col-lg-3 column-td-6" key={index}>
-                        <div className={item.active ? 'icon-box icon-box-layout info-more-content' : 'icon-box icon-box-layout'}>
+                        <div
+                            className={item.active ? 'icon-box icon-box-layout info-more-content' : 'icon-box icon-box-layout'}>
                             <div className="info-icon">
                                 <span>
                                     {item.icon}
@@ -21,8 +22,9 @@ function InfoBox3({infoitems, isbtnshow}) {
                                     {item.description}
                                 </p>
                                 {
-                                    isbtnshow === true ? <Button text="get Started" url="#" className="radius-rounded mt-4" />
-                                    : ''
+                                    isbtnshow === true ?
+                                        <Button text="get Started" url="/listings" className="radius-rounded mt-4"/>
+                                        : ''
                                 }
                             </div>
                         </div>

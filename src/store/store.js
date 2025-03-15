@@ -3688,78 +3688,20 @@ const sectiondata = {
                 url: 'https://behance.com'
             },
         ],
-        footerquicklinks: {
-            title: 'Quick Links',
-            links: [
-                {
-                    path: '/about',
-                    text: 'about us'
-                },
-                {
-                    path: '/sign-up',
-                    text: 'sign up'
-                },
-                {
-                    path: '/login',
-                    text: 'log in'
-                },
-                {
-                    path: '/add-listing/new',
-                    text: 'add listing'
-                },
-                {
-                    path: '/contact',
-                    text: 'contact us'
-                },
-                {
-                    path: '/pricing',
-                    text: 'pricing'
-                }
-            ]
-        },
-        footercategories: {
-            title: 'Categories',
-            links: [
-                {
-                    path: '#',
-                    text: 'Shops'
-                },
-                {
-                    path: '#',
-                    text: 'Hotels'
-                },
-                {
-                    path: '#',
-                    text: 'Restaurants'
-                },
-                {
-                    path: '#',
-                    text: 'Bars'
-                },
-                {
-                    path: '#',
-                    text: 'Events'
-                },
-                {
-                    path: '#',
-                    text: 'Fitness'
-                }
-            ]
-        },
         footercontact: {
             title: 'Contact With Us',
             lists: [
                 {
                     icon: <AiOutlineHome/>,
-                    text: '12345 Little Baker St, Melbourne'
+                    text: 'Wanduramba, Galle, Sri Lanka'
                 },
                 {
                     icon: <FiHeadphones/>,
-                    text: '+ 61 23 8093 3400'
+                    text: '+ 94 76 54 01 908'
                 },
                 {
                     icon: <FaRegEnvelope/>,
-                    text: 'dirto@gmail.com'
+                    text: 'eventurax@gmail.com'
                 }
             ]
         },

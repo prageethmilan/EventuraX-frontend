@@ -10,7 +10,7 @@ import SignUp from "./pages/SignUp";
 import ListingConfirmation from "./pages/dashboard/ListingConfirmation";
 import BookingConfirmation from "./pages/dashboard/BookingConfirmation";
 import Dashboard from "./pages/dashboard/Dashboard";
-import Home2 from './pages/homes/Home2'
+import Home from './pages/homes/Home'
 import AddListing from "./pages/listings/AddListing";
 import ListLeftSidebar from "./pages/listings/ListLeftSidebar";
 import ListingDetails from "./pages/listings/ListingDetails";
@@ -23,7 +23,7 @@ const App = () => {
         <>
             <ScrollToTop/>
             <Routes>
-                <Route path="/" element={<Home2/>}/>
+                <Route path="/" element={<Home/>}/>
                 <Route path="/listings" element={<ListLeftSidebar/>}/>
                 <Route path="/listing-details" element={<ListingDetails/>}/>
                 <Route path="/add-listing/new" element={<AddListing/>}/>

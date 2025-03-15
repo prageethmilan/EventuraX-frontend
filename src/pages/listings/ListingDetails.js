@@ -9,11 +9,6 @@ import ScrollTopBtn from "../../components/common/ScrollTopBtn";
 import {useLocation} from "react-router-dom";
 import * as advertisementApi from "../../utils/api/advertisement"
 
-const contentstate = {
-    mapTitle: 'Location',
-    peopleViewtitle: 'People Also Viewed'
-}
-
 function ListingDetails() {
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)

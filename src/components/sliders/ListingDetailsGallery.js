@@ -41,12 +41,12 @@ function ListingDetailsGallery({data}) {
 
 
     const settingsMain = {
-        slidesToShow: 1,
+        slidesToShow: state.items.length > 1 ? 1 : state.items.length,
         slidesToScroll: 1,
-        infinite: true,
-        arrows: true,
-        dots: true,
-        asNavFor: '.slider-nav',
+        infinite: state.items.length > 1,
+        arrows: state.items.length > 1,
+        dots: state.items.length > 1,
+        asNavFor: state.items.length > 1 ? '.slider-nav' : null,
         className: 'places-carousel gallery-carousel padding-top-35px'
     };
     return (

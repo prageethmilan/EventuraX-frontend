@@ -1,64 +1,88 @@
 import React from 'react';
-import { AiOutlineCar, AiOutlineEllipsis, AiOutlineHome, AiOutlineQuestionCircle, AiOutlineUser } from "react-icons/ai";
+import {AiOutlineCar, AiOutlineEllipsis, AiOutlineHome, AiOutlineQuestionCircle, AiOutlineUser} from "react-icons/ai";
 import {
     BsBookmark,
     BsBriefcase,
-    BsCheckCircle, BsEye,
+    BsCheckCircle,
+    BsEye,
     BsGear,
+    BsGlobeCentralSouthAsia,
     BsHouseDoor,
     BsListCheck,
-    BsMap,
     BsMusicNoteBeamed,
     BsPencil
 } from 'react-icons/bs';
 import {
-    FaBehance, FaCogs,
+    FaBehance,
+    FaCogs,
     FaDribbble,
-    FaFacebookF, FaInstagram,
-    FaLinkedinIn, FaMinus, FaPlus, FaQuoteRight, FaRegComment, FaRegEdit,
-    FaRegEnvelope, FaRegHeart, FaRegHospital, FaRegMap,
-    FaRegMoneyBillAlt, FaRegTrashAlt, FaSearchDollar, FaSearchPlus, FaSort, FaStethoscope,
-    FaTwitter, FaYoutube
+    FaFacebookF,
+    FaHotel,
+    FaInstagram,
+    FaLinkedinIn,
+    FaMinus,
+    FaPlus,
+    FaQuoteRight,
+    FaRegComment,
+    FaRegEdit,
+    FaRegEnvelope,
+    FaRegHeart,
+    FaRegHospital,
+    FaRegMap,
+    FaRegMoneyBillAlt,
+    FaRegTrashAlt,
+    FaSearchDollar,
+    FaSearchPlus,
+    FaSort,
+    FaStethoscope,
+    FaTwitter,
+    FaYoutube
 } from "react-icons/fa";
-import { FcLineChart } from "react-icons/fc";
+import {FcLineChart} from "react-icons/fc";
 import {
     FiBookOpen,
     FiCheck,
-    FiCheckCircle, FiExternalLink,
+    FiCheckCircle,
+    FiExternalLink,
     FiFilter,
-    FiHeadphones, FiHeart,
+    FiHeadphones,
+    FiHeart,
     FiMail,
     FiMap,
     FiMusic,
     FiPlus,
-    FiShoppingCart, FiThumbsUp, FiUsers
+    FiShoppingCart,
+    FiThumbsUp,
+    FiUsers
 } from "react-icons/fi";
-import { GiChickenOven, GiPineTree, GiPositionMarker, GiWineGlass } from 'react-icons/gi';
-import { GoFile } from "react-icons/go";
+import {GiChickenOven, GiPineTree, GiPositionMarker, GiWineGlass} from 'react-icons/gi';
+import {GoFile} from "react-icons/go";
 import {
     IoIosCheckmarkCircle,
-    IoIosFitness, IoIosRocket, IoMdCut,
-    IoMdFitness,
-    IoMdMusicalNotes, IoMdPaperPlane,
+    IoIosFitness,
+    IoIosRocket,
+    IoMdCut,
+    IoMdMusicalNotes,
+    IoMdPaperPlane,
     IoMdStar,
     IoMdStarHalf
 } from "react-icons/io";
-import { MdClose, MdFitnessCenter, MdStar, MdStarBorder, MdStarHalf } from 'react-icons/md';
-import { RiBuilding4Line, RiHotelBedLine, RiPlaneLine, RiReplyLine } from 'react-icons/ri';
-import { TiArrowUnsorted, TiBrush, TiPlane } from "react-icons/ti";
+import {MdClose, MdFitnessCenter, MdStar, MdStarBorder, MdStarHalf} from 'react-icons/md';
+import {RiBuilding4Line, RiHotelBedLine, RiPlaneLine, RiReplyLine} from 'react-icons/ri';
+import {TiArrowUnsorted, TiBrush, TiPlane} from "react-icons/ti";
 import breadcrumbimg from "../assets/images/bread-bg.jpg"; //1920*838
 import logo1 from "../assets/images/client-logo.png";
 import flag2 from "../assets/images/flag1.jpg";
 import flag10 from "../assets/images/flag10.png";
 import flag11 from "../assets/images/flag11.png";
 import flag12 from "../assets/images/flag12.jpg";
-import { default as flag13, default as flag4 } from "../assets/images/flag13.jpg";
-import { default as flag1, default as flag14 } from "../assets/images/flag14.png";
+import {default as flag13, default as flag4} from "../assets/images/flag13.jpg";
+import {default as flag1, default as flag14} from "../assets/images/flag14.png";
 import flag15 from "../assets/images/flag15.jpg";
 import flag16 from "../assets/images/flag16.jpg";
 import flag17 from "../assets/images/flag17.jpg";
-import { default as flag18, default as flag5 } from "../assets/images/flag18.jpg";
-import { default as flag19, default as flag9 } from "../assets/images/flag19.png";
+import {default as flag18, default as flag5} from "../assets/images/flag18.jpg";
+import {default as flag19, default as flag9} from "../assets/images/flag19.png";
 import flag3 from "../assets/images/flag2.jpg";
 import flag20 from "../assets/images/flag20.png";
 import flag6 from "../assets/images/flag3.jpg";
@@ -71,7 +95,7 @@ import about2img from "../assets/images/img2.jpg"; //389*259
 import listingdetailsvideoimg from "../assets/images/img4.jpg";
 import destinationimg1 from "../assets/images/img5.jpg";
 import dreamimg from "../assets/images/img6.jpg"; // 263*165
-import { default as destinationimg6, default as img2 } from "../assets/images/img7.jpg"; // 362*242
+import {default as destinationimg6, default as img2} from "../assets/images/img7.jpg"; // 362*242
 import similarimg from "../assets/images/img8.jpg"; // 90*90
 import darklogo from "../assets/images/logo2.png";
 import cta2mobileimg from "../assets/images/mobile.png";
@@ -90,7 +114,7 @@ import mainimage from "../assets/images/video-img.jpg"; // 750*500
 import hiw3videoimg from "../assets/images/video-img2.jpg";
 import hiw5videoimg from "../assets/images/video-img3.jpg";
 import slicevideo from "../assets/video/slice-video.m4v";
-
+import {CiForkAndKnife} from "react-icons/ci";
 
 
 const sectiondata = {
@@ -100,123 +124,9 @@ const sectiondata = {
             path: '/'
         },
         {
-            title: 'listings',
-            path: '/listing-grid',
-            dropdown: [
-                {
-                    title: 'listing grid',
-                    path: '/listing-grid'
-                },
-                {
-                    title: 'map view',
-                    path: '/list-map-view'
-                },
-                {
-                    title: 'map view 2',
-                    path: '/list-map-view2'
-                },
-                {
-                    title: 'listing list',
-                    path: '/listing-list'
-                },
-                {
-                    title: 'left sidebar',
-                    path: '/list-left-sidebar'
-                },
-                {
-                    title: 'right sidebar',
-                    path: '/list-right-sidebar'
-                },
-                {
-                    title: 'listing details',
-                    path: '/listing-details'
-                },
-                {
-                    title: 'add listing',
-                    path: '/add-listing/new'
-                }
-            ]
-        },
-        {
-            title: 'pages',
-            path: '/user-profile',
-            dropdown: [
-                {
-                    title: 'user profile',
-                    path: '/user-profile'
-                },
-                {
-                    title: 'top authors',
-                    path: '/top-author'
-                },
-                {
-                    title: 'dashboard',
-                    path: '/dashboard'
-                },
-                {
-                    title: 'booking',
-                    path: '/booking'
-                },
-                {
-                    title: 'booking confirmation',
-                    path: '/booking-confirmation'
-                },
-                {
-                    title: 'invoice',
-                    path: '/invoice'
-                },
-                {
-                    title: 'pricing',
-                    path: '/pricing'
-                },
-                {
-                    title: 'about',
-                    path: '/about'
-                },
-                {
-                    title: 'faq',
-                    path: '/faq'
-                },
-                {
-                    title: 'contact',
-                    path: '/contact'
-                },
-                {
-                    title: '404 page',
-                    path: '/page-404'
-                },
-                {
-                    title: 'recover pass',
-                    path: '/recover'
-                }
-            ]
-        },
-        {
-            title: 'blog',
-            path: '/blog-full-width',
-            dropdown: [
-                {
-                    title: 'full width',
-                    path: '/blog-full-width'
-                },
-                {
-                    title: 'blog grid',
-                    path: '/blog-grid'
-                },
-                {
-                    title: 'left sidebar',
-                    path: '/blog-left-sidebar'
-                },
-                {
-                    title: 'right sidebar',
-                    path: '/blog-right-sidebar'
-                },
-                {
-                    title: 'blog detail',
-                    path: '/blog-single'
-                }
-            ]
-        },
+            title: 'Advertisements',
+            path: '/listings'
+        }
     ],
     herobanners: {
         banner1: {
@@ -259,40 +169,8 @@ const sectiondata = {
             bgimage: bannerbg1,
         },
         banner2: {
-            title: 'Find The Best Place in your city',
-            content: 'Dirto helps you find out whats happening in your city, Let\'s explore.',
-            categories: [
-                {
-                    path: '#',
-                    text: 'apartments',
-                    icon: <RiBuilding4Line />
-                },
-                {
-                    path: '#',
-                    text: 'Restaurants',
-                    icon: <GiChickenOven />
-                },
-                {
-                    path: '#',
-                    text: 'travel',
-                    icon: <RiPlaneLine />
-                },
-                {
-                    path: '#',
-                    text: 'Events',
-                    icon: <BsMusicNoteBeamed />
-                },
-                {
-                    path: '#',
-                    text: 'Fitness',
-                    icon: <IoMdFitness />
-                },
-                {
-                    path: '#',
-                    text: 'Hotels',
-                    icon: <RiHotelBedLine />
-                }
-            ],
+            title: 'Find The Best Vendor in your city',
+            content: 'EventuraX helps you find out whats happening in your city, Let\'s explore.',
             bgimage: bannerbg1
         },
         banner3: {
@@ -314,32 +192,32 @@ const sectiondata = {
                 {
                     path: "#",
                     title: "Apartments",
-                    icon: <RiBuilding4Line />
+                    icon: <RiBuilding4Line/>
                 },
                 {
                     path: "#",
                     title: "Restaurants",
-                    icon: <GiChickenOven />
+                    icon: <GiChickenOven/>
                 },
                 {
                     path: "#",
                     title: "Travel",
-                    icon: <RiPlaneLine />
+                    icon: <RiPlaneLine/>
                 },
                 {
                     path: "#",
                     title: "Events",
-                    icon: <BsMusicNoteBeamed />
+                    icon: <BsMusicNoteBeamed/>
                 },
                 {
                     path: "#",
                     title: "Fitness",
-                    icon: <MdFitnessCenter />
+                    icon: <MdFitnessCenter/>
                 },
                 {
                     path: "#",
                     title: "Hotels",
-                    icon: <RiHotelBedLine />
+                    icon: <RiHotelBedLine/>
                 }
             ]
         },
@@ -349,84 +227,84 @@ const sectiondata = {
             items: [
                 {
                     id: 1,
-                    icon: <GiChickenOven />,
+                    icon: <GiChickenOven/>,
                     title: 'restaurants',
                     listingsNum: 42,
                     cardLink: '#'
                 },
                 {
                     id: 2,
-                    icon: <RiHotelBedLine />,
+                    icon: <RiHotelBedLine/>,
                     title: 'hotels',
                     listingsNum: 22,
                     cardLink: '#'
                 },
                 {
                     id: 3,
-                    icon: <FiShoppingCart />,
+                    icon: <FiShoppingCart/>,
                     title: 'shopping',
                     listingsNum: 7,
                     cardLink: '#'
                 },
                 {
                     id: 4,
-                    icon: <IoMdCut />,
+                    icon: <IoMdCut/>,
                     title: 'beauty & Spa',
                     listingsNum: 31,
                     cardLink: '#'
                 },
                 {
                     id: 5,
-                    icon: <FaRegHospital />,
+                    icon: <FaRegHospital/>,
                     title: 'Hospital',
                     listingsNum: 33,
                     cardLink: '#'
                 },
                 {
                     id: 6,
-                    icon: <BsGear />,
+                    icon: <BsGear/>,
                     title: 'Services',
                     listingsNum: 33,
                     cardLink: '#'
                 },
                 {
                     id: 7,
-                    icon: <TiBrush />,
+                    icon: <TiBrush/>,
                     title: 'Arts & Design',
                     listingsNum: 31,
                     cardLink: '#'
                 },
                 {
                     id: 8,
-                    icon: <BsHouseDoor />,
+                    icon: <BsHouseDoor/>,
                     title: 'Real State',
                     listingsNum: 36,
                     cardLink: '#'
                 },
                 {
                     id: 9,
-                    icon: <FaStethoscope />,
+                    icon: <FaStethoscope/>,
                     title: 'Health',
                     listingsNum: 22,
                     cardLink: '#'
                 },
                 {
                     id: 10,
-                    icon: <FaSearchDollar />,
+                    icon: <FaSearchDollar/>,
                     title: 'Jobs',
                     listingsNum: 40,
                     cardLink: '#'
                 },
                 {
                     id: 11,
-                    icon: <TiPlane />,
+                    icon: <TiPlane/>,
                     title: 'Travels',
                     listingsNum: 13,
                     cardLink: '#'
                 },
                 {
                     id: 12,
-                    icon: <FiMusic />,
+                    icon: <FiMusic/>,
                     title: 'Events',
                     listingsNum: 10,
                     cardLink: '#'
@@ -439,73 +317,73 @@ const sectiondata = {
             categories: [
                 {
                     img: img1,
-                    icon: <GiChickenOven />,
+                    icon: <GiChickenOven/>,
                     title: 'Restaurants',
                     cardLink: '#'
                 },
                 {
                     img: img1,
-                    icon: <TiPlane />,
+                    icon: <TiPlane/>,
                     title: 'Travels',
                     cardLink: '#'
                 },
                 {
                     img: img1,
-                    icon: <RiHotelBedLine />,
+                    icon: <RiHotelBedLine/>,
                     title: 'Hotels',
                     cardLink: '#'
                 },
                 {
                     img: img1,
-                    icon: <FiMusic />,
+                    icon: <FiMusic/>,
                     title: 'Events',
                     cardLink: '#'
                 },
                 {
                     img: img1,
-                    icon: <FiShoppingCart />,
+                    icon: <FiShoppingCart/>,
                     title: 'Shops',
                     cardLink: '#'
                 },
                 {
                     img: img1,
-                    icon: <IoIosFitness />,
+                    icon: <IoIosFitness/>,
                     title: 'Fitness',
                     cardLink: '#'
                 },
                 {
                     img: img1,
-                    icon: <GiWineGlass />,
+                    icon: <GiWineGlass/>,
                     title: 'Food & Drink',
                     cardLink: '#'
                 },
                 {
                     img: img1,
-                    icon: <TiBrush />,
+                    icon: <TiBrush/>,
                     title: 'Art & Design',
                     cardLink: '#'
                 },
                 {
                     img: img1,
-                    icon: <TiBrush />,
+                    icon: <TiBrush/>,
                     title: 'Salons',
                     cardLink: '#'
                 },
                 {
                     img: img1,
-                    icon: <FaRegMoneyBillAlt />,
+                    icon: <FaRegMoneyBillAlt/>,
                     title: 'Jobs',
                     cardLink: '#'
                 },
                 {
                     img: img1,
-                    icon: <BsBriefcase />,
+                    icon: <BsBriefcase/>,
                     title: 'Businesses',
                     cardLink: '#'
                 },
                 {
                     img: img1,
-                    icon: <FaRegHospital />,
+                    icon: <FaRegHospital/>,
                     title: 'Hospital',
                     cardLink: '#'
                 }
@@ -542,56 +420,56 @@ const sectiondata = {
         seccontent: 'Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortors.',
         categories: [
             {
-                icon: <GiChickenOven />,
+                icon: <GiChickenOven/>,
                 title: 'Restaurants',
                 stitle: '12 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <TiPlane />,
+                icon: <TiPlane/>,
                 title: 'Travels',
                 stitle: '22 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <RiHotelBedLine />,
+                icon: <RiHotelBedLine/>,
                 title: 'Hotels',
                 stitle: '33 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <IoMdMusicalNotes />,
+                icon: <IoMdMusicalNotes/>,
                 title: 'Events',
                 stitle: '44 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <FiShoppingCart />,
+                icon: <FiShoppingCart/>,
                 title: 'Shops',
                 stitle: '48 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <IoIosFitness />,
+                icon: <IoIosFitness/>,
                 title: 'Fitness',
                 stitle: '50 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <GiWineGlass />,
+                icon: <GiWineGlass/>,
                 title: 'Food & Drink',
                 stitle: '14 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <TiBrush />,
+                icon: <TiBrush/>,
                 title: 'Art & Design',
                 stitle: '20 Listings',
                 url: '#',
@@ -600,56 +478,56 @@ const sectiondata = {
         ],
         morecats: [
             {
-                icon: <TiBrush />,
+                icon: <TiBrush/>,
                 title: 'outdo0rs',
                 stitle: '20 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <TiBrush />,
+                icon: <TiBrush/>,
                 title: 'nightlife',
                 stitle: '20 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <FaRegHospital />,
+                icon: <FaRegHospital/>,
                 title: 'hospitals',
                 stitle: '20 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <GiPineTree />,
+                icon: <GiPineTree/>,
                 title: 'adventure',
                 stitle: '23 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <FiBookOpen />,
+                icon: <FiBookOpen/>,
                 title: 'educations',
                 stitle: '40 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <AiOutlineCar />,
+                icon: <AiOutlineCar/>,
                 title: 'cars',
                 stitle: '33 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <BsBriefcase />,
+                icon: <BsBriefcase/>,
                 title: 'jobs',
                 stitle: '20 Listings',
                 url: '#',
                 img: img1
             },
             {
-                icon: <FaRegMoneyBillAlt />,
+                icon: <FaRegMoneyBillAlt/>,
                 title: 'business',
                 stitle: '20 Listings',
                 url: '#',
@@ -846,19 +724,19 @@ const sectiondata = {
             items: [
                 {
                     id: 1,
-                    icon: <FiMap />,
+                    icon: <FiMap/>,
                     title: 'Find Interesting Place',
                     description: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam luctus, finibus tellus ut, convallis eros.'
                 },
                 {
                     id: 2,
-                    icon: <FiMail />,
+                    icon: <FiMail/>,
                     title: 'Contact a Few authors',
                     description: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam luctus, finibus tellus ut, convallis eros.'
                 },
                 {
                     id: 3,
-                    icon: <AiOutlineUser />,
+                    icon: <AiOutlineUser/>,
                     title: 'Make a Reservation',
                     description: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam luctus, finibus tellus ut, convallis eros.'
                 }
@@ -866,31 +744,31 @@ const sectiondata = {
         },
         hiw2: {
             sectitle: 'What We Offer',
-            seccontent: 'Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortors.',
+            seccontent: 'Experience the best event planning services with EventuraX — making your special moments truly unforgettable.',
             items: [
                 {
                     active: false,
-                    icon: <BsMap />,
-                    title: 'Great Places',
-                    description: 'There are many variations of passages of Lorem Ipsum available.'
+                    icon: <BsGlobeCentralSouthAsia/>,
+                    title: 'Great Venues',
+                    description: 'Find the perfect venue for any occasion from weddings to corporate events'
                 },
                 {
                     active: false,
-                    icon: <GiChickenOven />,
-                    title: 'Great Restaurants',
-                    description: 'There are many variations of passages of Lorem Ipsum available.'
+                    icon: <CiForkAndKnife/>,
+                    title: 'Great Caterers',
+                    description: 'Enjoy mouthwatering cuisines from the finest caterers around you.'
                 },
                 {
                     active: false,
-                    icon: <RiHotelBedLine />,
-                    title: 'Great Hotels',
-                    description: 'There are many variations of passages of Lorem Ipsum available.'
+                    icon: <FaHotel/>,
+                    title: 'Great Event Services',
+                    description: 'From decor to entertainment — we\'ve got you covered with top-notch services.'
                 },
                 {
                     active: true,
-                    icon: <AiOutlineEllipsis />,
+                    icon: <AiOutlineEllipsis/>,
                     title: 'And More...',
-                    description: 'There are many variations of passages of Lorem Ipsum available.'
+                    description: 'Explore a wide range of event planning services, tailored to your needs.'
                 }
             ]
         },
@@ -903,19 +781,19 @@ const sectiondata = {
             items: [
                 {
                     id: 1,
-                    icon: <FaRegMoneyBillAlt />,
+                    icon: <FaRegMoneyBillAlt/>,
                     title: 'Paid Listings',
                     desc: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam luctus, finibus tellus ut, convallis eros.'
                 },
                 {
                     id: 2,
-                    icon: <FcLineChart />,
+                    icon: <FcLineChart/>,
                     title: 'Promoted Listings',
                     desc: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam luctus, finibus tellus ut, convallis eros.'
                 },
                 {
                     id: 3,
-                    icon: <FaRegHeart />,
+                    icon: <FaRegHeart/>,
                     title: 'Paid Claim Listings',
                     desc: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam luctus, finibus tellus ut, convallis eros.'
                 }
@@ -926,22 +804,22 @@ const sectiondata = {
             seccontent: 'Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortors.',
             items: [
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     title: 'We Are Professional',
                     desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,'
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     title: 'Best Service Guarantee',
                     desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,'
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     title: 'We Are Trusted and Secured',
                     desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,'
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     title: 'Online Support 24/7 ',
                     desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,'
                 }
@@ -953,25 +831,25 @@ const sectiondata = {
             items: [
                 {
                     id: 1,
-                    icon: <BsPencil />,
+                    icon: <BsPencil/>,
                     title: 'Pick a Keyword',
                     desc: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam',
                 },
                 {
                     id: 2,
-                    icon: <GiPositionMarker />,
+                    icon: <GiPositionMarker/>,
                     title: 'Select Location',
                     desc: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam',
                 },
                 {
                     id: 3,
-                    icon: <TiArrowUnsorted />,
+                    icon: <TiArrowUnsorted/>,
                     title: 'Select Category',
                     desc: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam',
                 },
                 {
                     id: 4,
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     title: 'View Results',
                     desc: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam',
                 }
@@ -986,25 +864,25 @@ const sectiondata = {
             items: [
                 {
                     id: 1,
-                    icon: <FaSearchPlus />,
+                    icon: <FaSearchPlus/>,
                     title: 'Find a Place',
                     description: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam'
                 },
                 {
                     id: 2,
-                    icon: <FaRegMap />,
+                    icon: <FaRegMap/>,
                     title: 'Select a location',
                     description: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam'
                 },
                 {
                     id: 3,
-                    icon: <FaSort />,
+                    icon: <FaSort/>,
                     title: 'Select a Category',
                     description: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam'
                 },
                 {
                     id: 4,
-                    icon: <FiCheckCircle />,
+                    icon: <FiCheckCircle/>,
                     title: 'See Result',
                     description: 'Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam'
                 }
@@ -1015,17 +893,17 @@ const sectiondata = {
             seccontent: 'Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortors.',
             items: [
                 {
-                    icon: <FiHeadphones />,
+                    icon: <FiHeadphones/>,
                     title: '24/7 Hours Support',
                     desc: 'There are many variations of passages of Lorem Ipsum available. Aenean a quam luctus, finibus tellus'
                 },
                 {
-                    icon: <FaCogs />,
+                    icon: <FaCogs/>,
                     title: 'Admin Panel',
                     desc: 'There are many variations of passages of Lorem Ipsum available. Aenean a quam luctus, finibus tellus'
                 },
                 {
-                    icon: <FiThumbsUp />,
+                    icon: <FiThumbsUp/>,
                     title: 'Mobile friendly',
                     desc: 'There are many variations of passages of Lorem Ipsum available. Aenean a quam luctus, finibus tellus'
                 }
@@ -1036,12 +914,12 @@ const sectiondata = {
         {
             bedge: 'New Open',
             title: 'Favorite Place Food Bank',
-            titleIcon: <IoIosCheckmarkCircle />,
+            titleIcon: <IoIosCheckmarkCircle/>,
             titleUrl: '/listing-details',
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Restaurant',
-            cardTypeIcon: <GiChickenOven />,
+            cardTypeIcon: <GiChickenOven/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1049,11 +927,11 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '204',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.5'
         },
@@ -1065,7 +943,7 @@ const sectiondata = {
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Travel',
-            cardTypeIcon: <RiPlaneLine />,
+            cardTypeIcon: <RiPlaneLine/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1073,23 +951,23 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '248',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.6'
         },
         {
             bedge: 'New Open',
             title: 'Hotel Govendor',
-            titleIcon: <IoIosCheckmarkCircle />,
+            titleIcon: <IoIosCheckmarkCircle/>,
             titleUrl: '/listing-details',
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Hotel',
-            cardTypeIcon: <RiHotelBedLine />,
+            cardTypeIcon: <RiHotelBedLine/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1097,23 +975,23 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '248',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.6'
         },
         {
             bedge: 'New Open',
             title: 'Favorite Place Food Bank',
-            titleIcon: <IoIosCheckmarkCircle />,
+            titleIcon: <IoIosCheckmarkCircle/>,
             titleUrl: '/listing-details',
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Restaurant',
-            cardTypeIcon: <GiChickenOven />,
+            cardTypeIcon: <GiChickenOven/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1121,11 +999,11 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '204',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.5'
         },
@@ -1137,7 +1015,7 @@ const sectiondata = {
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Travel',
-            cardTypeIcon: <RiPlaneLine />,
+            cardTypeIcon: <RiPlaneLine/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1145,23 +1023,23 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '248',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.6'
         },
         {
             bedge: 'New Open',
             title: 'Hotel Govendor',
-            titleIcon: <IoIosCheckmarkCircle />,
+            titleIcon: <IoIosCheckmarkCircle/>,
             titleUrl: '/listing-details',
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Hotel',
-            cardTypeIcon: <RiHotelBedLine />,
+            cardTypeIcon: <RiHotelBedLine/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1169,11 +1047,11 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '248',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.6'
         },
@@ -1182,12 +1060,12 @@ const sectiondata = {
         {
             bedge: 'New Open',
             title: 'Favorite Place Food Bank',
-            titleIcon: <IoIosCheckmarkCircle />,
+            titleIcon: <IoIosCheckmarkCircle/>,
             titleUrl: '/listing-details',
             stitle: 'Bishop Avenue, New York',
-            image:img1,
+            image: img1,
             cardType: 'Restaurant',
-            cardTypeIcon: <GiChickenOven />,
+            cardTypeIcon: <GiChickenOven/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1195,11 +1073,11 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '204',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.5'
         },
@@ -1211,7 +1089,7 @@ const sectiondata = {
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Travel',
-            cardTypeIcon: <RiPlaneLine />,
+            cardTypeIcon: <RiPlaneLine/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1219,23 +1097,23 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '248',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.6'
         },
         {
             bedge: 'New Open',
             title: 'Hotel Govendor',
-            titleIcon: <IoIosCheckmarkCircle />,
+            titleIcon: <IoIosCheckmarkCircle/>,
             titleUrl: '/listing-details',
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Hotel',
-            cardTypeIcon: <RiHotelBedLine />,
+            cardTypeIcon: <RiHotelBedLine/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1243,23 +1121,23 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '248',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.6'
         },
         {
             bedge: 'New Open',
             title: 'Favorite Place Food Bank',
-            titleIcon: <IoIosCheckmarkCircle />,
+            titleIcon: <IoIosCheckmarkCircle/>,
             titleUrl: '/listing-details',
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Restaurant',
-            cardTypeIcon: <GiChickenOven />,
+            cardTypeIcon: <GiChickenOven/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1267,11 +1145,11 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '204',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.5'
         },
@@ -1283,7 +1161,7 @@ const sectiondata = {
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Travel',
-            cardTypeIcon: <RiPlaneLine />,
+            cardTypeIcon: <RiPlaneLine/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1291,23 +1169,23 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '248',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.6'
         },
         {
             bedge: 'New Open',
             title: 'Hotel Govendor',
-            titleIcon: <IoIosCheckmarkCircle />,
+            titleIcon: <IoIosCheckmarkCircle/>,
             titleUrl: '/listing-details',
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Hotel',
-            cardTypeIcon: <RiHotelBedLine />,
+            cardTypeIcon: <RiHotelBedLine/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1315,11 +1193,11 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '248',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.6'
         },
@@ -1331,7 +1209,7 @@ const sectiondata = {
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Travel',
-            cardTypeIcon: <RiPlaneLine />,
+            cardTypeIcon: <RiPlaneLine/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1339,23 +1217,23 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '248',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.6'
         },
         {
             bedge: 'New Open',
             title: 'Hotel Govendor',
-            titleIcon: <IoIosCheckmarkCircle />,
+            titleIcon: <IoIosCheckmarkCircle/>,
             titleUrl: '/listing-details',
             stitle: 'Bishop Avenue, New York',
             image: img2,
             cardType: 'Hotel',
-            cardTypeIcon: <RiHotelBedLine />,
+            cardTypeIcon: <RiHotelBedLine/>,
             author: authorimg,
             authorUrl: '#',
             number: '(492) 492-4828',
@@ -1363,11 +1241,11 @@ const sectiondata = {
             date: 'Posted 1 month ago',
             view: '248',
             ratings: [
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStar />,
-                <IoMdStarHalf />,
-                <IoMdStar className="last-star" />,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStar/>,
+                <IoMdStarHalf/>,
+                <IoMdStar className="last-star"/>,
             ],
             ratingNum: '4.6'
         },
@@ -1600,12 +1478,12 @@ const sectiondata = {
             {
                 bedge: 'New Open',
                 title: 'Favorite Place Food Bank',
-                titleIcon: <IoIosCheckmarkCircle />,
+                titleIcon: <IoIosCheckmarkCircle/>,
                 titleUrl: '/listing-details',
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Restaurant',
-                cardTypeIcon: <GiChickenOven />,
+                cardTypeIcon: <GiChickenOven/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -1613,11 +1491,11 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '204',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.5'
             },
@@ -1629,7 +1507,7 @@ const sectiondata = {
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Travel',
-                cardTypeIcon: <RiPlaneLine />,
+                cardTypeIcon: <RiPlaneLine/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -1637,23 +1515,23 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '248',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.6'
             },
             {
                 bedge: 'New Open',
                 title: 'Hotel Govendor',
-                titleIcon: <IoIosCheckmarkCircle />,
+                titleIcon: <IoIosCheckmarkCircle/>,
                 titleUrl: '/listing-details',
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Hotel',
-                cardTypeIcon: <RiHotelBedLine />,
+                cardTypeIcon: <RiHotelBedLine/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -1661,23 +1539,23 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '248',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.6'
             },
             {
                 bedge: 'New Open',
                 title: 'Favorite Place Food Bank',
-                titleIcon: <IoIosCheckmarkCircle />,
+                titleIcon: <IoIosCheckmarkCircle/>,
                 titleUrl: '/listing-details',
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Restaurant',
-                cardTypeIcon: <GiChickenOven />,
+                cardTypeIcon: <GiChickenOven/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -1685,11 +1563,11 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '204',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.5'
             },
@@ -1701,7 +1579,7 @@ const sectiondata = {
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Travel',
-                cardTypeIcon: <RiPlaneLine />,
+                cardTypeIcon: <RiPlaneLine/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -1709,23 +1587,23 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '248',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.6'
             },
             {
                 bedge: 'New Open',
                 title: 'Hotel Govendor',
-                titleIcon: <IoIosCheckmarkCircle />,
+                titleIcon: <IoIosCheckmarkCircle/>,
                 titleUrl: '/listing-details',
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Hotel',
-                cardTypeIcon: <RiHotelBedLine />,
+                cardTypeIcon: <RiHotelBedLine/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -1733,11 +1611,11 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '248',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.6'
             },
@@ -1750,27 +1628,27 @@ const sectiondata = {
         featurestitle: 'Features',
         featureslists: [
             {
-                icon: <BsCheckCircle />,
+                icon: <BsCheckCircle/>,
                 title: 'Instant Noodles'
             },
             {
-                icon: <BsCheckCircle />,
+                icon: <BsCheckCircle/>,
                 title: 'Smoking Allowed'
             },
             {
-                icon: <BsCheckCircle />,
+                icon: <BsCheckCircle/>,
                 title: 'Bike Parking'
             },
             {
-                icon: <BsCheckCircle />,
+                icon: <BsCheckCircle/>,
                 title: 'Wireless Internet'
             },
             {
-                icon: <BsCheckCircle />,
+                icon: <BsCheckCircle/>,
                 title: 'Street Parking'
             },
             {
-                icon: <BsCheckCircle />,
+                icon: <BsCheckCircle/>,
                 title: 'Accepts Credit Cards'
             }
         ],
@@ -1787,27 +1665,27 @@ const sectiondata = {
             websiteUrl: 'https://techydevs.com',
             socials: [
                 {
-                    icon: <FaFacebookF />,
+                    icon: <FaFacebookF/>,
                     title: 'facebook',
                     url: 'https://facebook.com'
                 },
                 {
-                    icon: <FaTwitter />,
+                    icon: <FaTwitter/>,
                     title: 'twitter',
                     url: 'https://twitter.com'
                 },
                 {
-                    icon: <FaInstagram />,
+                    icon: <FaInstagram/>,
                     title: 'instagram',
                     url: 'https://instagram.com'
                 },
                 {
-                    icon: <FaLinkedinIn />,
+                    icon: <FaLinkedinIn/>,
                     title: 'linkedinIn',
                     url: 'https://linkedin.com'
                 },
                 {
-                    icon: <FaYoutube />,
+                    icon: <FaYoutube/>,
                     title: 'youtube',
                     url: 'https://youtube.com'
                 }
@@ -1819,15 +1697,9 @@ const sectiondata = {
                 name: 'Adam Smith',
                 date: 'Reviewed 2 Days ago',
                 content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Curabitur non nulla sit amet nisl tempus',
-                stars: [
-                    <MdStar />,
-                    <MdStar />,
-                    <MdStar />,
-                    <MdStar />,
-                    <MdStarHalf />,
-                ],
+                rating: 5,
                 replyBtn: 'Reply',
-                replyBtnIcon: <RiReplyLine />,
+                replyBtnIcon: <RiReplyLine/>,
                 replyComments: [
                     {
                         img: team1,
@@ -1835,14 +1707,14 @@ const sectiondata = {
                         date: 'Reviewed 3 Days ago',
                         content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Curabitur non nulla sit amet nisl tempus',
                         stars: [
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStarHalf />,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStarHalf/>,
                         ],
                         replyBtn: 'Reply',
-                        replyBtnIcon: <RiReplyLine />,
+                        replyBtnIcon: <RiReplyLine/>,
                     }
                 ]
             },
@@ -1851,15 +1723,9 @@ const sectiondata = {
                 name: 'Matt Derry',
                 date: 'Reviewed 4 Days ago',
                 content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Curabitur non nulla sit amet nisl tempus',
-                stars: [
-                    <MdStar />,
-                    <MdStar />,
-                    <MdStar />,
-                    <MdStar />,
-                    <MdStar />,
-                ],
+                rating: 4,
                 replyBtn: 'Reply',
-                replyBtnIcon: <RiReplyLine />,
+                replyBtnIcon: <RiReplyLine/>,
                 replyComments: []
             }
         ],
@@ -1875,23 +1741,23 @@ const sectiondata = {
                 websiteUrl: 'https://techydevs.com',
                 socials: [
                     {
-                        icon: <FaFacebookF />,
+                        icon: <FaFacebookF/>,
                         url: 'https://facebook.com'
                     },
                     {
-                        icon: <FaTwitter />,
+                        icon: <FaTwitter/>,
                         url: 'https://twitter.com'
                     },
                     {
-                        icon: <FaInstagram />,
+                        icon: <FaInstagram/>,
                         url: 'https://instagram.com'
                     },
                     {
-                        icon: <FaDribbble />,
+                        icon: <FaDribbble/>,
                         url: 'https://dribbble.com'
                     },
                     {
-                        icon: <FaBehance />,
+                        icon: <FaBehance/>,
                         url: 'https://behance.be'
                     }
                 ]
@@ -1900,31 +1766,31 @@ const sectiondata = {
                 title: 'Statics info',
                 lists: [
                     {
-                        icon: <BsListCheck />,
+                        icon: <BsListCheck/>,
                         text: '12 Listings'
                     },
                     {
-                        icon: <MdStarBorder />,
+                        icon: <MdStarBorder/>,
                         text: '4.4 Ratings'
                     },
                     {
-                        icon: <BsBookmark />,
+                        icon: <BsBookmark/>,
                         text: '24 Bookmark'
                     },
                     {
-                        icon: <BsEye />,
+                        icon: <BsEye/>,
                         text: '745 Views'
                     },
                     {
-                        icon: <FiExternalLink />,
+                        icon: <FiExternalLink/>,
                         text: '120 Share'
                     },
                     {
-                        icon: <FaRegComment />,
+                        icon: <FaRegComment/>,
                         text: '20 Comments'
                     },
                     {
-                        icon: <FiHeart />,
+                        icon: <FiHeart/>,
                         text: '120 Likes'
                     }
                 ]
@@ -2065,11 +1931,11 @@ const sectiondata = {
                         cat: 'Gym & Fitness',
                         catUrl: '#',
                         stars: [
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStarHalf />,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStarHalf/>,
                         ]
                     },
                     {
@@ -2080,11 +1946,11 @@ const sectiondata = {
                         cat: 'Restaurant',
                         catUrl: '#',
                         stars: [
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStarHalf />,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStarHalf/>,
                         ]
                     },
                     {
@@ -2095,11 +1961,11 @@ const sectiondata = {
                         cat: 'Art & Design',
                         catUrl: '#',
                         stars: [
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStarHalf />,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStarHalf/>,
                         ]
                     },
                     {
@@ -2110,11 +1976,11 @@ const sectiondata = {
                         cat: 'Outdoors',
                         catUrl: '#',
                         stars: [
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStar />,
-                            <MdStarHalf />,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStar/>,
+                            <MdStarHalf/>,
                         ]
                     },
                 ]
@@ -2123,23 +1989,23 @@ const sectiondata = {
                 title: 'Follow & Connect',
                 socials: [
                     {
-                        icon: <FaFacebookF />,
+                        icon: <FaFacebookF/>,
                         url: 'https://facebook.com'
                     },
                     {
-                        icon: <FaTwitter />,
+                        icon: <FaTwitter/>,
                         url: 'https://twitter.com'
                     },
                     {
-                        icon: <FaInstagram />,
+                        icon: <FaInstagram/>,
                         url: 'https://instagram.com'
                     },
                     {
-                        icon: <FaDribbble />,
+                        icon: <FaDribbble/>,
                         url: 'https://dribbble.com'
                     },
                     {
-                        icon: <FaBehance />,
+                        icon: <FaBehance/>,
                         url: 'https://behance.be'
                     },
                 ]
@@ -2158,23 +2024,23 @@ const sectiondata = {
             websiteUrl: 'https://techydevs.com',
             socials: [
                 {
-                    icon: <FaFacebookF />,
+                    icon: <FaFacebookF/>,
                     url: 'https://facebook.com'
                 },
                 {
-                    icon: <FaTwitter />,
+                    icon: <FaTwitter/>,
                     url: 'https://twitter.com'
                 },
                 {
-                    icon: <FaInstagram />,
+                    icon: <FaInstagram/>,
                     url: 'https://instagram.com'
                 },
                 {
-                    icon: <FaDribbble />,
+                    icon: <FaDribbble/>,
                     url: 'https://dribbble.com'
                 },
                 {
-                    icon: <FaBehance />,
+                    icon: <FaBehance/>,
                     url: 'https://behance.be'
                 }
             ]
@@ -2188,9 +2054,9 @@ const sectiondata = {
                 title: 'Favorite Place Food Bank',
                 subtitle: 'Bishop Avenue, New York',
                 editTxt: 'Edit',
-                editIcon: <FaRegEdit />,
+                editIcon: <FaRegEdit/>,
                 deleteTxt: 'Delete',
-                deleteIcon: <FaRegTrashAlt />,
+                deleteIcon: <FaRegTrashAlt/>,
                 cardLink: '/listing-details'
             },
             {
@@ -2198,9 +2064,9 @@ const sectiondata = {
                 title: 'Beach Blue Boardwalk',
                 subtitle: 'Bishop Avenue, New York',
                 editTxt: 'Edit',
-                editIcon: <FaRegEdit />,
+                editIcon: <FaRegEdit/>,
                 deleteTxt: 'Delete',
-                deleteIcon: <FaRegTrashAlt />,
+                deleteIcon: <FaRegTrashAlt/>,
                 cardLink: '/listing-details'
             },
             {
@@ -2208,9 +2074,9 @@ const sectiondata = {
                 title: 'Hotel Govendor',
                 subtitle: 'Bishop Avenue, New York',
                 editTxt: 'Edit',
-                editIcon: <FaRegEdit />,
+                editIcon: <FaRegEdit/>,
                 deleteTxt: 'Delete',
-                deleteIcon: <FaRegTrashAlt />,
+                deleteIcon: <FaRegTrashAlt/>,
                 cardLink: '/listing-details'
             },
             {
@@ -2218,9 +2084,9 @@ const sectiondata = {
                 title: 'Favorite Place Food Bank',
                 subtitle: 'Bishop Avenue, New York',
                 editTxt: 'Edit',
-                editIcon: <FaRegEdit />,
+                editIcon: <FaRegEdit/>,
                 deleteTxt: 'Delete',
-                deleteIcon: <FaRegTrashAlt />,
+                deleteIcon: <FaRegTrashAlt/>,
                 cardLink: '/listing-details'
             },
             {
@@ -2228,9 +2094,9 @@ const sectiondata = {
                 title: 'Beach Blue Boardwalk',
                 subtitle: 'Bishop Avenue, New York',
                 editTxt: 'Edit',
-                editIcon: <FaRegEdit />,
+                editIcon: <FaRegEdit/>,
                 deleteTxt: 'Delete',
-                deleteIcon: <FaRegTrashAlt />,
+                deleteIcon: <FaRegTrashAlt/>,
                 cardLink: '/listing-details'
             },
             {
@@ -2238,9 +2104,9 @@ const sectiondata = {
                 title: 'Hotel Govendor',
                 subtitle: 'Bishop Avenue, New York',
                 editTxt: 'Edit',
-                editIcon: <FaRegEdit />,
+                editIcon: <FaRegEdit/>,
                 deleteTxt: 'Delete',
-                deleteIcon: <FaRegTrashAlt />,
+                deleteIcon: <FaRegTrashAlt/>,
                 cardLink: '/listing-details'
             }
         ],
@@ -2262,19 +2128,19 @@ const sectiondata = {
                 stitle: 'Business Consultant',
                 socials: [
                     {
-                        icon: <FaFacebookF />,
+                        icon: <FaFacebookF/>,
                         url: 'https://facebook.com'
                     },
                     {
-                        icon: <FaTwitter />,
+                        icon: <FaTwitter/>,
                         url: 'https://twitter.com'
                     },
                     {
-                        icon: <FaInstagram />,
+                        icon: <FaInstagram/>,
                         url: 'https://instagram.com'
                     },
                     {
-                        icon: <FaLinkedinIn />,
+                        icon: <FaLinkedinIn/>,
                         url: 'https://linkedin.com'
                     }
                 ]
@@ -2286,19 +2152,19 @@ const sectiondata = {
                 stitle: 'Photographer',
                 socials: [
                     {
-                        icon: <FaFacebookF />,
+                        icon: <FaFacebookF/>,
                         url: 'https://facebook.com'
                     },
                     {
-                        icon: <FaTwitter />,
+                        icon: <FaTwitter/>,
                         url: 'https://twitter.com'
                     },
                     {
-                        icon: <FaInstagram />,
+                        icon: <FaInstagram/>,
                         url: 'https://instagram.com'
                     },
                     {
-                        icon: <FaLinkedinIn />,
+                        icon: <FaLinkedinIn/>,
                         url: 'https://linkedin.com'
                     }
                 ]
@@ -2310,19 +2176,19 @@ const sectiondata = {
                 stitle: 'Co-manager associated',
                 socials: [
                     {
-                        icon: <FaFacebookF />,
+                        icon: <FaFacebookF/>,
                         url: 'https://facebook.com'
                     },
                     {
-                        icon: <FaTwitter />,
+                        icon: <FaTwitter/>,
                         url: 'https://twitter.com'
                     },
                     {
-                        icon: <FaInstagram />,
+                        icon: <FaInstagram/>,
                         url: 'https://instagram.com'
                     },
                     {
-                        icon: <FaLinkedinIn />,
+                        icon: <FaLinkedinIn/>,
                         url: 'https://linkedin.com'
                     }
                 ]
@@ -2334,19 +2200,19 @@ const sectiondata = {
                 stitle: 'Director',
                 socials: [
                     {
-                        icon: <FaFacebookF />,
+                        icon: <FaFacebookF/>,
                         url: 'https://facebook.com'
                     },
                     {
-                        icon: <FaTwitter />,
+                        icon: <FaTwitter/>,
                         url: 'https://twitter.com'
                     },
                     {
-                        icon: <FaInstagram />,
+                        icon: <FaInstagram/>,
                         url: 'https://instagram.com'
                     },
                     {
-                        icon: <FaLinkedinIn />,
+                        icon: <FaLinkedinIn/>,
                         url: 'https://linkedin.com'
                     }
                 ]
@@ -2355,49 +2221,49 @@ const sectiondata = {
     },
     pricingplan: [
         {
-            icon: <IoMdPaperPlane />,
+            icon: <IoMdPaperPlane/>,
             title: 'Basic Plan',
             price: '49',
             currency: '$',
             mo: 'Per Month',
             features: [
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'One Listing',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: '90 Days Availability',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'Non-Featured',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'Limited Support',
                 },
                 {
-                    icon: <MdClose />,
+                    icon: <MdClose/>,
                     iconClr: 'text-danger',
                     title: 'Average Price Range',
                 },
                 {
-                    icon: <MdClose />,
+                    icon: <MdClose/>,
                     iconClr: 'text-danger',
                     title: 'Business Hours',
                 },
                 {
-                    icon: <MdClose />,
+                    icon: <MdClose/>,
                     iconClr: 'text-danger',
                     title: 'Lifetime Availability',
                 },
                 {
-                    icon: <MdClose />,
+                    icon: <MdClose/>,
                     iconClr: 'text-danger',
                     title: 'Featured In Search Results',
                 }
@@ -2407,49 +2273,49 @@ const sectiondata = {
             active: false
         },
         {
-            icon: <RiPlaneLine />,
+            icon: <RiPlaneLine/>,
             title: 'Advanced Plan',
             price: '99',
             currency: '$',
             mo: 'Per Month',
             features: [
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'One Listing',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: '90 Days Availability',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'Non-Featured',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'Limited Support',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'Average Price Range',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'Business Hours',
                 },
                 {
-                    icon: <MdClose />,
+                    icon: <MdClose/>,
                     iconClr: 'text-danger',
                     title: 'Lifetime Availability',
                 },
                 {
-                    icon: <MdClose />,
+                    icon: <MdClose/>,
                     iconClr: 'text-danger',
                     title: 'Featured In Search Results',
                 }
@@ -2459,49 +2325,49 @@ const sectiondata = {
             active: true
         },
         {
-            icon: <IoIosRocket />,
+            icon: <IoIosRocket/>,
             title: 'Enterprise Plan',
             price: '149',
             currency: '$',
             mo: 'Per Month',
             features: [
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'One Listing',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: '90 Days Availability',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'Non-Featured',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'Limited Support',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'Average Price Range',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'Business Hours',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'Lifetime Availability',
                 },
                 {
-                    icon: <FiCheck />,
+                    icon: <FiCheck/>,
                     iconClr: 'text-success',
                     title: 'Featured In Search Results',
                 }
@@ -2563,12 +2429,12 @@ const sectiondata = {
             {
                 bedge: 'New Open',
                 title: 'Hotel Govendor',
-                titleIcon: <IoIosCheckmarkCircle />,
+                titleIcon: <IoIosCheckmarkCircle/>,
                 titleUrl: '/listing-details',
                 stitle: 'Bishop Avenue, New York',
                 image: img1,
                 cardType: 'Hotel',
-                cardTypeIcon: <RiHotelBedLine />,
+                cardTypeIcon: <RiHotelBedLine/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -2577,23 +2443,23 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '204',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.7'
             },
             {
                 bedge: 'New Open',
                 title: 'Favorite Place Food Bank',
-                titleIcon: <IoIosCheckmarkCircle />,
+                titleIcon: <IoIosCheckmarkCircle/>,
                 titleUrl: '/listing-details',
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Restaurant',
-                cardTypeIcon: <GiChickenOven />,
+                cardTypeIcon: <GiChickenOven/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -2601,11 +2467,11 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '204',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.5'
             },
@@ -2617,7 +2483,7 @@ const sectiondata = {
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Travel',
-                cardTypeIcon: <GiChickenOven />,
+                cardTypeIcon: <GiChickenOven/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -2625,23 +2491,23 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '248',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.6'
             },
             {
                 bedge: 'New Open',
                 title: 'Hotel Govendor',
-                titleIcon: <IoIosCheckmarkCircle />,
+                titleIcon: <IoIosCheckmarkCircle/>,
                 titleUrl: '/listing-details',
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Hotel',
-                cardTypeIcon: <RiHotelBedLine />,
+                cardTypeIcon: <RiHotelBedLine/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -2649,23 +2515,23 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '248',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.6'
             },
             {
                 bedge: 'New Open',
                 title: 'sticky band party',
-                titleIcon: <IoIosCheckmarkCircle />,
+                titleIcon: <IoIosCheckmarkCircle/>,
                 titleUrl: '/listing-details',
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Event',
-                cardTypeIcon: <IoMdMusicalNotes />,
+                cardTypeIcon: <IoMdMusicalNotes/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -2673,11 +2539,11 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '248',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.4'
             },
@@ -2689,7 +2555,7 @@ const sectiondata = {
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Shop',
-                cardTypeIcon: <GiChickenOven />,
+                cardTypeIcon: <GiChickenOven/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -2697,23 +2563,23 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '248',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.6'
             },
             {
                 bedge: 'New Open',
                 title: 'Hotel Govendor',
-                titleIcon: <IoIosCheckmarkCircle />,
+                titleIcon: <IoIosCheckmarkCircle/>,
                 titleUrl: '/listing-details',
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Hotel',
-                cardTypeIcon: <RiHotelBedLine />,
+                cardTypeIcon: <RiHotelBedLine/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -2721,23 +2587,23 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '204',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.7'
             },
             {
                 bedge: 'New Open',
                 title: 'Favorite Place Food Bank',
-                titleIcon: <IoIosCheckmarkCircle />,
+                titleIcon: <IoIosCheckmarkCircle/>,
                 titleUrl: '/listing-details',
                 stitle: 'Bishop Avenue, New York',
                 image: img2,
                 cardType: 'Restaurant',
-                cardTypeIcon: <GiChickenOven />,
+                cardTypeIcon: <GiChickenOven/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -2745,11 +2611,11 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '204',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.5'
             }
@@ -2762,12 +2628,12 @@ const sectiondata = {
             {
                 bedge: 'New Open',
                 title: 'Favorite Place Food Bank',
-                titleIcon: <IoIosCheckmarkCircle />,
+                titleIcon: <IoIosCheckmarkCircle/>,
                 titleUrl: '/listing-details',
                 stitle: 'Bishop Avenue, New York',
                 image: destinationimg6,
                 cardType: 'Restaurant',
-                cardTypeIcon: <GiChickenOven />,
+                cardTypeIcon: <GiChickenOven/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -2775,11 +2641,11 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '204',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.5'
             },
@@ -2791,7 +2657,7 @@ const sectiondata = {
                 stitle: 'Bishop Avenue, New York',
                 image: destinationimg6,
                 cardType: 'Travel',
-                cardTypeIcon: <RiPlaneLine />,
+                cardTypeIcon: <RiPlaneLine/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -2799,23 +2665,23 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '248',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.6'
             },
             {
                 bedge: 'New Open',
                 title: 'Hotel Govendor',
-                titleIcon: <IoIosCheckmarkCircle />,
+                titleIcon: <IoIosCheckmarkCircle/>,
                 titleUrl: '/listing-details',
                 stitle: 'Bishop Avenue, New York',
                 image: destinationimg6,
                 cardType: 'Hotel',
-                cardTypeIcon: <RiHotelBedLine />,
+                cardTypeIcon: <RiHotelBedLine/>,
                 author: authorimg,
                 authorUrl: '#',
                 number: '(492) 492-4828',
@@ -2823,11 +2689,11 @@ const sectiondata = {
                 date: 'Posted 1 month ago',
                 view: '248',
                 ratings: [
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStar />,
-                    <IoMdStarHalf />,
-                    <IoMdStar className="last-star" />,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStar/>,
+                    <IoMdStarHalf/>,
+                    <IoMdStar className="last-star"/>,
                 ],
                 ratingNum: '4.6'
             },
@@ -3048,57 +2914,57 @@ const sectiondata = {
             {
                 title: 'What is a novel coronavirus?',
                 desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text',
-                plus: <FaPlus />,
-                minus: <FaMinus />,
+                plus: <FaPlus/>,
+                minus: <FaMinus/>,
                 cardClass: 'mb-3'
             },
             {
                 title: 'Can I create a free listing?',
                 desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text',
-                plus: <FaPlus />,
-                minus: <FaMinus />,
+                plus: <FaPlus/>,
+                minus: <FaMinus/>,
                 cardClass: 'mb-3'
             },
             {
                 title: 'How much time does it take to get approval?',
                 desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text',
-                plus: <FaPlus />,
-                minus: <FaMinus />,
+                plus: <FaPlus/>,
+                minus: <FaMinus/>,
                 cardClass: 'mb-3'
             },
             {
                 title: 'Do I have to commit to a yearly subscription?',
                 desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text',
-                plus: <FaPlus />,
-                minus: <FaMinus />,
+                plus: <FaPlus/>,
+                minus: <FaMinus/>,
                 cardClass: 'mb-3'
             },
             {
                 title: 'Is my listing secure?',
                 desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text',
-                plus: <FaPlus />,
-                minus: <FaMinus />,
+                plus: <FaPlus/>,
+                minus: <FaMinus/>,
                 cardClass: 'mb-3'
             },
             {
                 title: 'How can i Delete listing?',
                 desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text',
-                plus: <FaPlus />,
-                minus: <FaMinus />,
+                plus: <FaPlus/>,
+                minus: <FaMinus/>,
                 cardClass: 'mb-3'
             },
             {
                 title: 'What is listing site?',
                 desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text',
-                plus: <FaPlus />,
-                minus: <FaMinus />,
+                plus: <FaPlus/>,
+                minus: <FaMinus/>,
                 cardClass: 'mb-3'
             },
             {
                 title: 'Why people chose this listing?',
                 desc: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text',
-                plus: <FaPlus />,
-                minus: <FaMinus />,
+                plus: <FaPlus/>,
+                minus: <FaMinus/>,
                 cardClass: ''
             },
         ]
@@ -3107,19 +2973,19 @@ const sectiondata = {
         iconlist1: [
             {
                 id: 1,
-                icon: <FiUsers />,
+                icon: <FiUsers/>,
                 title: 'Ask Community',
                 subtitle: 'Get help from 1M+ Revolut users'
             },
             {
                 id: 2,
-                icon: <FiBookOpen />,
+                icon: <FiBookOpen/>,
                 title: 'Read our blog',
                 subtitle: 'Follow the latest news and stories'
             },
             {
                 id: 3,
-                icon: <AiOutlineQuestionCircle />,
+                icon: <AiOutlineQuestionCircle/>,
                 title: 'Get help in the app',
                 subtitle: 'Just head to Help in the app'
             },
@@ -3152,15 +3018,15 @@ const sectiondata = {
             img: cta2mobileimg,
             featurelists: [
                 {
-                    icon: <GoFile />,
+                    icon: <GoFile/>,
                     text: 'Real Time Listing'
                 },
                 {
-                    icon: <FiFilter />,
+                    icon: <FiFilter/>,
                     text: 'Budget Filter For Budget'
                 },
                 {
-                    icon: <AiOutlineQuestionCircle />,
+                    icon: <AiOutlineQuestionCircle/>,
                     text: 'Notification Price Reduction'
                 }
             ],
@@ -3272,23 +3138,23 @@ const sectiondata = {
             content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolorem illo laborum magni, maxime omnis quam quod totam voluptatem voluptatibus?',
             sociallinks: [
                 {
-                    icon: <FaFacebookF />,
+                    icon: <FaFacebookF/>,
                     url: 'https://facebook.com'
                 },
                 {
-                    icon: <FaTwitter />,
+                    icon: <FaTwitter/>,
                     url: 'https://twitter.com'
                 },
                 {
-                    icon: <FaLinkedinIn />,
+                    icon: <FaLinkedinIn/>,
                     url: 'https://linkedin.com'
                 },
                 {
-                    icon: <FaDribbble />,
+                    icon: <FaDribbble/>,
                     url: 'https://dribbble.com'
                 },
                 {
-                    icon: <FaBehance />,
+                    icon: <FaBehance/>,
                     url: 'https://behance.com'
                 },
             ],
@@ -3625,7 +3491,7 @@ const sectiondata = {
 
         /* Blockquote */
         bgimg: mainimage,
-        quoteIcon: <FaQuoteRight />,
+        quoteIcon: <FaQuoteRight/>,
         quoteDesc: 'Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn\'t really do it, they just saw something. It seemed obvious to them after a while. That\'s because they were able to connect experiences they\'ve had and synthesize new things.',
         name: '- Steve Jobs',
         designation: 'Founder of Apple Inc.',
@@ -3712,7 +3578,7 @@ const sectiondata = {
                 followers: '49',
                 following: '49',
                 buttonTxt: 'Follow',
-                buttonIcon: <FiPlus />
+                buttonIcon: <FiPlus/>
             },
             {
                 authorImg: team2,
@@ -3724,7 +3590,7 @@ const sectiondata = {
                 followers: '55',
                 following: '24',
                 buttonTxt: 'Follow',
-                buttonIcon: <FiPlus />
+                buttonIcon: <FiPlus/>
             },
             {
                 authorImg: team2,
@@ -3736,7 +3602,7 @@ const sectiondata = {
                 followers: '55',
                 following: '24',
                 buttonTxt: 'Follow',
-                buttonIcon: <FiPlus />
+                buttonIcon: <FiPlus/>
             },
             {
                 authorImg: team2,
@@ -3748,7 +3614,7 @@ const sectiondata = {
                 followers: '55',
                 following: '24',
                 buttonTxt: 'Follow',
-                buttonIcon: <FiPlus />
+                buttonIcon: <FiPlus/>
             },
             {
                 authorImg: team2,
@@ -3760,7 +3626,7 @@ const sectiondata = {
                 followers: '55',
                 following: '24',
                 buttonTxt: 'Follow',
-                buttonIcon: <FiPlus />
+                buttonIcon: <FiPlus/>
             },
             {
                 authorImg: team2,
@@ -3772,7 +3638,7 @@ const sectiondata = {
                 followers: '55',
                 following: '24',
                 buttonTxt: 'Follow',
-                buttonIcon: <FiPlus />
+                buttonIcon: <FiPlus/>
             },
             {
                 authorImg: team2,
@@ -3784,7 +3650,7 @@ const sectiondata = {
                 followers: '55',
                 following: '24',
                 buttonTxt: 'Follow',
-                buttonIcon: <FiPlus />
+                buttonIcon: <FiPlus/>
             }
         ],
     },
@@ -3802,23 +3668,23 @@ const sectiondata = {
         footerdesc: 'Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros',
         sociallinks: [
             {
-                icon: <FaFacebookF />,
+                icon: <FaFacebookF/>,
                 url: 'https://facebook.com'
             },
             {
-                icon: <FaTwitter />,
+                icon: <FaTwitter/>,
                 url: 'https://twitter.com'
             },
             {
-                icon: <FaLinkedinIn />,
+                icon: <FaLinkedinIn/>,
                 url: 'https://linkedin.com'
             },
             {
-                icon: <FaDribbble />,
+                icon: <FaDribbble/>,
                 url: 'https://dribbble.com'
             },
             {
-                icon: <FaBehance />,
+                icon: <FaBehance/>,
                 url: 'https://behance.com'
             },
         ],
@@ -3884,15 +3750,15 @@ const sectiondata = {
             title: 'Contact With Us',
             lists: [
                 {
-                    icon: <AiOutlineHome />,
+                    icon: <AiOutlineHome/>,
                     text: '12345 Little Baker St, Melbourne'
                 },
                 {
-                    icon: <FiHeadphones />,
+                    icon: <FiHeadphones/>,
                     text: '+ 61 23 8093 3400'
                 },
                 {
-                    icon: <FaRegEnvelope />,
+                    icon: <FaRegEnvelope/>,
                     text: 'dirto@gmail.com'
                 }
             ]
@@ -3913,11 +3779,11 @@ const sectiondata = {
                 }
             ],
             languages: [
-                {value: 0, label:'English'},
-                {value: 1, label:'Bangladesh'},
-                {value: 2, label:'Nepal'},
-                {value: 3, label:'America'},
-                {value: 4, label:'Arabic'},
+                {value: 0, label: 'English'},
+                {value: 1, label: 'Bangladesh'},
+                {value: 2, label: 'Nepal'},
+                {value: 3, label: 'America'},
+                {value: 4, label: 'Arabic'},
             ]
         }
     }

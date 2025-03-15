@@ -62,6 +62,7 @@ function UserProfile() {
     }
 
     const loadAllVerifiedAds = async (pageNumber) => {
+        if (pageNumber === 1) setAdvertisementsData({advertisementList: []})
         const vendorId = queryParams.get('vendorId')
         const res = await advertisementApi.getAllAds(vendorId, paymentStatus[0], pageNumber, 2);
         if (res) {

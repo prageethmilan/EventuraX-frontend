@@ -15,8 +15,6 @@ function Copyright() {
                         <p className="copy__desc">
                             &copy; Copyright By EventuraX {year}
                         </p>
-
-                        {/*<CopyrightMenu copyrightright={sectiondata.footerdata.copyright} />*/}
                     </div>
                 </div>
             </div>

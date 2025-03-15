@@ -29,9 +29,6 @@ function Login() {
                 </div>
             </section>
 
-            {/* Newsletter */}
-            {/*<NewsLetter newsLetterContent={sectiondata.calltoactions.newsletters} />*/}
-
             {/* Footer */}
             <Footer/>
 

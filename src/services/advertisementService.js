@@ -35,3 +35,19 @@ export const getFilteredAdvertisements = async (page, limit, keyword, location, 
 export const getAdvertisementDetails = async (advertisementId) => {
     return await apiRequest('GET', `/advertisement/${advertisementId}`);
 }
+
+export const getRecommendedAdvertisements = async (location, category) => {
+    const queryParams = new URLSearchParams();
+
+    if (location?.value) {
+        queryParams.append('location', location.value);
+    }
+    if (category?.value) {
+        queryParams.append('category', category.value);
+    }
+
+    const queryString = queryParams.toString();
+    const url = `/advertisement/recommended-ads${queryString ? `?${queryString}` : ''}`;
+
+    return await apiRequest('GET', url);
+}

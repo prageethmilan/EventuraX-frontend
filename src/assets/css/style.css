@@ -2709,7 +2709,6 @@ select,
     position: relative;
     z-index: 1;
     color: #fff;
-    /*background-image: url("../images/bread-bg.jpg");*/
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -3021,7 +3020,6 @@ select,
     listing-detail-breadcrumb
  ====================================================*/
 .listing-detail-breadcrumb {
-    /*background-image: url("../images/bread-bg2.jpg");*/
     background-color: #808996;
     overflow: inherit;
     z-index: 2;
@@ -3098,10 +3096,6 @@ select,
 /*====================================================
    about-breadcrumb
  ====================================================*/
-.about-breadcrumb {
-    background-image: url("../images/bread-bg3.jpg");
-    background-position: inherit;
-}
 
 .about-breadcrumb .breadcrumb-content {
     text-align: left;

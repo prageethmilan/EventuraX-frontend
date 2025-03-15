@@ -253,13 +253,11 @@ function Dashboard() {
     }
 
     const handleDeleteAdvertisement = (item) => {
-        console.log(item)
         setIsOpenConfirmBox(true)
         setAdvertisementId(item._id)
     }
 
     const onDeleteAdvertisement = async () => {
-        console.log(advertisementId)
         const res = await advertisementApi.deleteAdvertisement(advertisementId)
         if (res) {
             setIsOpenConfirmBox(false)

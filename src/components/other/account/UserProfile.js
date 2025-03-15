@@ -25,7 +25,7 @@ import {reviewFormDataErrors} from "../../../utils/validations/error";
 import {useLocation} from "react-router-dom";
 
 const states = {
-    BreadcrumbImg: require('../../../assets/images/bread-bg.jpg')
+    BreadcrumbImg: require('../../../assets/images/vendor_profile_bg.png')
 }
 
 function UserProfile() {

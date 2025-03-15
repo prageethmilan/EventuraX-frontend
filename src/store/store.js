@@ -70,7 +70,7 @@ import {
 import {MdClose, MdFitnessCenter, MdStar, MdStarBorder, MdStarHalf} from 'react-icons/md';
 import {RiBuilding4Line, RiHotelBedLine, RiPlaneLine, RiReplyLine} from 'react-icons/ri';
 import {TiArrowUnsorted, TiBrush, TiPlane} from "react-icons/ti";
-import breadcrumbimg from "../assets/images/bread-bg.jpg"; //1920*838
+import dashboard_bg from "../assets/images/Dashboard_bg.png";
 import logo1 from "../assets/images/client-logo.png";
 import flag2 from "../assets/images/flag1.jpg";
 import flag10 from "../assets/images/flag10.png";
@@ -2047,7 +2047,7 @@ const sectiondata = {
         }
     },
     dashboard: {
-        breadcrumbimg: breadcrumbimg,
+        breadcrumbimg: dashboard_bg,
         cards: [
             {
                 img: img2,

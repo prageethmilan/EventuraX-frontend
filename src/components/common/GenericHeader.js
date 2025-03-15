@@ -1,22 +1,8 @@
 import React from 'react';
-import {BsGrid, BsListUl} from "react-icons/bs";
 import Select from "react-select";
 
 const state = {
     selectedCatOp: null,
-    title: 'Showing 1 to 6 of 30 entries',
-    navs: [
-        {
-            path: '/listing-list',
-            icon: <BsListUl/>,
-            active: false,
-        },
-        {
-            path: '/listing-grid',
-            icon: <BsGrid/>,
-            active: true,
-        }
-    ],
     shortby: [
         {
             value: 'asc',

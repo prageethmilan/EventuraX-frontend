@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import breadcrumbimg from '../../assets/images/bread-bg.jpg';
+import breadcrumbimg from '../../assets/images/update_ad_bg.jpg';
 import AddPrice from "../../components/addlisting/AddPrice";
 import GeneralInfo from "../../components/addlisting/GeneralInfo";
 import PhotoUploader from "../../components/addlisting/PhotoUploader";

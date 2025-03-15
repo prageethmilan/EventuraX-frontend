@@ -5,7 +5,7 @@ import PersonalInfo from "../../components/other/account/PersonalInfo";
 import WidgetBookingProduct from "../../components/sidebars/widgets/WidgetBookingProduct";
 import Footer from "../../components/common/footer/Footer";
 import ScrollTopBtn from "../../components/common/ScrollTopBtn";
-import breadcrumbimg from '../../assets/images/bread-bg.jpg'
+import breadcrumbimg from '../../assets/images/Listing_confirmation_bg.jpg'
 import {useLocation} from "react-router-dom";
 import {findObject} from "../../utils/util";
 import {categories} from "../../const/dropdownData";

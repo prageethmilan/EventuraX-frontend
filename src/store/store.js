@@ -3665,7 +3665,7 @@ const sectiondata = {
     ],
     footerdata: {
         footerlogo: darklogo,
-        footerdesc: 'Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros',
+        footerdesc: '🌟Crafting Unforgettable Experiences, One Moment at a Time.🌟',
         sociallinks: [
             {
                 icon: <FaFacebookF/>,

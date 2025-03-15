@@ -6,18 +6,19 @@ import logosrc from '../../assets/images/text-logo2.png'
 
 export default function GeneralHeader() {
     useEffect(() => {
-        const headerwrap= document.querySelector(".header-menu-wrapper")
+        const headerwrap = document.querySelector(".header-menu-wrapper")
         const rootElement = document.documentElement
 
         function handleScroll() {
-            if ((rootElement.scrollTop ) > 10) {
+            if ((rootElement.scrollTop) > 10) {
                 headerwrap.classList.add('header-fixed')
             } else {
                 headerwrap.classList.remove('header-fixed')
             }
         }
+
         document.addEventListener("scroll", handleScroll)
-    })
+    }, [])
     return (
         <>
             <header className="header-area">
@@ -28,14 +29,14 @@ export default function GeneralHeader() {
                                 <div className="menu-full-width">
                                     {/* Logo */}
                                     <div className="logo">
-                                        <Logo url={logosrc} />
+                                        <Logo url={logosrc}/>
                                     </div>
 
                                     {/* Navbar */}
-                                    <Navbar />
+                                    <Navbar/>
 
                                     {/* Author Access */}
-                                    <HeaderAuthorAccess />
+                                    <HeaderAuthorAccess/>
                                 </div>
                             </div>
                         </div>

@@ -38,23 +38,30 @@ function ListLeftSidebar() {
         advertisementList: []
     })
 
-    useEffect(async () => {
-        if (state?.keyword || state?.location || state?.category || state?.page || state?.totalPages) {
-            setSearchData(prevState => ({
-                ...prevState,
-                keyword: state?.keyword || null,
-                location: state?.location || null,
-                category: state?.category || null
-            }))
+    useEffect(() => {
+        const fetchData = async () => {
+            if (state?.keyword || state?.location || state?.category || state?.page || state?.totalPages) {
+                setSearchData(prevState => ({
+                    ...prevState,
+                    keyword: state?.keyword || null,
+                    location: state?.location || null,
+                    category: state?.category || null
+                }))
+            }
+            if (state) {
+                setAdvertisementsData({advertisementList: state?.data?.advertisements ? state?.data?.advertisements : []})
+                setPage(state?.page)
+                setTotalPages(state?.totalPages)
+                setTotalElements(state?.totalElements)
+            } else {
+                await loadRecommendedAdvertisements()
+                await loadAllAdvertisements(1)
+            }
         }
-        if (state) {
-            setAdvertisementsData({advertisementList: state?.data?.advertisements ? state?.data?.advertisements : []})
-            setPage(state?.page)
-            setTotalPages(state?.totalPages)
-            setTotalElements(state?.totalElements)
-        } else {
-            await loadRecommendedAdvertisements()
-            await loadAllAdvertisements(1)
+
+        fetchData();
+
+        return () => {
         }
     }, []);
 

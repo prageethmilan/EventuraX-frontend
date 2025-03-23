@@ -143,10 +143,10 @@ function ListingListSidebar({data, onFilterChangeHandler, onApplyFilters}) {
                         Filter by Price
                     </h3>
                     <div className="multi-range">
-                        <input id="min" type="range" min="0" max="10000000" defaultValue="0" step="1"
+                        <input id="min" type="range" min="0" max="1000000" defaultValue="0" step="1000"
                                value={data?.minPrice}
                                onChange={(e) => onFilterChangeHandler('minPrice', e.target.value)}/>
-                        <input id="max" type="range" min="0" max="10000000" defaultValue="10000000" step="1"
+                        <input id="max" type="range" min="0" max="1000000" defaultValue="1000000" step="1000"
                                value={data?.maxPrice}
                                onChange={(e) => onFilterChangeHandler('maxPrice', e.target.value)}/>
                     </div>

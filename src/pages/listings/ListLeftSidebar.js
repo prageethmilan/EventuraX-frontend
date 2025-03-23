@@ -26,7 +26,7 @@ function ListLeftSidebar() {
         keyword: null,
         location: null,
         category: null,
-        minPrice: null,
+        minPrice: 0,
         maxPrice: null,
         maxRating: null,
         sortByPrice: {value: 'asc', label: 'Price: Low to High'}

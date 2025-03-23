@@ -14,7 +14,8 @@ function SignInOptions() {
                 email: user.email,
                 name: user.displayName,
                 googleId: provider.providerId,
-                socialId: user.uid
+                socialId: user.uid,
+                logo: user.photoURL
             });
 
             if (res && res?.status) {
@@ -33,7 +34,8 @@ function SignInOptions() {
                 email: user.email,
                 name: user.displayName,
                 facebookId: provider.providerId,
-                socialId: user.uid
+                socialId: user.uid,
+                logo: user.photoURL
             });
 
             if (res && res?.status) {
@@ -52,7 +54,8 @@ function SignInOptions() {
                 email: user.email,
                 name: user.displayName,
                 twitterId: provider.providerId,
-                socialId: user.uid
+                socialId: user.uid,
+                logo: user.photoURL
             });
 
             if (res && res?.status) {

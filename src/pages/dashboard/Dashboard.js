@@ -193,6 +193,7 @@ function Dashboard() {
                 email: res.email,
                 name: res.name,
                 socialId: res.socialId,
+                logo: res.logo,
                 isVerified: res.verified
             }
             Cookies.set(VENDOR, JSON.stringify(vendor))
@@ -217,6 +218,7 @@ function Dashboard() {
         }
     }
     const handleLogoUpdate = async () => {
+        const vendor = JSON.parse(Cookies.get(VENDOR))
         if (!logo) return toast.error("Please select a image", {icon: true, hideProgressBar: true})
         if (!allowedLogoTypes.includes(logo.type)) {
             return toast.error("Only JPG, PNG, GIF, and WebP images are allowed!", {icon: true, hideProgressBar: true})
@@ -226,6 +228,8 @@ function Dashboard() {
         if (response) {
             setIsOpenLogoForm(false)
             setDisplayVendorData({...displayVendorData, logo: response.logo})
+            const updatedVendor = {...vendor, logo: response.logo}
+            Cookies.set(VENDOR, JSON.stringify(updatedVendor))
         }
     }
 

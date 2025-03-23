@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {AiOutlineUser} from 'react-icons/ai';
 import {BsListCheck, BsPower} from 'react-icons/bs';
-import {FiPlus, FiPlusCircle} from 'react-icons/fi';
+import {FiPlusCircle} from 'react-icons/fi';
 import {Link, useNavigate} from "react-router-dom";
 import userimg from '../../../assets/images/userProfileImg.png';
 // import Button from "../../common/Button";
-import Tooltips from '../tooltips/Tooltips';
 import Cookies from "js-cookie";
 import {ACCESS_TOKEN, VENDOR} from "../../../const/const";
 import {Button} from "reactstrap";
@@ -15,20 +14,22 @@ import {accountNotVerifiedWarningMsg} from "../../../const/storageStrings";
 export default function HeaderAuthorAccess() {
     const navigate = useNavigate();
     const [AuthorAccessOpen, setAuthorAccessOpen] = useState(false)
-    let vendor;
+    const [vendor, setVendor] = useState(null)
 
-    try {
-        const vendorCookie = Cookies.get(VENDOR);
-        if (vendorCookie !== undefined) {
-            vendor = JSON.parse(vendorCookie);
-        } else {
-            console.warn('VENDOR cookie is undefined or missing.');
-            vendor = null;
+    useEffect(() => {
+        try {
+            const vendorCookie = Cookies.get(VENDOR);
+            if (vendorCookie !== undefined) {
+                setVendor(JSON.parse(vendorCookie));
+            } else {
+                console.warn('VENDOR cookie is undefined or missing.');
+                setVendor(null);
+            }
+        } catch (error) {
+            console.error('Failed to parse VENDOR cookie:', error);
+            setVendor(null);
         }
-    } catch (error) {
-        console.error('Failed to parse VENDOR cookie:', error);
-        vendor = null;
-    }
+    }, []);
 
     const handleAddListing = () => {
         if (Cookies.get(ACCESS_TOKEN) !== undefined) {
@@ -81,12 +82,6 @@ export default function HeaderAuthorAccess() {
                     <div className="side-user-img">
                         <img src={vendor?.logo ? vendor?.logo : userimg} alt="User"/>
                         <h4 className="su__name">{vendor?.name}</h4>
-                        <div className="avatar-icon">
-                            <Tooltips id="t-3" title="Change Avatar">
-                                <Link to="/dashboard"> <FiPlus/></Link>
-                            </Tooltips>
-
-                        </div>
                     </div>
 
                     <ul className="side-menu-ul">

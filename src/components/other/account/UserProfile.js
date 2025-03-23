@@ -42,7 +42,7 @@ function UserProfile() {
         advertisementList: []
     })
     const [reviewFormData, setReviewFormData] = useState({
-        vendorId: '',
+        vendorId: queryParams.get('vendorId'),
         username: null,
         userEmail: null,
         reviewText: null,

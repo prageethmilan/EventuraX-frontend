@@ -47,7 +47,7 @@ function Dashboard() {
     const [vendorObj, setVendorObj] = useState(null)
     const [advertisementId, setAdvertisementId] = useState('')
     const [changePasswordFormData, setChangePasswordFormData] = useState({
-        vendorId: Cookies.get(VENDOR) !== undefined ? JSON.parse(Cookies.get(VENDOR)).id : 0,
+        vendorId: 0,
         currentPassword: '',
         newPassword: '',
         confirmPassword: ''
@@ -75,6 +75,7 @@ function Dashboard() {
     };
 
     useEffect(() => {
+        setChangePasswordFormData({...changePasswordFormData, vendorId: JSON.parse(Cookies.get(VENDOR))?.id})
         loadAllAdvertisements()
     }, [])
 

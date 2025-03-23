@@ -87,7 +87,7 @@ import symble1 from "../assets/images/symble1.png";
 import symble2 from "../assets/images/symble2.png";
 import symble3 from "../assets/images/symble3.png";
 import symble4 from "../assets/images/symble4.png";
-import userimage from "../assets/images/team1.jpg"; // 368*331
+import userimage from "../assets/images/userProfileImg.png"; // 368*331
 import team1 from "../assets/images/team2.jpg"; // 111*100
 import team2 from "../assets/images/testi-img1.jpg"; // 106*95
 import team3 from "../assets/images/testi-img2.jpg"; // 95*85

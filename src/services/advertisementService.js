@@ -9,11 +9,11 @@ export const postAdvertisement = async (formData) => {
 }
 
 export const getAllAds = async (vendorId, paymentStatus, page, size) => {
-    return await apiRequest('GET', `/advertisement/getAllAds/${vendorId}${page ? `?page=${page}` : ''}${size ? `&limit=${size}` : ''}${paymentStatus ? `&paymentStatus=${paymentStatus}` : ''}`)
+    return await apiRequest('GET', `/advertisement/get-all-ads/${vendorId}${page ? `?page=${page}` : ''}${size ? `&limit=${size}` : ''}${paymentStatus ? `&paymentStatus=${paymentStatus}` : ''}`)
 }
 
 export const getAllAdsForDashboard = async (vendorId) => {
-    return await apiRequest('GET', `/advertisement/getAllAdsForDashboard/${vendorId}`);
+    return await apiRequest('GET', `/advertisement/get-all-ads-for-dashboard/${vendorId}`);
 }
 
 export const updateAdvertisement = async (advertisementId, formData) => {

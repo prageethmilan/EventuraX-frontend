@@ -113,9 +113,9 @@ export const deleteAdvertisement = async (advertisementId) => {
     return result
 }
 
-export const getFilteredAdvertisements = async (page, size, keyword, location, category, minPrice, maxPrice, maxRating, sortByPrice) => {
+export const getFilteredAdvertisements = async (page, size, keyword, location, category, minPrice, maxPrice, maxRating) => {
     let result = null;
-    await advertisementService.getFilteredAdvertisements(page, size, keyword, location, category, minPrice, maxPrice, maxRating, sortByPrice)
+    await advertisementService.getFilteredAdvertisements(page, size, keyword, location, category, minPrice, maxPrice, maxRating)
         .then(async res => {
             if (res.success) {
                 result = res.data

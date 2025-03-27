@@ -28,8 +28,8 @@ export const deleteAdvertisement = async (advertisementId) => {
     return await apiRequest('DELETE', `/advertisement/${advertisementId}`);
 }
 
-export const getFilteredAdvertisements = async (page, limit, keyword, location, category, minPrice, maxPrice, maxRating, sortByPrice) => {
-    return await apiRequest('GET', `/advertisement/filter?page=${page}&limit=${limit}${keyword ? `&keyword=${keyword}` : ''}${location ? `&location=${location.value}` : ''}${category ? `&category=${category.value}` : ''}${minPrice ? `&minPrice=${minPrice}` : ''}${maxPrice ? `&maxPrice=${maxPrice}` : ''}${maxRating ? `&maxRating=${maxRating}` : ''}${sortByPrice ? `&sortByPrice=${sortByPrice?.value}` : ''}`)
+export const getFilteredAdvertisements = async (page, limit, keyword, location, category, minPrice, maxPrice, maxRating) => {
+    return await apiRequest('GET', `/advertisement/filter?page=${page}&limit=${limit}${keyword ? `&keyword=${keyword}` : ''}${location ? `&location=${location.value}` : ''}${category ? `&category=${category.value}` : ''}${minPrice ? `&minPrice=${minPrice}` : ''}${maxPrice ? `&maxPrice=${maxPrice}` : ''}${maxRating ? `&maxRating=${maxRating}` : ''}`)
 }
 
 export const getAdvertisementDetails = async (advertisementId) => {

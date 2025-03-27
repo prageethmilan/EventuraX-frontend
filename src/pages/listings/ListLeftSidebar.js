@@ -28,8 +28,7 @@ function ListLeftSidebar() {
         category: null,
         minPrice: 0,
         maxPrice: null,
-        maxRating: null,
-        sortByPrice: {value: 'asc', label: 'Price: Low to High'}
+        maxRating: null
     })
     const [advertisementsData, setAdvertisementsData] = useState({
         advertisementList: []
@@ -75,9 +74,9 @@ function ListLeftSidebar() {
         }
     }
 
-    const loadAllAdvertisements = async (pageNumber, sortByPrice) => {
+    const loadAllAdvertisements = async (pageNumber) => {
         setAdvertisementsData({advertisementList: []})
-        const res = await advertisementApi.getFilteredAdvertisements(pageNumber, 5, searchData.keyword, searchData.location, searchData.category, searchData.minPrice, searchData.maxPrice, searchData.maxRating, sortByPrice !== undefined ? sortByPrice : searchData.sortByPrice)
+        const res = await advertisementApi.getFilteredAdvertisements(pageNumber, 5, searchData.keyword, searchData.location, searchData.category, searchData.minPrice, searchData.maxPrice, searchData.maxRating)
         if (res && res.advertisements.length !== 0) {
             setAdvertisementsData(prevData => ({
                 advertisementList: [...prevData.advertisementList, ...res.advertisements]
@@ -93,9 +92,6 @@ function ListLeftSidebar() {
             ...prevState,
             [name]: data
         }))
-        if (name === "sortByPrice") {
-            await loadAllAdvertisements(1, data)
-        }
     }
 
     const handleLoadMore = async () => {
